@@ -6,11 +6,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 import org.primefaces.PrimeFaces;
 
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.log.Logger;
+import services.UserService;
 
 @ManagedBean
 @SessionScoped
@@ -19,10 +21,38 @@ public class LoginController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	Logger logger = Logger.getLogger(LoginController.class);
+
 	private boolean loggedIn;
 	private String username = "ntynhi";
 	private String password = "admin";
 
+	UserService userService;
+
+	public void login() {
+		FacesMessage message = null;
+		if (UserService.authorized(username, password)) {
+			this.loggedIn = true;
+			message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
+		} else {
+			this.loggedIn = false;
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
+		}
+
+		FacesContext.getCurrentInstance().addMessage(null, message);
+		PrimeFaces.current().ajax().addCallbackParam("loggedIn", this.loggedIn);
+		
+		Ivy.log().trace("Data login: username = " + this.username + " | password:  " + this.password);
+	}
+
+	public void logout() {
+		this.username = "";
+		this.password = "";
+		this.loggedIn = false;
+		Ivy.session().logoutSessionUser();
+		
+		Ivy.log().trace("logout function");
+	}
+	
 	public boolean isLoggedIn() {
 		return loggedIn;
 	}
@@ -47,31 +77,13 @@ public class LoginController implements Serializable {
 		this.password = password;
 	}
 
-	public String login() {
-		Ivy.log().error("Data login: username = " + this.username + " | password:  " + this.password);
-
-		FacesMessage message = null;
-		boolean isSuccess = Ivy.getInstance().session.loginSessionUser(username, password);
-		if (isSuccess) {
-			this.loggedIn = true;
-			message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
-
-			Ivy.log().error("User info" + Ivy.session().getSessionUser().getDisplayName());
-		} else {
-			this.loggedIn = false;
-			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
-		}
-
-		FacesContext.getCurrentInstance().addMessage(null, message);
-		PrimeFaces.current().ajax().addCallbackParam("loggedIn", this.loggedIn);
-		return "HomePage";
+	public UserService getUserService() {
+		return userService;
 	}
 
-	public void logout() {
-		Ivy.log().error("=========logout==========");
-		this.username = "";
-		this.password = "";
-		this.loggedIn = false;
-		Ivy.session().logoutSessionUser();
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
+	
+	
 }
