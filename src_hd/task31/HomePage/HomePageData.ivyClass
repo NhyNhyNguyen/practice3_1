@@ -1,0 +1,4 @@
+HomePageData #class
+task31.HomePage #namespace
+portalStartData task31.PortalStartData #field
+portalStartData PERSISTENT #fieldModifier

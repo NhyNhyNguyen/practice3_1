@@ -1,0 +1,6 @@
+PortalStartData #class
+task31 #namespace
+username String #field
+username PERSISTENT #fieldModifier
+password String #field
+password PERSISTENT #fieldModifier
