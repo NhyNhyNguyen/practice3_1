@@ -17,8 +17,23 @@
 	<h:outputStylesheet name="css/layout-ivy.css" library="serenity-layout" />
 	<h:outputStylesheet name="layouts/styles/ivy-common-8.css" />
 	<h:outputStylesheet name="layouts/styles/progress-loader.css" />
+	<h:outputStylesheet name="layouts/styles/style.css" />
 	<h:outputScript name="js/layout.js" library="serenity-layout" />
 	<h:outputScript library="js" name="script.js" />
+	<style>
+#menu {
+	background-color: #006f94 !important;
+	color: #fff;
+}
+
+body .ui-widget-content .ui-icon {
+	color: #fff;
+}
+
+body .ui-menu.ui-menubar {
+	padding: 4px;
+}
+</style>
 </h:head>
 <h:body>
 	<ui:include src="/layouts/includes/progress-loader.xhtml" />
@@ -39,25 +54,31 @@
       default content
     </ui:insert>
 		<h:form id="headerLogin">
-			<p:menubar>
-				<p:menuitem value="Home" action="#{homeController.goHome}" />
-				<p:menuitem value="Orders" action="#{orderController.goOrders}" />
-				<p:menuitem value="Tasks" action="#{taskController.goTasks}" />
-				<p:menuitem id="loginBtn" value="Login" icon="ui-icon-person"
-					onclick="PF('loginDialog').show();"
-					rendered="#{!loginController.loggedIn}" />
-				<p:menuitem id="profilebtn"
-					value="#{ivy.session.sessionUser.displayName}" icon="ui-icon-power"
-					action="#{loginController.logout}"
-					rendered="#{loginController.loggedIn}"
-					update="growl,headerLogin"
-					oncomplete="" 
-					/>
+			<p:menubar style="background-color: #006f94 !important;">
+				<p:menuitem value="Home" action="#{homeController.goHome}"
+					icon="ui-icon-home" />
+				<p:menuitem value="Orders" action="#{orderController.goOrders}"
+					icon="ui-icon-book" />
+				<p:menuitem value="Tasks" action="#{taskController.goTasks}"
+					icon="ui-icon-list" />
+				<f:facet name="options">
+					<p:commandButton id="loginBtn" value="Login" icon="ui-icon-person" style=" box-shadow: none !important;"
+						onclick="PF('loginDialog').show();"
+						rendered="#{!loginController.loggedIn}" />
+					<p:commandButton id="profilebtn"  style=" box-shadow: none !important;"
+						value="#{ivy.session.sessionUser.displayName}"
+						icon="ui-icon-power" action="#{loginController.logout}"
+						rendered="#{loginController.loggedIn}" update="growl,headerLogin"
+						oncomplete="" />
+
+				</f:facet>
 			</p:menubar>
+
+
 		</h:form>
 		<p:growl id="growl" sticky="true" showDetail="true" life="300" />
 
-	<ui:insert name="footer">
+		<ui:insert name="footer">
 			<hr />
 			<footer>
 				<ui:include src="/layouts/includes/footer.xhtml" />

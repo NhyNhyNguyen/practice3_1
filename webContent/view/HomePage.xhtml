@@ -13,9 +13,9 @@
 
 
 			<p:dialog id="loginDialog" header="Login" widgetVar="loginDialog"
-				modal="true" resizable="false" closable="false">
-				<h:form>
-					<h:panelGrid columns="2" cellpadding="5">
+				modal="true" resizable="false" closable="false" width="400" style="padding:5px">
+				<h:form >
+					<h:panelGrid columns="2" cellpadding="5" width="100%">
 
 						<p:outputLabel for="username" value="Username" />
 						<p:inputText id="username" value="#{loginController.username}"
