@@ -4,25 +4,24 @@ import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import org.apache.commons.lang3.StringUtils;
+import org.primefaces.PrimeFaces;
 
 import ch.ivyteam.ivy.environment.Ivy;
-import ch.ivyteam.ivy.request.impl.RequestContext;
 import ch.ivyteam.log.Logger;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class LoginController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	Logger logger = Logger.getLogger(LoginController.class);
-	private boolean loggedIn = false;
-	private String username;
-	private String password;
+	private boolean loggedIn;
+	private String username = "ntynhi";
+	private String password = "admin";
 
 	public boolean isLoggedIn() {
 		return loggedIn;
@@ -48,27 +47,31 @@ public class LoginController implements Serializable {
 		this.password = password;
 	}
 
-	public void login() {
+	public String login() {
 		Ivy.log().error("Data login: username = " + this.username + " | password:  " + this.password);
-		// todo check how to redirect to Test Page ...
 
-		// todo check username, password
+		FacesMessage message = null;
+		boolean isSuccess = Ivy.getInstance().session.loginSessionUser(username, password);
+		if (isSuccess) {
+			this.loggedIn = true;
+			message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
 
-		FacesMessage msg = null;
-
-		if (StringUtils.isEmpty(this.username) || StringUtils.isEmpty(this.password)) {
-			Ivy.log().error("====");
-			msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error", "UserName is empty.");
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-			Ivy.log().error("====");
+			Ivy.log().error("User info" + Ivy.session().getSessionUser().getDisplayName());
+		} else {
+			this.loggedIn = false;
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
 		}
 
-
-	/*
-	 * return "Test.xhtml?faces-redirect=true";
-	 */ }
+		FacesContext.getCurrentInstance().addMessage(null, message);
+		PrimeFaces.current().ajax().addCallbackParam("loggedIn", this.loggedIn);
+		return "HomePage";
+	}
 
 	public void logout() {
-		System.out.println("=========logout==========");
+		Ivy.log().error("=========logout==========");
+		this.username = "";
+		this.password = "";
+		this.loggedIn = false;
+		Ivy.session().logoutSessionUser();
 	}
 }

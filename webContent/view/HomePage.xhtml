@@ -6,15 +6,14 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pe="http://primefaces.org/ui/extensions">
 <h:body>
+
 	<ui:composition template="/layouts/basic-8.xhtml">
 		<ui:define name="title">HomePage</ui:define>
 		<ui:define name="content">
 
 			<h3></h3>
 
-			<!-- Add this code to your home page (e.g. index.xhtml) -->
-
-			<h:form>
+			<h:form  id="headerLogin">
 				<p:menubar>
 					<p:menuitem value="Home" action="#{homeController.goHome}" />
 					<p:menuitem value="Orders" action="#{orderController.goOrders}" />
@@ -22,9 +21,10 @@
 					<p:menuitem id="loginBtn" value="Login" icon="ui-icon-person"
 						onclick="PF('loginDialog').show();"
 						rendered="#{!loginController.loggedIn}" />
-					<p:menuitem id="logoutBtn" value="Logout" icon="ui-icon-power"
-						action="#{loginController.logout}"
-						rendered="#{loginController.loggedIn}" />
+					<p:menuitem id="profilebtn"
+						value="#{ivy.session.sessionUser.displayName}"
+						icon="ui-icon-power" action="#{loginController.logout}"
+						rendered="#{loginController.loggedIn}" oncomplete="location.reload();"/>
 				</p:menubar>
 			</h:form>
 
@@ -32,27 +32,31 @@
 				modal="true" resizable="false" closable="false">
 				<h:form>
 					<h:panelGrid columns="2" cellpadding="5">
-						<p:outputLabel for="username" value="Username" />
-						<p:inputText id="username" value="#{loginController.username}" placeholder="Enter your username"
-							required="true" />
 
-						<p:outputLabel for="password" styleClass="col-fixed" 
+						<p:outputLabel for="username" value="Username" />
+						<p:inputText id="username" value="#{loginController.username}"
+							placeholder="Enter your username" required="true" />
+
+						<p:outputLabel for="password" styleClass="col-fixed"
 							style="width:100px" value="Password" />
 
-						<p:password id="password" value="#{loginController.password}" placeholder="Enter your password"
-							toggleMask="true" redisplay="true" required="true" />
+						<p:password id="password" value="#{loginController.password}"
+							placeholder="Enter your password" 
+							redisplay="true" required="true" />
+							
 						<f:facet name="footer">
 							<p:commandButton value="Login"
 								actionListener="#{loginController.login()}"
-								update=":loginDialog" />
-							<p:commandButton value="Cancel"
-								onclick="PF('loginDialog').hide();" />
+								update="headerLogin"
+								oncomplete=" handleLoginRequest(xhr, status, args)" />
+							<p:commandButton value="Cancel"/>
+							<p:messages id="messages" showDetail="true">
+								<p:autoUpdate />
+							</p:messages>
 						</f:facet>
 					</h:panelGrid>
 				</h:form>
 			</p:dialog>
-
-
 		</ui:define>
 	</ui:composition>
 </h:body>
