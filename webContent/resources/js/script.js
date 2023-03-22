@@ -1,5 +1,5 @@
   function handleLoginRequest(xhr, status, args) {
-	  console.log("Hanlde login")
+	  console.log("handleLoginRequest")
         if(args.validationFailed || !args.loggedIn) {
         }
         else {

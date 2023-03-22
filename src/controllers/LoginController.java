@@ -40,7 +40,7 @@ public class LoginController implements Serializable {
 
 		FacesContext.getCurrentInstance().addMessage(null, message);
 		PrimeFaces.current().ajax().addCallbackParam("loggedIn", this.loggedIn);
-		
+
 		Ivy.log().trace("Data login: username = " + this.username + " | password:  " + this.password);
 	}
 
@@ -49,10 +49,12 @@ public class LoginController implements Serializable {
 		this.password = "";
 		this.loggedIn = false;
 		Ivy.session().logoutSessionUser();
-		
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Logout Sucessfull", username);
+		FacesContext.getCurrentInstance().addMessage(null, message);
+
 		Ivy.log().trace("logout function");
 	}
-	
+
 	public boolean isLoggedIn() {
 		return loggedIn;
 	}
@@ -84,6 +86,5 @@ public class LoginController implements Serializable {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	
-	
+
 }
