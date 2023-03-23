@@ -33,6 +33,10 @@ body .ui-widget-content .ui-icon {
 body .ui-menu.ui-menubar {
 	padding: 4px;
 }
+
+#headerLogin .ui-widget-content {
+	background-color: #006f94 !important
+}
 </style>
 </h:head>
 <h:body>
@@ -45,38 +49,46 @@ body .ui-menu.ui-menubar {
 							name="layouts/images/axon_ivy_logo.svg" alt="Axon.ivy" />
 					</a>
 				</div>
+				<div>
+					<h:form id="headerLogin">
+						<p:menubar>
+							<p:menuitem value="Home" action="#{homeController.goHome}"
+								icon="ui-icon-home" />
+							<p:menuitem value="Orders" action="#{orderController.goOrders}"
+								icon="ui-icon-book" />
+							<p:menuitem value="Tasks" action="#{taskController.goTasks}"
+								icon="ui-icon-list" />
+							<p:submenu id="profileMenu" icon="ui-icon-person"
+								label="#{ivy.session.sessionUser.displayName}"
+								rendered="#{loginController.loggedIn}" style="float:right; ">
+								<p:menuitem id="logoutBtn"
+									style=" box-shadow: none !important; " value="Logout"
+									icon="ui-icon-person" action="#{loginController.logout}"
+									rendered="#{loginController.loggedIn}"
+									update="growl,headerLogin" oncomplete="" />
+							</p:submenu>
+							<f:facet name="options">
+								<p:commandButton id="loginBtn" value="Login"
+									icon="ui-icon-person" style=" box-shadow: none !important;"
+									onclick="PF('loginDialog').show();"
+									rendered="#{!loginController.loggedIn}" />
+							</f:facet>
+						</p:menubar>
+
+
+					</h:form>
+					<p:growl id="growl" sticky="true" showDetail="true" life="300" />
+				</div>
 			</div>
+
 		</div>
 	</ui:insert>
+
 
 	<div id="content" class="container">
 		<ui:insert name="content">
       default content
     </ui:insert>
-		<h:form id="headerLogin">
-			<p:menubar style="background-color: #006f94 !important;">
-				<p:menuitem value="Home" action="#{homeController.goHome}"
-					icon="ui-icon-home" />
-				<p:menuitem value="Orders" action="#{orderController.goOrders}"
-					icon="ui-icon-book" />
-				<p:menuitem value="Tasks" action="#{taskController.goTasks}"
-					icon="ui-icon-list" />
-				<f:facet name="options">
-					<p:commandButton id="loginBtn" value="Login" icon="ui-icon-person" style=" box-shadow: none !important;"
-						onclick="PF('loginDialog').show();"
-						rendered="#{!loginController.loggedIn}" />
-					<p:commandButton id="profilebtn"  style=" box-shadow: none !important;"
-						value="#{ivy.session.sessionUser.displayName}"
-						icon="ui-icon-power" action="#{loginController.logout}"
-						rendered="#{loginController.loggedIn}" update="growl,headerLogin"
-						oncomplete="" />
-
-				</f:facet>
-			</p:menubar>
-
-
-		</h:form>
-		<p:growl id="growl" sticky="true" showDetail="true" life="300" />
 
 		<ui:insert name="footer">
 			<hr />
