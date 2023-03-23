@@ -12,6 +12,7 @@ import org.primefaces.PrimeFaces;
 
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.log.Logger;
+import services.CustomerService;
 import services.UserService;
 
 @ManagedBean
@@ -30,7 +31,7 @@ public class LoginController implements Serializable {
 
 	public void login() {
 		FacesMessage message = null;
-		if (UserService.authorized(username, password)) {
+		if (UserService.getInstance().authorized(username, password)) {
 			this.loggedIn = true;
 			message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
 		} else {
@@ -41,7 +42,7 @@ public class LoginController implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null, message);
 		PrimeFaces.current().ajax().addCallbackParam("loggedIn", this.loggedIn);
 
-		Ivy.log().trace("Data login: username = " + this.username + " | password:  " + this.password);
+		Ivy.log().error("Data login: username = " + this.username + " | password:  " + this.password);
 	}
 
 	public void logout() {
@@ -52,7 +53,9 @@ public class LoginController implements Serializable {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Logout Sucessfull", username);
 		FacesContext.getCurrentInstance().addMessage(null, message);
 
-		Ivy.log().trace("logout function");
+		Ivy.log().error("logout function");
+		
+		CustomerService.getInstance().save();
 	}
 
 	public boolean isLoggedIn() {

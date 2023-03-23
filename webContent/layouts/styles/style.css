@@ -1,4 +1,4 @@
-#menu 
+#menu {
 	background-color: #006f94 !important;
 	color: #fff;
 	padding: 2px;
@@ -21,4 +21,8 @@
 	border: none;
 	box-shadow: none;
 	-webkit-box-shadow: none;
+}
+
+p {
+	font-size: 15px;
 }
