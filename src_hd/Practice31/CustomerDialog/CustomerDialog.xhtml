@@ -61,7 +61,7 @@
 							value="#{data.mainProcessData.customerInfo.email}"
 							validatorMessage="Invalid email format" required="true">
 							<f:validateRegex
-								pattern="^(.+)@(.+)$" />
+								pattern="^(.+)@(.+).(.+)$" />
 						</p:inputText>
 						<p:outputLabel for="mainProcessDataCustomerInfoGender"
 							value="Gender" />
@@ -79,7 +79,6 @@
 							mode="simple" multiple="false" skinSimple="true"
 							sizeLimit="102400"
 							invalidSizeMessage="Maximum file size allowed is 100 KB"
-							invalidFileMessage="only gif | jpg | jpeg | png is allowed"
 							update="" label="Choose File"
 							value="#{data.mainProcessData.customerInfo.documents}" />
 						<div class="command-btns">

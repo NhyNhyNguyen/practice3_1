@@ -21,41 +21,22 @@ public class LoginController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	Logger logger = Logger.getLogger(LoginController.class);
-
 	private boolean loggedIn;
 	private String username = "ntynhi";
 	private String password = "admin";
 
-	UserService userService;
+	@Inject
+	UserService userService = UserService.getInstance();
 
 	public void login() {
-		FacesMessage message = null;
-		if (UserService.getInstance().authorized(username, password)) {
-			this.loggedIn = true;
-			message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
-		} else {
-			this.loggedIn = false;
-			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
-		}
-
-		FacesContext.getCurrentInstance().addMessage(null, message);
-		PrimeFaces.current().ajax().addCallbackParam("loggedIn", this.loggedIn);
-
-		Ivy.log().error("Data login: username = " + this.username + " | password:  " + this.password);
+		loggedIn = userService.login(username, password);
 	}
 
 	public void logout() {
 		this.username = "";
 		this.password = "";
 		this.loggedIn = false;
-		Ivy.session().logoutSessionUser();
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Logout Sucessfull", username);
-		FacesContext.getCurrentInstance().addMessage(null, message);
-
-		Ivy.log().error("logout function");
-		
-		CustomerService.getInstance().save();
+		userService.logout();
 	}
 
 	public boolean isLoggedIn() {

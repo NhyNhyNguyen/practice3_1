@@ -38,7 +38,8 @@ body .ui-menu.ui-menubar {
 	background-color: #006f94 !important
 }
 
-#customer-input-form .ui-g { 
+#customer-input-form .ui-g {
+	
 }
 </style>
 </h:head>
@@ -58,15 +59,15 @@ body .ui-menu.ui-menubar {
 							<p:menuitem value="Home" action="#{homeController.goHome}"
 								icon="ui-icon-home" />
 							<p:menuitem value="Orders" action="#{orderController.goOrders}"
-								icon="ui-icon-book" />
+								icon="ui-icon-document" />
 							<p:menuitem value="Tasks" action="#{taskController.goTasks}"
 								icon="ui-icon-list" />
-							<p:submenu id="profileMenu" icon="ui-icon-person"
+							<p:submenu id="profileMenu" icon="fa fa-user-circle-o"
 								label="#{ivy.session.sessionUser.displayName}"
 								rendered="#{loginController.loggedIn}" style="float:right; ">
 								<p:menuitem id="logoutBtn"
 									style=" box-shadow: none !important; " value="Logout"
-									icon="ui-icon-person" action="#{loginController.logout}"
+									icon="fa fa-sign-out" action="#{loginController.logout}"
 									rendered="#{loginController.loggedIn}"
 									update="growl,headerLogin" oncomplete="" />
 							</p:submenu>
@@ -80,7 +81,40 @@ body .ui-menu.ui-menubar {
 
 
 					</h:form>
-					<p:growl id="growl"  showDetail="false" life="3000" />
+					<p:growl id="growl" showDetail="false" life="3000" />
+
+					<p:dialog id="loginDialog" header="Login" widgetVar="loginDialog"
+						modal="true" resizable="false" closable="false" width="400"
+						style="padding:5px">
+						<h:form>
+							<h:panelGrid columns="2" cellpadding="5" width="100%">
+
+								<p:outputLabel for="username" value="Username" />
+								<p:inputText id="username" value="#{loginController.username}"
+									placeholder="Enter your username" required="true" />
+
+								<p:outputLabel for="password" styleClass="col-fixed"
+									style="width:100px" value="Password" />
+
+								<p:password id="password" value="#{loginController.password}"
+									placeholder="Enter your password" redisplay="true"
+									required="true" />
+
+								<f:facet name="footer">
+									<p:commandButton value="Login"
+										actionListener="#{loginController.login()}"
+										update="headerLogin"
+										oncomplete=" handleLoginRequest(xhr, status, args)" />
+									<p:commandButton value="Cancel"
+										oncomplete=" PF('loginDialog').hide()" />
+									<p:messages id="messages" showDetail="false">
+										<p:autoUpdate />
+									</p:messages>
+								</f:facet>
+							</h:panelGrid>
+						</h:form>
+					</p:dialog>
+
 				</div>
 			</div>
 
