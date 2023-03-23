@@ -1,0 +1,4 @@
+CustomerDialogData #class
+Practice31.CustomerDialog #namespace
+mainProcessData Practice31.MainProcessData #field
+mainProcessData PERSISTENT #fieldModifier

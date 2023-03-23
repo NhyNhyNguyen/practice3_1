@@ -1,0 +1,27 @@
+OrderDetail #class
+'Order Info' #classComment
+true #isEntity
+Practice31 #namespace
+order_detail #dbTableName
+id Integer #field
+id Identifier #fieldComment
+id PERSISTENT #fieldModifier
+id ID #fieldModifier
+id GENERATED #fieldModifier
+productType String #field
+productType PERSISTENT #fieldModifier
+productType 10 #dbFieldLength
+connectedPower Integer #field
+connectedPower PERSISTENT #fieldModifier
+connectedPower 15 #dbFieldLength
+cableLength Integer #field
+cableLength PERSISTENT #fieldModifier
+cableLength 255 #dbFieldLength
+requiredMeter Boolean #field
+requiredMeter PERSISTENT #fieldModifier
+requiredMeter 40 #dbFieldLength
+battery String #field
+battery PERSISTENT #fieldModifier
+battery 40 #dbFieldLength
+total Double #field
+total PERSISTENT #fieldModifier
