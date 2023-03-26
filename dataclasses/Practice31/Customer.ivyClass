@@ -23,7 +23,7 @@ address 40 #dbFieldLength
 email String #field
 email PERSISTENT #fieldModifier
 email 40 #dbFieldLength
-gender String #field
+gender Boolean #field
 gender PERSISTENT #fieldModifier
-documents File #field
+documents String #field
 documents PERSISTENT #fieldModifier

@@ -28,8 +28,10 @@
 						ui-g-12 ui-md-9 ui-lg-4, 
 						ui-g-12 ui-md-3 ui-lg-2, 
 						ui-g-12 ui-md-9 ui-lg-4">
-
-						<p:outputLabel for="mainProcessDataCustomerInfoName" value="Name" />
+						<p:outputLabel for="mainProcessDataCustomerInfoId" value="Id" />
+						<p:inputText id="mainProcessDataCustomerInfoId"
+							value="#{data.mainProcessData.customerInfo.id}" required="true"></p:inputText>
+						<p:outputLabel for="mainProcessDataCustomerInfoId" value="Name" />
 						<p:inputText id="mainProcessDataCustomerInfoName"
 							value="#{data.mainProcessData.customerInfo.name}" required="true"></p:inputText>
 
@@ -60,16 +62,15 @@
 						<p:inputText id="mainProcessDataCustomerInfoEmail"
 							value="#{data.mainProcessData.customerInfo.email}"
 							validatorMessage="Invalid email format" required="true">
-							<f:validateRegex
-								pattern="^(.+)@(.+).(.+)$" />
+							<f:validateRegex pattern="^(.+)@(.+).(.+)$" />
 						</p:inputText>
 						<p:outputLabel for="mainProcessDataCustomerInfoGender"
 							value="Gender" />
 
 						<p:selectOneRadio id="mainProcessDataCustomerInfoGender"
 							value="#{data.mainProcessData.customerInfo.gender}">
-							<f:selectItem itemLabel="Male" itemValue="Option1" />
-							<f:selectItem itemLabel="Female" itemValue="Option2" />
+							<f:selectItem itemLabel="Male" itemValue="true" />
+							<f:selectItem itemLabel="Female" itemValue="false" />
 						</p:selectOneRadio>
 
 						<p:outputLabel for="mainProcessDataCustomerInfoDocuments"
@@ -83,7 +84,7 @@
 							value="#{data.mainProcessData.customerInfo.documents}" />
 						<div class="command-btns">
 							<p:commandButton id="proceed" actionListener="#{logic.close}"
-								value="Create Customer" update="customer-input-form"
+								value="Save Customer" update="customer-input-form"
 								icon="ui-icon-check" />
 						</div>
 					</p:panelGrid>

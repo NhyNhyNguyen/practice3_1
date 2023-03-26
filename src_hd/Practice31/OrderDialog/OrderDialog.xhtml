@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<h:body>
+	<ui:composition template="/layouts/basic-8.xhtml">
+		<ui:define name="title">OrderDialog</ui:define>
+		<ui:define name="content">
+
+
+
+			<h:form id="form">
+				<h2 style="">New Order</h2>
+				<p class="">Please insert the new order data</p>
+				<p:panelGrid columns="2" layout="grid"
+					styleClass="ui-panelgrid-blank"
+					columnClasses="ui-g-12 ui-md-3 ui-lg-2, 
+						ui-g-12 ui-md-9 ui-lg-4, 
+						ui-g-12 ui-md-3 ui-lg-2, 
+						ui-g-12 ui-md-9 ui-lg-4">
+					<f:facet name="header">
+						<p:messages></p:messages>
+					</f:facet>
+
+					<p:outputLabel for="mainProcessDataOrderInfoId" value="Id" />
+					<p:inputText id="mainProcessDataOrderInfoId"
+						value="#{data.mainProcessData.orderInfo.id}"></p:inputText>
+					<p:outputLabel for="mainProcessDataOrderInfoProductType"
+						value="ProductType" required="true" />
+					<p:selectOneMenu id="mainProcessDataOrderInfoProductType"
+						value="#{data.mainProcessData.orderInfo.productType}" required="true">
+						<f:selectItem itemLabel="Solar" itemValue="Solar" />
+						<f:selectItem itemLabel="Power" itemValue="Power" />
+					</p:selectOneMenu>
+					<p:outputLabel for="mainProcessDataOrderInfoCableLength"
+						value="Cable Length" />
+					<p:inputText id="mainProcessDataOrderInfoCableLength"
+						value="#{data.mainProcessData.orderInfo.cableLength}" required="true"></p:inputText>
+					<p:outputLabel for="mainProcessDataOrderInfoRequiredMeter"
+						value="Required Meter" />
+					<p:selectBooleanCheckbox id="mainProcessDataOrderInfoRequiredMeter"
+						value="#{data.mainProcessData.orderInfo.requiredMeter}" required="true" />
+
+					<p:outputLabel for="mainProcessDataOrderInfoBattery"
+						value="Battery" />
+					<p:inputText id="mainProcessDataOrderInfoBattery"
+						value="#{data.mainProcessData.orderInfo.battery}" required="true"></p:inputText>
+
+					<p:outputLabel for="mainProcessDataOrderInfoTotal" value="Total" />
+					<p:inputText id="mainProcessDataOrderInfoTotal"
+						value="#{data.mainProcessData.orderInfo.total}" required="true"></p:inputText>
+					<br />
+					<p:commandButton actionListener="#{logic.close}"
+						value="Save Order Info" update="form" icon="ui-icon-check" />
+				</p:panelGrid>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
