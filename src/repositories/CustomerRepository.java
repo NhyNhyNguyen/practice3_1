@@ -1,12 +1,9 @@
 package repositories;
 
-import javax.persistence.EntityManager;
-
-import entity.CustomerEntity;
 import dbconfig.AbstractRepository;
-import dbconfig.HibernateService;
+import entity.CustomerEntity;
 
-public class CustomerRepository extends AbstractRepository {
+public class CustomerRepository extends AbstractRepository<CustomerEntity, Integer> {
 
 	private static CustomerRepository instance;
 
@@ -15,12 +12,5 @@ public class CustomerRepository extends AbstractRepository {
 			instance = new CustomerRepository();
 		}
 		return instance;
-	}
-
-	public void save(CustomerEntity customer) {
-		EntityManager m = HibernateService.getEntityManager();
-		m.getTransaction().begin();
-		m.persist(customer);
-		m.getTransaction().commit();
 	}
 }

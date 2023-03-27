@@ -10,8 +10,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.model.SortMeta;
-
 import ch.ivyteam.ivy.environment.Ivy;
 import entity.OrderEntity;
 import services.OrderService;
@@ -23,21 +21,17 @@ public class OrderController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private List<OrderEntity> orders = new ArrayList<>();
-	private List<SortMeta> sortBy;
 
 	@PostConstruct
 	public void init() {
 		orders = OrderService.getInstance().findAll();
 		Ivy.getInstance().log.info("Order List" + orders);
-
-		sortBy = new ArrayList<>();
 	}
 
 	public void goOrders() {
 		Ivy.getInstance().log.info("Redirect to order page");
 		orders = OrderService.getInstance().findAll();
 
-//		PrimeFaces.current().ajax().update("orderTable");s
 		try {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("OrderPage.xhtml");
 		} catch (IOException e) {

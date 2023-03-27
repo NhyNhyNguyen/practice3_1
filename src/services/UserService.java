@@ -5,9 +5,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.context.FacesContext;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.primefaces.PrimeFaces;
 
 import ch.ivyteam.ivy.environment.Ivy;

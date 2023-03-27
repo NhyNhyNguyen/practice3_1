@@ -4,12 +4,12 @@ import javax.persistence.EntityManager;
 
 import ch.ivyteam.ivy.environment.Ivy;
 
-public class HibernateService {
+public class EntityManagerService {
 
 	private static EntityManager entityManager;
-	private static HibernateService instance = new HibernateService();
+	private static EntityManagerService instance = new EntityManagerService();
 
-	public static HibernateService getInstance() {
+	public static EntityManagerService getInstance() {
 		return instance;
 	}
 
