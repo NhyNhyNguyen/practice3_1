@@ -13,14 +13,10 @@ Ms0 @EndTask f1 '' #zField
 Ms0 @UserDialog f2 '' #zField
 Ms0 @PushWFArc f3 '' #zField
 Ms0 @StartRequest f0 '' #zField
-Ms0 @Alternative f9 '' #zField
-Ms0 @PushWFArc f10 '' #zField
-Ms0 @PushWFArc f11 '' #zField
 Ms0 @UserDialog f4 '' #zField
 Ms0 @EndTask f14 '' #zField
 Ms0 @StartRequest f17 '' #zField
 Ms0 @PushWFArc f7 '' #zField
-Ms0 @PushWFArc f6 '' #zField
 Ms0 @DBStep f5 '' #zField
 Ms0 @DBStep f8 '' #zField
 Ms0 @PushWFArc f13 '' #zField
@@ -32,8 +28,11 @@ Ms0 @PushWFArc f20 '' #zField
 Ms0 @UserDialog f16 '' #zField
 Ms0 @PushWFArc f21 '' #zField
 Ms0 @PushWFArc f22 '' #zField
+Ms0 @GridStep f9 '' #zField
+Ms0 @PushWFArc f10 '' #zField
+Ms0 @PushWFArc f6 '' #zField
 >Proto Ms0 Ms0 MainProcess #zField
-Ms0 f1 1201 481 30 30 0 15 #rect
+Ms0 f1 1233 481 30 30 0 15 #rect
 Ms0 f1 @|EndIcon #fIcon
 Ms0 f2 dialogId Practice31.CustomerDialog #txt
 Ms0 f2 startMethod start(Practice31.MainProcessData) #txt
@@ -84,29 +83,6 @@ Ms0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 Ms0 f0 @C|.responsibility Everybody #txt
 Ms0 f0 73 177 30 30 -21 15 #rect
 Ms0 f0 @|StartRequestIcon #fIcon
-Ms0 f9 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<elementInfo>
-    <language>
-        <name>Login</name>
-    </language>
-</elementInfo>
-' #txt
-Ms0 f9 328 176 32 32 0 16 #rect
-Ms0 f9 @|AlternativeIcon #fIcon
-Ms0 f10 272 192 328 192 #arcP
-Ms0 f11 expr in #txt
-Ms0 f11 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<elementInfo>
-    <language>
-        <name>NO</name>
-        <desc>Show login page</desc>
-    </language>
-</elementInfo>
-' #txt
-Ms0 f11 344 176 216 170 #arcP
-Ms0 f11 1 344 152 #addKink
-Ms0 f11 2 216 152 #addKink
-Ms0 f11 1 0.453125 0 17 #arcLabel
 Ms0 f4 dialogId Practice31.OrderDialog #txt
 Ms0 f4 startMethod start(Practice31.MainProcessData) #txt
 Ms0 f4 requestActionDecl '<Practice31.MainProcessData mainProcessData> param;' #txt
@@ -122,7 +98,7 @@ Ms0 f4 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Ms0 f4 744 170 112 44 -32 -8 #rect
+Ms0 f4 776 170 112 44 -32 -8 #rect
 Ms0 f4 @|UserDialogIcon #fIcon
 Ms0 f14 617 305 30 30 0 15 #rect
 Ms0 f14 @|EndIcon #fIcon
@@ -156,18 +132,7 @@ Ms0 f17 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 Ms0 f17 @C|.responsibility Everybody #txt
 Ms0 f17 73 305 30 30 -25 17 #rect
 Ms0 f17 @|StartRequestIcon #fIcon
-Ms0 f7 632 192 744 192 #arcP
-Ms0 f6 expr in #txt
-Ms0 f6 outCond true #txt
-Ms0 f6 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<elementInfo>
-    <language>
-        <name>YES</name>
-    </language>
-</elementInfo>
-' #txt
-Ms0 f6 360 192 440 192 #arcP
-Ms0 f6 0 0.4875 0 -7 #arcLabel
+Ms0 f7 664 192 776 192 #arcP
 Ms0 f5 actionTable 'out=in;
 ' #txt
 Ms0 f5 dbSql '<?xml version=""1.0"" standalone=""no""?>
@@ -186,7 +151,7 @@ Ms0 f5 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Ms0 f5 440 170 192 44 -87 -8 #rect
+Ms0 f5 472 170 192 44 -87 -8 #rect
 Ms0 f5 @|DBStepIcon #fIcon
 Ms0 f8 actionTable 'out=in;
 ' #txt
@@ -206,9 +171,9 @@ Ms0 f8 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Ms0 f8 936 170 112 44 -45 -8 #rect
+Ms0 f8 968 170 112 44 -45 -8 #rect
 Ms0 f8 @|DBStepIcon #fIcon
-Ms0 f13 856 192 936 192 #arcP
+Ms0 f13 888 192 968 192 #arcP
 Ms0 f12 actionTable 'out=in;
 ' #txt
 Ms0 f12 dbSql '<?xml version=""1.0"" standalone=""no""?>
@@ -264,22 +229,27 @@ Ms0 f16 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Ms0 f16 1160 282 112 44 -39 -8 #rect
+Ms0 f16 1192 282 112 44 -39 -8 #rect
 Ms0 f16 @|UserDialogIcon #fIcon
-Ms0 f21 1036 214 1172 282 #arcP
-Ms0 f22 1216 326 1216 481 #arcP
+Ms0 f21 1068 214 1204 282 #arcP
+Ms0 f22 1248 326 1248 481 #arcP
+Ms0 f9 actionTable 'out=in;
+' #txt
+Ms0 f9 actionCode 'import services.CustomerService;
+
+
+
+CustomerService.getInstance().save(customer)' #txt
+Ms0 f9 320 170 112 44 0 -8 #rect
+Ms0 f9 @|StepIcon #fIcon
+Ms0 f10 272 192 320 192 #arcP
+Ms0 f6 432 192 472 192 #arcP
 >Proto Ms0 .type Practice31.MainProcessData #txt
 >Proto Ms0 .processKind NORMAL #txt
 >Proto Ms0 0 0 32 24 18 0 #rect
 >Proto Ms0 @|BIcon #fIcon
 Ms0 f0 mainOut f3 tail #connect
 Ms0 f3 head f2 mainIn #connect
-Ms0 f2 mainOut f10 tail #connect
-Ms0 f10 head f9 in #connect
-Ms0 f9 out f6 tail #connect
-Ms0 f6 head f5 mainIn #connect
-Ms0 f9 out f11 tail #connect
-Ms0 f11 head f2 mainIn #connect
 Ms0 f5 mainOut f7 tail #connect
 Ms0 f7 head f4 mainIn #connect
 Ms0 f4 mainOut f13 tail #connect
@@ -294,3 +264,7 @@ Ms0 f8 mainOut f21 tail #connect
 Ms0 f21 head f16 mainIn #connect
 Ms0 f16 mainOut f22 tail #connect
 Ms0 f22 head f1 mainIn #connect
+Ms0 f2 mainOut f10 tail #connect
+Ms0 f10 head f9 mainIn #connect
+Ms0 f9 mainOut f6 tail #connect
+Ms0 f6 head f5 mainIn #connect

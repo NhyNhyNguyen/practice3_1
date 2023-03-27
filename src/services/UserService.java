@@ -45,31 +45,8 @@ public class UserService {
 		PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);
 
 		Ivy.log().error("Data login: username = " + username + " | password:  " + password);
-		/*
-		 * Configuration configuration = new Configuration();
-		 * 
-		 * configuration.setProperty("hibernate.dialect",
-		 * "org.hibernate.dialect.Oracle12cDialect");
-		 * configuration.setProperty("hibernate.connection.driver_class",
-		 * "oracle.jdbc.driver.OracleDriver");
-		 * configuration.setProperty("hibernate.connection.url",
-		 * "jdbc:oracle:thin:@localhost:1521:XE");
-		 * configuration.setProperty("hibernate.connection.username", "DEMO");
-		 * configuration.setProperty("hibernate.connection.password", "123$%^");
-		 * configuration.setProperty("show_sql", "true");
-		 * configuration.setProperty("hibernate.hbm2ddl.auto", "update");
-		 * 
-		 * SessionFactory sessionFactory = configuration.buildSessionFactory();
-		 * Ivy.log().error("Init db");
-		 * 
-		 * Session session = sessionFactory.openSession(); User user = new User();
-		 * user.setUsername("John"); user.setEmail("john@example.com");
-		 * 
-		 * session.beginTransaction(); session.save(user);
-		 * session.getTransaction().commit();
-		 * 
-		 * session.close(); sessionFactory.close(); Ivy.log().error("Create user db");
-		 */
+
+
 		return loggedIn;
 	}
 

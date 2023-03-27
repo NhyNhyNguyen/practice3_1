@@ -5,6 +5,10 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import ch.ivyteam.ivy.environment.Ivy;
+import entity.CustomerEntity;
+import entity.OrderEntity;
+
 @ManagedBean
 @ViewScoped
 public class HomeController implements Serializable {
@@ -15,4 +19,5 @@ public class HomeController implements Serializable {
     	System.out.println("goHome");
         return "HomePage";
     }
+ 
 }

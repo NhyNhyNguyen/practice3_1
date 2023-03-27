@@ -1,7 +1,9 @@
 package repositories;
 
-import Practice31.Customer;
-import ch.ivyteam.ivy.environment.Ivy;
+import javax.persistence.EntityManager;
+
+import entity.CustomerEntity;
+import services.HibernateService;
 
 public class CustomerRepository {
 	
@@ -15,7 +17,10 @@ public class CustomerRepository {
 		}
 		
 		
-		public void save(Customer customer) {
-			Ivy.getInstance().persistence.get("practice_unit").persist(customer);
+		public void save(CustomerEntity customer) {
+			EntityManager m= HibernateService.getEntityManager();
+			m.getTransaction().begin();
+			m.persist(customer);
+			m.getTransaction().commit();
 		}
 }

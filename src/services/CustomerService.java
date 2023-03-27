@@ -1,6 +1,8 @@
 package services;
 
-import Practice31.Customer;
+
+import ch.ivyteam.ivy.environment.Ivy;
+import entity.CustomerEntity;
 import repositories.CustomerRepository;
 
 public class CustomerService {
@@ -10,9 +12,9 @@ public class CustomerService {
 		return instance;
 	}
 
-	public void save() {
-		Customer customer = new Customer();
-		customer.setName("ntynhi");
+	public void save(CustomerEntity customer) {
+		
+		Ivy.log().info("Save customer info data" + customer.toString());
 		CustomerRepository.getInstance().save(customer);
 	}
 }
