@@ -26,3 +26,8 @@
 p {
 	font-size: 15px;
 }
+
+#manager-approve-form .ui-state-disabled {
+  opacity: 1 !important;
+  cursor: not-allowed;
+}
