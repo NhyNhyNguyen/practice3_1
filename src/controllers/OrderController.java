@@ -10,9 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.PrimeFaces;
 import org.primefaces.model.SortMeta;
-import org.primefaces.model.SortOrder;
 
 import ch.ivyteam.ivy.environment.Ivy;
 import entity.OrderEntity;
@@ -37,8 +35,9 @@ public class OrderController implements Serializable {
 
 	public void goOrders() {
 		Ivy.getInstance().log.info("Redirect to order page");
-		
-//		PrimeFaces.current().ajax().update("orderTable");
+		orders = OrderService.getInstance().findAll();
+
+//		PrimeFaces.current().ajax().update("orderTable");s
 		try {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("OrderPage.xhtml");
 		} catch (IOException e) {

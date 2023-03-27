@@ -10,30 +10,38 @@
 	<ui:composition template="/layouts/basic-8.xhtml">
 		<ui:define name="title">Order Page</ui:define>
 		<ui:define name="content">
-			<h5 class="mt-0">Available Order</h5>
-			<p:dataTable id="orderTable" var="order" paginator="true" value="#{orderController.orders}"
-				>
-				<p:column headerText="ProductType">
+			<h2 class="mt-0">Available Orders</h2>
+			<p:dataTable id="orderTable" var="order"
+				value="#{orderController.orders}" sortMode="single" paginator="true"
+				paginatorPosition="bottom" rows="10" sortBy="#{order.productType}"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+				rowsPerPageTemplate="5,10,{ShowAll|'All'}
+				">
+				<p:column headerText="ProductType" sortBy="#{order.productType}"
+					filterable="true" filterBy="#{order.productType}"
+					filterMatchMode="contains" filterValue="asd">
 					<h:outputText value="#{order.productType}" />
 				</p:column>
-				<p:column headerText="Connected power">
+				<p:column headerText="Connected power"
+					sortBy="#{order.connectedPower}">
 					<h:outputText value="#{order.connectedPower}" />
 				</p:column>
 
-				<p:column headerText="Cable length">
+				<p:column headerText="Cable length" sortBy="#{order.cableLength}">
 					<h:outputText value="#{order.cableLength}" />
 				</p:column>
 
-				<p:column headerText="Required meter">
+				<p:column headerText="Required meter" sortBy="#{order.requireMeter}">
 					<p:selectBooleanCheckbox value="#{order.requireMeter}"
 						disabled="true" />
 				</p:column>
 
-				<p:column headerText="Battery">
+				<p:column headerText="Battery" sortBy="#{order.battery}">
 					<h:outputText value="#{order.battery}" />
 				</p:column>
 
-				<p:column headerText="Total">
+				<p:column headerText="Total" sortBy="#{order.total}">
 					<h:outputText value="#{order.total}" />
 				</p:column>
 			</p:dataTable>

@@ -16,7 +16,6 @@ public class CustomerBean {
 	}
 
 	public void save(CustomerData data) {
-
 		CustomerService.getInstance().save(data.getCustomer());
 
 		OrderService.getInstance().save(data.getOrder());
@@ -25,10 +24,8 @@ public class CustomerBean {
 		FacesContext.getCurrentInstance().addMessage("growl", message);
 		PrimeFaces.current().executeScript("#{logic.close}");
 	}
-	
-	
-	public void approve(OrderEntity data) {
 
+	public void approve(OrderEntity data) {
 
 		OrderService.getInstance().update(data);
 
