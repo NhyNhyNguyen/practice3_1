@@ -27,7 +27,7 @@
 
 					<p:outputLabel for="dataCustomerPhone" value="Phone" />
 					<p:inputText id="dataCustomerPhone"
-						value="#{data.customerData.customer.phone}" required="true"
+						value="#{data.customerData.customer.phone}" required="true" readonly="true"
 						validatorMessage="Invalid phone format">
 						<f:validateRegex pattern="^[0-9]+$" />
 					</p:inputText>
@@ -35,15 +35,15 @@
 					<p:outputLabel for="dataCustomerBirthday" value="Birthday" />
 					<p:datePicker id="dataCustomerBirthday"
 						value="#{data.customerData.customer.birthday}" timeOnly="false"
-						pattern="dd/MM/yyyy" style="width: 100%" required="true" />
+						pattern="dd/MM/yyyy" style="width: 100%" required="true" readonly="true" />
 
 					<p:outputLabel for="dataCustomerAddress" value="Address" />
 					<p:inputText id="dataCustomerAddress"
-						value="#{data.customerData.customer.address}" required="true"></p:inputText>
+						value="#{data.customerData.customer.address}" required="true" readonly="true"></p:inputText>
 
 					<p:outputLabel for="dataCustomerEmail" value="Email" />
 					<p:inputText id="dataCustomerEmail"
-						value="#{data.customerData.customer.email}" required="true"
+						value="#{data.customerData.customer.email}" required="true" readonly="true"
 						validatorMessage="Invalid email format">
 						<f:validateRegex pattern="^(.+)@(.+).(.+)$" />
 					</p:inputText>
@@ -59,7 +59,7 @@
 	
 					<p:outputLabel for="dataCustomerDocuments" value="Documents" />
 					<p:inputText id="dataCustomerDocuments"
-						value="#{data.customerData.customer.documents}" required="true"></p:inputText>
+						value="#{data.customerData.customer.documents == null} " required="true" readonly="true"></p:inputText>
 				</p:panelGrid>
 				<br />
 
@@ -74,7 +74,7 @@
 
 					<p:outputLabel for="dataOrderProductType" value="Product Type" />
 					<p:selectOneMenu id="dataOrderProductType"
-						value="#{data.customerData.order.productType}" required="true">
+						value="#{data.customerData.order.productType}" required="true" readonly="true">
 						<f:selectItem itemLabel="Solar" itemValue="Solar" />
 						<f:selectItem itemLabel="Power" itemValue="Power" />
 					</p:selectOneMenu>
@@ -82,32 +82,32 @@
 					<p:outputLabel for="dataOrderConnectedPower"
 						value="Connected Power" />
 					<p:inputText id="dataOrderConnectedPower"
-						value="#{data.customerData.order.connectedPower}" required="true"></p:inputText>
+						value="#{data.customerData.order.connectedPower}" required="true" readonly="true"></p:inputText>
 
 					<p:outputLabel for="dataOrderCableLength" value="Cable Length" />
 					<p:inputText id="dataOrderCableLength"
-						value="#{data.customerData.order.cableLength}" required="true"></p:inputText>
+						value="#{data.customerData.order.cableLength}" required="true" readonly="true"></p:inputText>
 
 
 					<p:outputLabel for="dataOrderRequireMeter" value="Require Meter" />
 					<p:selectBooleanCheckbox id="dataOrderRequireMeter"
-						value="#{data.customerData.order.requireMeter}" required="true" />
+						value="#{data.customerData.order.requireMeter}" required="true" readonly="true" />
 
 
 					<p:outputLabel for="dataOrderBattery" value="Battery" />
 					<p:inputText id="dataOrderBattery"
-						value="#{data.customerData.order.battery}" required="true"></p:inputText>
+						value="#{data.customerData.order.battery}" required="true" readonly="true"></p:inputText>
 
 					<p:outputLabel for="dataOrderTotal" value="Total" />
 					<p:inputText id="dataOrderTotal"
-						value="#{data.customerData.order.total}" required="true"></p:inputText>
+						value="#{data.customerData.order.total}" required="true" readonly="true"></p:inputText>
 					<p:outputLabel for="dataOrderCleckComment" value="Cleck Comment" />
 					<p:inputTextarea id="dataOrderCleckComment" rows="2" cols="33"
-						value="#{data.customerData.order.cleckComment}" required="true" />
+						value="#{data.customerData.order.cleckComment}" required="true" readonly="true" />
 
 					<p:outputLabel for="dataOrderManageComment" value="Manager Comment" />
 					<p:inputTextarea id="dataOrderManageComment" rows="2" cols="33"
-						value="#{data.customerData.order.managerComment}" required="true" />
+						value="#{data.customerData.order.managerComment}"/>
 				</p:panelGrid>
 				<br />
 				<div class="command-btns">

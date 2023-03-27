@@ -1,6 +1,8 @@
 package services;
 
 
+import java.util.List;
+
 import ch.ivyteam.ivy.environment.Ivy;
 import entity.OrderEntity;
 import repositories.OrderRepository;
@@ -22,5 +24,10 @@ public class OrderService {
 		
 		Ivy.log().info("Update order info data" + order.toString());
 		OrderRepository.getInstance().update(order);
+	}
+	
+	public List<OrderEntity> findAll() {
+		Ivy.log().info("Find all orders info data");
+		return OrderRepository.getInstance().findAll();
 	}
 }

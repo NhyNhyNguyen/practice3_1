@@ -135,6 +135,14 @@ public class OrderEntity {
 	public void setManagerComment(String managerComment) {
 		this.managerComment = managerComment;
 	}
+
+
+	@Override
+	public String toString() {
+		return "OrderEntity [id=" + id + ", productType=" + productType + ", connectedPower=" + connectedPower
+				+ ", cableLength=" + cableLength + ", requireMeter=" + requireMeter + ", battery=" + battery
+				+ ", total=" + total + ", cleckComment=" + cleckComment + ", managerComment=" + managerComment + "]";
+	}
 	
 	
 	
