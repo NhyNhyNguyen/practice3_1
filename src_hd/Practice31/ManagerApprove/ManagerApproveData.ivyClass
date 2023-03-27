@@ -1,0 +1,6 @@
+ManagerApproveData #class
+Practice31.ManagerApprove #namespace
+customerData Practice31.CustomerData #field
+customerData PERSISTENT #fieldModifier
+bean bean.CustomerBean #field
+bean PERSISTENT #fieldModifier

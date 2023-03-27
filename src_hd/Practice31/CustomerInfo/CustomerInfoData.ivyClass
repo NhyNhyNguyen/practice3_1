@@ -1,0 +1,6 @@
+CustomerInfoData #class
+Practice31.CustomerInfo #namespace
+dataEntity Practice31.CustomerData #field
+dataEntity PERSISTENT #fieldModifier
+bean bean.CustomerBean #field
+bean PERSISTENT #fieldModifier

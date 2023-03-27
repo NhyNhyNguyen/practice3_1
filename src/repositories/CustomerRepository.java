@@ -3,24 +3,24 @@ package repositories;
 import javax.persistence.EntityManager;
 
 import entity.CustomerEntity;
-import services.HibernateService;
+import dbconfig.AbstractRepository;
+import dbconfig.HibernateService;
 
-public class CustomerRepository {
-	
-		private static CustomerRepository instance;
+public class CustomerRepository extends AbstractRepository {
 
-		public static CustomerRepository getInstance() {
-			if(instance == null) {
-				instance = new CustomerRepository();
-			}
-			return instance;
+	private static CustomerRepository instance;
+
+	public static CustomerRepository getInstance() {
+		if (instance == null) {
+			instance = new CustomerRepository();
 		}
-		
-		
-		public void save(CustomerEntity customer) {
-			EntityManager m= HibernateService.getEntityManager();
-			m.getTransaction().begin();
-			m.persist(customer);
-			m.getTransaction().commit();
-		}
+		return instance;
+	}
+
+	public void save(CustomerEntity customer) {
+		EntityManager m = HibernateService.getEntityManager();
+		m.getTransaction().begin();
+		m.persist(customer);
+		m.getTransaction().commit();
+	}
 }

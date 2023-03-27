@@ -1,4 +1,0 @@
-OrderDialogData #class
-Practice31.OrderDialog #namespace
-mainProcessData Practice31.MainProcessData #field
-mainProcessData PERSISTENT #fieldModifier

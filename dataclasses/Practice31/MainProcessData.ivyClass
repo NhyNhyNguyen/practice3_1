@@ -1,8 +1,0 @@
-MainProcessData #class
-Practice31 #namespace
-orderInfo Practice31.OrderDetail #field
-orderInfo PERSISTENT #fieldModifier
-customerInfo Practice31.Customer #field
-customerInfo PERSISTENT #fieldModifier
-loginController controllers.LoginController #field
-loginController PERSISTENT #fieldModifier

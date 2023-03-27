@@ -1,4 +1,4 @@
-Data #class
+CustomerData #class
 Practice31 #namespace
 customer entity.CustomerEntity #field
 customer PERSISTENT #fieldModifier

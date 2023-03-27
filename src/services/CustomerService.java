@@ -13,7 +13,6 @@ public class CustomerService {
 	}
 
 	public void save(CustomerEntity customer) {
-		
 		Ivy.log().info("Save customer info data" + customer.toString());
 		CustomerRepository.getInstance().save(customer);
 	}
