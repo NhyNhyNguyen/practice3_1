@@ -11,104 +11,10 @@
 		<ui:define name="content">
 
 			<h:form id="manager-approve-form">
-				<p:messages />
-				<h2 style="">Manager Approve</h2>
-				<h3 style="">New Customer</h3>
-				<p:panelGrid columns="2" layout="grid"
-					styleClass="ui-panelgrid-blank"
-					columnClasses="ui-g-12 ui-md-3 ui-lg-2, 
-						ui-g-12 ui-md-9 ui-lg-4, 
-						ui-g-12 ui-md-3 ui-lg-2, 
-						ui-g-12 ui-md-9 ui-lg-4">
-
-					<p:outputLabel for="dataCustomerName" value="Name" />
-					<p:inputText id="dataCustomerName"
-						value="#{data.customerData.customer.name}" disabled="true"></p:inputText>
-
-					<p:outputLabel for="dataCustomerPhone" value="Phone" />
-					<p:inputText id="dataCustomerPhone"
-						value="#{data.customerData.customer.phone}" disabled="true"
-						validatorMessage="Invalid phone format">
-						<f:validateRegex pattern="^[0-9]+$" />
-					</p:inputText>
-
-					<p:outputLabel for="dataCustomerBirthday" value="Birthday" />
-					<p:datePicker id="dataCustomerBirthday"
-						value="#{data.customerData.customer.birthday}" timeOnly="false"
-						pattern="dd/MM/yyyy" style="width: 100%" disabled="true" />
-
-					<p:outputLabel for="dataCustomerAddress" value="Address" />
-					<p:inputText id="dataCustomerAddress"
-						value="#{data.customerData.customer.address}" disabled="true"></p:inputText>
-
-					<p:outputLabel for="dataCustomerEmail" value="Email" />
-					<p:inputText id="dataCustomerEmail"
-						value="#{data.customerData.customer.email}" disabled="true"
-						validatorMessage="Invalid email format">
-						<f:validateRegex pattern="^(.+)@(.+).(.+)$" />
-					</p:inputText>
-
-
-
-					<p:outputLabel for="dataCustomerGender" value="Gender" />
-					<p:selectOneRadio id="dataCustomerGender"
-						value="#{data.customerData.customer.gender}" disabled="true">
-						<f:selectItem itemLabel="Male" itemValue="true" />
-						<f:selectItem itemLabel="Female" itemValue="false" />
-					</p:selectOneRadio>
-
-					<p:outputLabel for="dataCustomerDocuments" value="Documents" />
-					<p:inputText id="dataCustomerDocuments"
-						value="#{data.customerData.customer.documents} " disabled="true"></p:inputText>
-				</p:panelGrid>
-				<br />
-
-				<h3 style="">New Order</h3>
-				<p:panelGrid columns="2" layout="grid"
-					styleClass="ui-panelgrid-blank"
-					columnClasses="ui-g-12 ui-md-3 ui-lg-2, 
-						ui-g-12 ui-md-9 ui-lg-4, 
-						ui-g-12 ui-md-3 ui-lg-2, 
-						ui-g-12 ui-md-9 ui-lg-4">
-
-					<p:outputLabel for="dataOrderProductType" value="Product Type" />
-					<p:selectOneMenu id="dataOrderProductType"
-						value="#{data.customerData.order.productType}" disabled="true">
-						<f:selectItem itemLabel="Solar" itemValue="Solar" />
-						<f:selectItem itemLabel="Power" itemValue="Power" />
-					</p:selectOneMenu>
-
-					<p:outputLabel for="dataOrderConnectedPower"
-						value="Connected Power" />
-					<p:inputText id="dataOrderConnectedPower"
-						value="#{data.customerData.order.connectedPower}" disabled="true"></p:inputText>
-
-					<p:outputLabel for="dataOrderCableLength" value="Cable Length" />
-					<p:inputText id="dataOrderCableLength"
-						value="#{data.customerData.order.cableLength}" disabled="true"></p:inputText>
-
-
-					<p:outputLabel for="dataOrderRequireMeter" value="Require Meter" />
-					<p:selectBooleanCheckbox id="dataOrderRequireMeter"
-						value="#{data.customerData.order.requireMeter}" disabled="true" />
-
-
-					<p:outputLabel for="dataOrderBattery" value="Battery" />
-					<p:inputText id="dataOrderBattery"
-						value="#{data.customerData.order.battery}" disabled="true"></p:inputText>
-
-					<p:outputLabel for="dataOrderTotal" value="Total" />
-					<p:inputText id="dataOrderTotal"
-						value="#{data.customerData.order.total}" disabled="true"></p:inputText>
-					<p:outputLabel for="dataOrderCleckComment" value="Cleck Comment" />
-					<p:inputTextarea id="dataOrderCleckComment" rows="2" cols="33"
-						value="#{data.customerData.order.cleckComment}" disabled="true" />
-
-					<p:outputLabel for="dataOrderManageComment" value="Manager Comment" />
-					<p:inputTextarea id="dataOrderManageComment" rows="2" cols="33"
-						required="true" value="#{data.customerData.order.managerComment}" />
-				</p:panelGrid>
-				<br />
+				<ic:Practice31.CustomerInfoComponent
+					order="#{data.customerData.order}"
+					customer="#{data.customerData.customer}" editable="false"
+					showManagerComment= "true" title="Manager Aprrove" />
 				<div class="command-btns">
 					<p:commandButton id="proceed" actionListener="#{logic.close}"
 						value="Save Data" update="manager-approve-form"

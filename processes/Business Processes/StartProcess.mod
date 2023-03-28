@@ -87,7 +87,7 @@ Ss0 f5 inParamDecl '<> param;' #txt
 Ss0 f5 inParamTable 'out.customer.address="defaultAddess";
 out.customer.birthday=new java.util.Date();
 out.customer.email="nhi@gmail.com";
-out.customer.gender=false;
+out.customer.gender=true;
 out.customer.name="nhi";
 out.customer.phone="0232222";
 out.order.battery="Solar";
