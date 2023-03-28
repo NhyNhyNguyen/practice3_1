@@ -31,3 +31,7 @@ p {
   opacity: 1 !important;
   cursor: not-allowed;
 }
+
+body .ui-datatable thead th.ui-state-active .ui-inputfield {
+    color: #000;
+}

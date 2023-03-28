@@ -16,8 +16,9 @@ public class CustomerBean {
 	}
 
 	public void save(CustomerData data) {
-		CustomerService.getInstance().save(data.getCustomer());
-
+		long customerId = CustomerService.getInstance().save(data.getCustomer());
+		
+		data.getOrder().setCustomerId(customerId);
 		OrderService.getInstance().save(data.getOrder());
 
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Save customer sucessfull", "");
@@ -26,10 +27,9 @@ public class CustomerBean {
 	}
 
 	public void approve(OrderEntity data) {
-
 		OrderService.getInstance().update(data);
 
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Approve sucessfull", "");
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Manager Approve sucessfull", "");
 		FacesContext.getCurrentInstance().addMessage("growl", message);
 		PrimeFaces.current().executeScript("#{logic.close}");
 	}

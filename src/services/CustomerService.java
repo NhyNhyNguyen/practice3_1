@@ -1,7 +1,9 @@
 package services;
 
+import javax.persistence.EntityManager;
 
 import ch.ivyteam.ivy.environment.Ivy;
+import dbconfig.EntityManagerService;
 import entity.CustomerEntity;
 import repositories.CustomerRepository;
 
@@ -12,8 +14,9 @@ public class CustomerService {
 		return instance;
 	}
 
-	public void save(CustomerEntity customer) {
+	public Long save(CustomerEntity customer) {
 		Ivy.log().info("Save customer info data" + customer.toString());
 		CustomerRepository.getInstance().save(customer);
+		return customer.getId();
 	}
 }

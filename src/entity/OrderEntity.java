@@ -18,6 +18,9 @@ public class OrderEntity {
 	@SequenceGenerator(name = "ORDER_SEQ", sequenceName = "ORDER_SEQ", allocationSize = 1, initialValue = 1)
 	private Long id;
 
+	@Column(name = "CUSTOMER_ID")
+	private Long customerId;
+
 	@Column(name = "PRODUCT_TYPE")
 	private String productType;
 
@@ -44,7 +47,6 @@ public class OrderEntity {
 
 	public OrderEntity() {
 	}
-	
 
 	public OrderEntity(Long id, String productType, Integer connectedPower, Integer cableLength, boolean requireMeter,
 			String battery, Double total, String cleckComment, String managerComment) {
@@ -116,35 +118,40 @@ public class OrderEntity {
 		this.total = total;
 	}
 
-
 	public String getCleckComment() {
 		return cleckComment;
 	}
-
 
 	public void setCleckComment(String cleckComment) {
 		this.cleckComment = cleckComment;
 	}
 
-
 	public String getManagerComment() {
 		return managerComment;
 	}
 
-
 	public void setManagerComment(String managerComment) {
 		this.managerComment = managerComment;
 	}
+	
+	
 
+	public Long getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
+	}
 
 	@Override
 	public String toString() {
-		return "OrderEntity [id=" + id + ", productType=" + productType + ", connectedPower=" + connectedPower
-				+ ", cableLength=" + cableLength + ", requireMeter=" + requireMeter + ", battery=" + battery
-				+ ", total=" + total + ", cleckComment=" + cleckComment + ", managerComment=" + managerComment + "]";
+		return "OrderEntity [id=" + id + ", customerId=" + customerId + ", productType=" + productType
+				+ ", connectedPower=" + connectedPower + ", cableLength=" + cableLength + ", requireMeter="
+				+ requireMeter + ", battery=" + battery + ", total=" + total + ", cleckComment=" + cleckComment
+				+ ", managerComment=" + managerComment + "]";
 	}
-	
-	
-	
+
+
 
 }
