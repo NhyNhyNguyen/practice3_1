@@ -97,6 +97,11 @@ out.order.productType="Solar";
 out.order.requireMeter=false;
 out.order.total=120;
 ' #txt
+Ss0 f5 actionCode 'import ch.ivyteam.ivy.environment.Ivy;
+import ch.ivy.addon.portalkit.publicapi.ProcessStartAPI;
+out.order.cleckComment = ProcessStartAPI.findLinkByFriendlyRequestPath(Ivy.wf().getApplication(), "Business Processes/StartProcess/start2.ivp");
+
+' #txt
 Ss0 f5 requestEnabled true #txt
 Ss0 f5 triggerEnabled false #txt
 Ss0 f5 callSignature start() #txt
