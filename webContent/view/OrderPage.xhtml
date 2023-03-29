@@ -12,16 +12,17 @@
 		<ui:define name="content">
 			<h2 class="mt-0">Available Orders</h2>
 			<h:form>
-					<p:remoteCommand autoRun="true" actionListener="#{orderController.update}"></p:remoteCommand>
+				<p:remoteCommand autoRun="true"
+					actionListener="#{orderController.update}"></p:remoteCommand>
 			</h:form>
 			<h:form>
-				<p:dataTable id="orderTable" var="order"
-					 value="#{orderController.orders}"
-					sortMode="single" paginator="true" paginatorPosition="bottom"
-					rows="10"
+				<p:dataTable id="orderTable" var="order" widgetVar="orderTable"
+					value="#{orderController.orders}" sortMode="single"
+					paginator="true" paginatorPosition="bottom" rows="10"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-					rowsPerPageTemplate="5,10,{ShowAll|'All'}" rowStyleClass="#{order.id % 2 == 0 ? 'tableRow' : ''}"
+					rowsPerPageTemplate="5,10,{ShowAll|'All'}"
+					rowStyleClass="#{order.id % 2 == 0 ? 'tableRow' : ''}"
 					emptyMessage="No orders found with given criteria">
 					<p:column headerText="ID" styleClass="filterColumn"
 						style="width:20px">
@@ -33,8 +34,15 @@
 						<h:outputText value="#{order.customer.name}" />
 					</p:column>
 					<p:column headerText="Product Type" filterBy="#{order.productType}"
-						filterMatchMode="contains" style="" styleClass="filterColumn"
+						filterMatchMode="in" style="" styleClass="filterColumn"
 						sortBy="#{order.productType}">
+						<f:facet name="filter">
+							<p:selectCheckboxMenu label=""
+								onchange="PF('orderTable').filter()" scrollHeight="80"
+								styleClass="custom-filter" >
+								<f:selectItems value="#{orderController.types}" />
+							</p:selectCheckboxMenu>
+						</f:facet>
 						<h:outputText value="#{order.productType}" />
 					</p:column>
 					<p:column headerText="Connected power"

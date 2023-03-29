@@ -2,6 +2,7 @@ package services;
 
 import ch.ivyteam.ivy.environment.Ivy;
 import entity.CustomerEntity;
+import enums.ProductType;
 import repositories.CustomerRepository;
 
 public class CustomerService {

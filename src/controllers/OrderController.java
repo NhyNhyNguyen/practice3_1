@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -10,6 +11,7 @@ import javax.faces.bean.ViewScoped;
 
 import ch.ivyteam.ivy.environment.Ivy;
 import entity.OrderEntity;
+import enums.ProductType;
 import services.OrderService;
 
 @ManagedBean 
@@ -20,6 +22,7 @@ public class OrderController extends AbstractController implements Serializable 
 
 	private List<OrderEntity> orders = new ArrayList<>();
 	private List<OrderEntity> filterOrders = new ArrayList<>();
+	private List<String> types = ProductType.getNames();
 
 	public static OrderController instance;
 
@@ -59,6 +62,14 @@ public class OrderController extends AbstractController implements Serializable 
 			instance = new OrderController();
 		}
 		return instance;
+	}
+
+	public List<String> getTypes() {
+		return types;
+	}
+
+	public void setTypes(List<String> type) {
+		this.types = type;
 	}
 
 }
