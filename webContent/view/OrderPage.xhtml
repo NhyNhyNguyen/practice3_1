@@ -22,15 +22,17 @@
 					filteredValue="#{orderController.filterOrders}"
 					emptyMessage="No orders found with given criteria">
 					<p:column headerText="ID" styleClass="filterColumn"
-						style="width:30px">
+						style="width:20px">
 						<h:outputText value="#{order.id}" />
 					</p:column>
-					<p:column headerText="Customer Name" styleClass="filterColumn"
-						filterBy="#{order.productType}" style="width:120px">
+					<p:column headerText="Customer Name"
+						filterBy="#{order.customer.name}" filterMatchMode="contains"
+						style="" styleClass="filterColumn" sortBy="#{order.customer.name}">
 						<h:outputText value="#{order.customer.name}" />
 					</p:column>
 					<p:column headerText="Product Type" filterBy="#{order.productType}"
-						style="" styleClass="filterColumn" sortBy="#{order.productType}">
+						filterMatchMode="contains" style="" styleClass="filterColumn"
+						sortBy="#{order.productType}">
 						<h:outputText value="#{order.productType}" />
 					</p:column>
 					<p:column headerText="Connected power"
