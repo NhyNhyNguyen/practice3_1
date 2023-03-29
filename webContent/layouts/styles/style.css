@@ -55,18 +55,32 @@ body .ui-datatable thead th.ui-state-active .ui-inputfield {
 	border-radius: 9px;
 }
 
-body .ui-dataview .ui-dataview-header .ui-dataview-layout-options .ui-button-icon-only {
-    display: none;
+body .ui-dataview .ui-dataview-header .ui-dataview-layout-options .ui-button-icon-only
+	{
+	display: none;
 }
-#task-list-form .card{
+
+#task-list-form .card {
 	padding: 5px !important
 }
 
 #task-list-form .fa-circle {
-    color: #96dc82;
+	color: #96dc82;
 }
 
-
 #task-list-form  td {
-    padding: 0.2em !important;
+	padding: 0.2em !important;
+}
+
+.ivy-logo img {
+	height: 40px;
+	margin: 4px 25px 4px 0;
+}
+
+body .ui-datatable thead th.ui-state-active {
+	color: #111;
+}
+
+body .ui-datatable tbody tr.ui-datatable-even {
+	background-color: #fff;
 }
