@@ -2,14 +2,16 @@ package controllers;
 
 import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import services.UserService;
 
 @ManagedBean
 @SessionScoped
-public class LoginController implements Serializable {
+public class LoginController extends AbstractController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -26,6 +28,8 @@ public class LoginController implements Serializable {
 		this.password = "";
 		this.loggedIn = false;
 		UserService.getInstance().logout();
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Logout Sucessfull", "");
+		super.redirect("HomePage.xhtml", message);
 	}
 
 	public boolean isLoggedIn() {
@@ -50,6 +54,11 @@ public class LoginController implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public void update() {
+		
 	}
 
 }

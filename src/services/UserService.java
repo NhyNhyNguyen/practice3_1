@@ -20,9 +20,6 @@ public class UserService {
 
 	public boolean logout() {
 		Ivy.session().logoutSessionUser();
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Logout Sucessfull", "");
-		FacesContext.getCurrentInstance().addMessage(null, message);
-
 		Ivy.log().error("logout function");
 		return true;
 	}

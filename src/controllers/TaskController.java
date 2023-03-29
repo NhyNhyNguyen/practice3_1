@@ -6,13 +6,14 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.view.ViewScoped;
 
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.workflow.ITask;
 import ch.ivyteam.ivy.workflow.query.TaskQuery;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class TaskController extends AbstractController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
