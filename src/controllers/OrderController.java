@@ -1,22 +1,20 @@
 package controllers;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
+import javax.faces.bean.ViewScoped;
 
 import ch.ivyteam.ivy.environment.Ivy;
 import entity.OrderEntity;
 import services.OrderService;
 
-@ManagedBean
-@SessionScoped
-public class OrderController implements Serializable {
+@ManagedBean 
+@ViewScoped
+public class OrderController extends AbstractController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -32,13 +30,7 @@ public class OrderController implements Serializable {
 	}
 
 	public void redirect() {
-		Ivy.getInstance().log.info("Redirect to order page");
-		update();
-		try {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("OrderPage.xhtml");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		super.redirect("OrderPage.xhtml");
 	}
 
 	public void update() {

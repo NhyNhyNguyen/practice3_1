@@ -1,13 +1,11 @@
 package controllers;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.workflow.ITask;
@@ -15,7 +13,7 @@ import ch.ivyteam.ivy.workflow.query.TaskQuery;
 
 @ManagedBean
 @SessionScoped
-public class TaskController implements Serializable {
+public class TaskController extends AbstractController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -28,13 +26,7 @@ public class TaskController implements Serializable {
 	}
 
 	public void redirect() {
-		Ivy.getInstance().log.info("Redirect to Task Page");
-		update();
-		try {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("TaskPage.xhtml");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		super.redirect("TaskPage.xhtml");
 	}
 
 	public void update() {

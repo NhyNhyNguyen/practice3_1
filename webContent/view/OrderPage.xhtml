@@ -21,8 +21,7 @@
 					rows="10"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-					rowsPerPageTemplate="5,10,{ShowAll|'All'}"
-					filteredValue="#{orderController.filterOrders}"
+					rowsPerPageTemplate="5,10,{ShowAll|'All'}" rowStyleClass="#{order.id % 2 == 0 ? 'tableRow' : ''}"
 					emptyMessage="No orders found with given criteria">
 					<p:column headerText="ID" styleClass="filterColumn"
 						style="width:20px">
@@ -69,7 +68,7 @@
 						filterMatchMode="contains">
 						<h:outputText value="#{order.total}" />
 					</p:column>
-					<p:column headerText="Status" sortBy="#{order.status.getName()}"
+					<p:column headerText="Status" sortBy="#{order.status}"
 						style="width:90px" filterBy="#{order.status.getName()}"
 						filterMatchMode="contains">
 						<h:outputText value="#{order.status.getName()}"
