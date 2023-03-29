@@ -62,25 +62,25 @@ body .ui-menu.ui-menubar {
 								icon="ui-icon-document" />
 							<p:menuitem value="Tasks" action="#{taskController.redirect}"
 								icon="ui-icon-list" />
-							<p:menuitem value="Create Order" url="#{homeController.getUrl('Business Processes/StartProcess/start.ivp')}" 
-								 icon="fa fa-plus" />
+							<p:menuitem value="Create Order"
+								url="#{homeController.getUrl('Business Processes/StartProcess/start3.ivp')}"
+								icon="fa fa-plus" />
 							<p:submenu id="profileMenu" icon="fa fa-user-circle-o"
 								label="#{ivy.session.sessionUser.displayName}"
-								rendered="#{loginController.loggedIn}" style="float:right; ">
+								rendered="#{ivy.session.sessionUser != null}" style="float:right; ">
 								<p:menuitem id="logoutBtn"
 									style=" box-shadow: none !important; " value="Logout"
 									icon="fa fa-sign-out" action="#{loginController.logout}"
-									rendered="#{loginController.loggedIn}"
+									rendered="#{ivy.session.sessionUser != null}"
 									update="growl,headerLogin" oncomplete="" />
 							</p:submenu>
 							<f:facet name="options">
 								<p:commandButton id="loginBtn" value="Login"
 									icon="ui-icon-person" style=" box-shadow: none !important;"
 									onclick="PF('loginDialog').show();"
-									rendered="#{!loginController.loggedIn}" />
+									rendered="#{ivy.session.sessionUser == null}" />
 							</f:facet>
 						</p:menubar>
-
 
 					</h:form>
 					<p:growl id="growl" showDetail="false" life="3000" />
@@ -122,7 +122,6 @@ body .ui-menu.ui-menubar {
 
 		</div>
 	</ui:insert>
-
 
 	<div id="content" class="container">
 		<ui:insert name="content">

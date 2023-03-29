@@ -22,8 +22,8 @@ public class OrderController implements Serializable {
 
 	private List<OrderEntity> orders = new ArrayList<>();
 	private List<OrderEntity> filterOrders = new ArrayList<>();
-	
-	public static OrderController instance = new OrderController();
+
+	public static OrderController instance;
 
 	@PostConstruct
 	public void init() {
@@ -40,13 +40,11 @@ public class OrderController implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void update() {
 		orders = OrderService.getInstance().findAll();
 		Ivy.getInstance().log.info("Order List: " + orders.size() + " " + orders);
 	}
-
-	
 
 	public List<OrderEntity> getOrders() {
 		return orders;
@@ -65,8 +63,10 @@ public class OrderController implements Serializable {
 	}
 
 	public static OrderController getInstance() {
+		if (instance == null) {
+			instance = new OrderController();
+		}
 		return instance;
 	}
-	
-	
+
 }

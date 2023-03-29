@@ -2,7 +2,6 @@ package repositories;
 
 import java.util.List;
 
-import dbconfig.AbstractRepository;
 import entity.CustomerEntity;
 
 public class CustomerRepository extends AbstractRepository<CustomerEntity, Integer> {

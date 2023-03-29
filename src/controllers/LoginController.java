@@ -17,19 +17,16 @@ public class LoginController implements Serializable {
 	private boolean loggedIn;
 	private String username = "ntynhi";
 	private String password = "admin";
-
-	@Inject
-	UserService userService = UserService.getInstance();
-
+	
 	public void login() {
-		loggedIn = userService.login(username, password);
+		loggedIn = UserService.getInstance().login(username, password);
 	}
 
 	public void logout() {
 		this.username = "";
 		this.password = "";
 		this.loggedIn = false;
-		userService.logout();
+		UserService.getInstance().logout();
 	}
 
 	public boolean isLoggedIn() {
@@ -54,14 +51,6 @@ public class LoginController implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public UserService getUserService() {
-		return userService;
-	}
-
-	public void setUserService(UserService userService) {
-		this.userService = userService;
 	}
 
 }

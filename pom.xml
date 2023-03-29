@@ -9,7 +9,7 @@
   <dependencies>
     <dependency>
       <groupId>ch.ivyteam.ivy.project.portal</groupId>
-      <artifactId>portalTemplate</artifactId>
+      <artifactId>portalKit</artifactId>
       <version>[8.0.30,)</version>
       <type>iar</type>
     </dependency>

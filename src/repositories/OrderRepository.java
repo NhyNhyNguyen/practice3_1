@@ -2,8 +2,8 @@ package repositories;
 
 import java.util.List;
 
-import dbconfig.AbstractRepository;
 import entity.OrderEntity;
+
 
 public class OrderRepository extends AbstractRepository<OrderEntity, Integer>{
 

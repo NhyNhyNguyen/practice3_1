@@ -12,6 +12,9 @@
 		<ui:define name="content">
 			<h2 class="mt-0">Available Orders</h2>
 			<h:form>
+					<p:remoteCommand autoRun="true" actionListener="#{orderController.update}"></p:remoteCommand>
+			</h:form>
+			<h:form>
 				<p:dataTable id="orderTable" var="order"
 					sortBy="#{order.productType}" value="#{orderController.orders}"
 					sortMode="single" paginator="true" paginatorPosition="bottom"
