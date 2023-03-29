@@ -81,6 +81,7 @@ Ss0 f6 479 192 536 192 #arcP
 Ss0 f9 actionTable 'out=in1;
 ' #txt
 Ss0 f9 taskData 'TaskA.CATEGORY=TaskCheckCustomerInput
+TaskA.DESC=Check Customer, Order Input
 TaskA.NAM=Task Check Customer Input' #txt
 Ss0 f9 161 177 30 30 0 16 #rect
 Ss0 f9 @|TaskSwitchSimpleIcon #fIcon

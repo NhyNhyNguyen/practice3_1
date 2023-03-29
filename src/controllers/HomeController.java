@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -10,6 +11,8 @@ import javax.faces.context.FacesContext;
 
 import ch.ivy.addon.portalkit.publicapi.ProcessStartAPI;
 import ch.ivyteam.ivy.environment.Ivy;
+import ch.ivyteam.ivy.workflow.ITask;
+import ch.ivyteam.ivy.workflow.query.TaskQuery;
 
 @ManagedBean
 @SessionScoped
@@ -24,6 +27,8 @@ public class HomeController implements Serializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	
+
 	}
 
 	public String getUrl(String path) {

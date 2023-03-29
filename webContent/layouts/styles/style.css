@@ -54,3 +54,20 @@ body .ui-datatable thead th.ui-state-active .ui-inputfield {
 	color: #fff;
 	border-radius: 9px;
 }
+
+body .ui-widget-header:not(.ui-datepicker-header):not(.ui-selectcheckboxmenu-header):not(.ui-dialog-titlebar):not(.ui-tabs-nav):not(.ui-tabmenu-nav):not(.ui-scrollpanel-track) {
+    display: none;
+}
+
+#task-list-form .card{
+	padding: 5px !important
+}
+
+#task-list-form .fa-circle {
+    color: #96dc82;
+}
+
+
+#task-list-form  td {
+    padding: 0.2em !important;
+}

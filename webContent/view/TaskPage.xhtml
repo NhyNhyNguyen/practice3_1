@@ -1,4 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/199/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -10,7 +10,36 @@
 	<ui:composition template="/layouts/basic-8.xhtml">
 		<ui:define name="title">Home Page</ui:define>
 		<ui:define name="content">
-			<h2>Welcome to Task Page</h2>
+			<h2>List Task</h2>
+
+			<h:form id="task-list-form">
+				<p:dataView var="task" value="#{taskController.tasks}" rows="5"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					paginatorPosition="bottom" gridIcon="pi pi-th-large"
+					listIcon="pi pi-bars">
+					<p:dataViewListItem>
+						<div class="card flex justify-content-center">
+							<h:panelGrid columns="2">
+								<span class="fa fa-circle task-priority-normal "></span>
+								<h:panelGrid columns="2">
+									<h:outputText value="Name:" styleClass="text-secondary" />
+									<h:outputText
+										style=" font-weight: bold"
+										value="#{'(#'.concat(task.id).concat(') ').concat(task.name)}" />
+
+									<h:outputText value="Description:" styleClass="text-secondary"  style="font-size: 13px;"/>
+									<h:outputText value= "#{task.description == '' ? 'No descrption' : task.description} " style="font-size: 13px;"/>
+
+									<h:outputText value="Time Create:" styleClass="text-secondary" style="font-size: 13px;"/>
+									<h:outputText
+										value="#{task.getStartTimestamp()}" style="font-size: 13px;"/>
+								</h:panelGrid>
+							</h:panelGrid>
+						</div>
+					</p:dataViewListItem>
+				</p:dataView>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </h:body>
