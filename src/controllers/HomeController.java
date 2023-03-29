@@ -1,30 +1,35 @@
 package controllers;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import ch.ivy.addon.portalkit.publicapi.ProcessStartAPI;
 import ch.ivyteam.ivy.environment.Ivy;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class HomeController implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    
-    public String goHome() {
-    	System.out.println("goHome");
-        return "HomePage";
-    }
-    
-	public String getUrl() {
-		//"Business Processes/StartProcess/start2.ivp"
-				String path = "Business Processes/StartProcess/start2.ivp";
-				String url = ProcessStartAPI.findLinkByFriendlyRequestPath(Ivy.wf().getApplication(), "Business Processes/StartProcess/start2.ivp");
-				Ivy.log().error("Get Url" + url);
-				return url;
-			}
- 
+	private static final long serialVersionUID = 1L;
+
+	public void redirect() {
+		Ivy.getInstance().log.info("Redirect to Home page 2");
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("HomePage.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public String getUrl(String path) {
+		String url = ProcessStartAPI.findStartableLinkByUserFriendlyRequestPath(Ivy.wf().getApplication(), path);
+		Ivy.log().error("Get Url" + url);
+		return url;
+	}
+
 }

@@ -12,48 +12,72 @@
 		<ui:define name="content">
 			<h2 class="mt-0">Available Orders</h2>
 			<h:form>
-				<p:dataTable id="orderTable" var="order"  sortBy="#{order.productType}"
-					value="#{orderController.orders}" sortMode="single" paginator="true"
-					paginatorPosition="bottom" rows="10" 
+				<p:dataTable id="orderTable" var="order"
+					value="#{orderController.orders}" sortMode="single"
+					paginator="true" paginatorPosition="bottom" rows="10"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
 					rowsPerPageTemplate="5,10,{ShowAll|'All'}"
-					
 					filteredValue="#{orderController.filterOrders}"
-					emptyMessage="No orders found with given criteria">s
-	
-					<p:column headerText="Product Type" filterBy="#{order.productType}"  style="width:180px" styleClass="filterColumn"
-						filterMatchMode="contains" sortBy="#{order.productType}">
+					rowStyleClass="#{order.id % 2 == 0? 'tableRow' : null}"
+					emptyMessage="No orders found with given criteria">
+					<f:facet name="header">
+					</f:facet>
+					<p:column headerText="ID" styleClass="filterColumn">
+						<h:outputText value="#{order.id}" />
+					</p:column>
+					<p:column headerText="Customer Name" styleClass="filterColumn">
+						<h:outputText value="#{order.customerName}" />
+					</p:column>
+					<p:column headerText="Product Type" filterBy="#{order.productType}"
+						style="" styleClass="filterColumn" filterMatchMode="contains"
+						sortBy="#{order.productType}">
 						<h:outputText value="#{order.productType}" />
 					</p:column>
-	
+					<p:column headerText="Product Type" filterBy="#{order.productType}"
+						style="" styleClass="filterColumn" filterMatchMode="contains"
+						sortBy="#{order.productType}">
+						<h:outputText value="#{order.productType}" />
+					</p:column>
+
 					<p:column headerText="Connected power"
 						filterBy="#{order.connectedPower}" filterMatchMode="contains"
 						sortBy="#{order.connectedPower}">
-						<h:outputText value="#{order.connectedPower}" />
+						<h:outputText
+							value="#{order.connectedPower.toString().concat(' Kw')}" />
 					</p:column>
-	
+
 					<p:column headerText="Cable length" filterBy="#{order.cableLength}"
 						filterMatchMode="contains" sortBy="#{order.cableLength}">
-						<h:outputText value="#{order.cableLength}" />
+						<h:outputText value="#{order.cableLength.toString().concat(' m')}" />
 					</p:column>
-	
-					<p:column headerText="Required meter" sortBy="#{order.requireMeter}"
-						filterBy="#{order.requireMeter}" filterMatchMode="contains">
+
+					<p:column headerText="Required meter"
+						sortBy="#{order.requireMeter}" filterBy="#{order.requireMeter}"
+						filterMatchMode="contains">
 						<p:selectBooleanCheckbox value="#{order.requireMeter}"
 							disabled="true" />
 					</p:column>
-	
+
 					<p:column headerText="Battery" sortBy="#{order.battery}"
 						filterBy="#{order.total}" filterMatchMode="contains">
 						<h:outputText value="#{order.battery}" />
 					</p:column>
-	
+
 					<p:column headerText="Total" sortBy="#{order.total}"
 						filterBy="#{order.total}" filterMatchMode="contains">
 						<h:outputText value="#{order.total}" />
 					</p:column>
-				</p:dataTable> 
+					<p:column headerText="Status" sortBy="#{order.status.getName()}"
+						filterBy="#{order.status.getName()}" filterMatchMode="">
+						<h:outputText value="#{order.status.getName()}"
+							style="padding: 7px;
+						background: #006f94 ;
+  						 color: #fff;
+						    border-radius: 9px;" />
+
+					</p:column>
+				</p:dataTable>
 			</h:form>
 
 		</ui:define>

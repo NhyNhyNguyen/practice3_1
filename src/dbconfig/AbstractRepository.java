@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import ch.ivyteam.ivy.environment.Ivy;
-
 public class AbstractRepository<T, ID> {
 
 	public void save(T data) {

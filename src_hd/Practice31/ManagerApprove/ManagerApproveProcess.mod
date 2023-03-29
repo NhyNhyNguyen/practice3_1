@@ -55,7 +55,12 @@ Ms0 f4 339 147 26 26 0 12 #rect
 Ms0 f4 @|UdExitEndIcon #fIcon
 Ms0 f6 actionTable 'out=in;
 ' #txt
-Ms0 f6 actionCode in.bean.approve(in.customerData.order); #txt
+Ms0 f6 actionCode 'import controllers.OrderController;
+in.bean.approve(in.customerData.order);
+
+
+OrderController.getInstance().update();
+' #txt
 Ms0 f6 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>

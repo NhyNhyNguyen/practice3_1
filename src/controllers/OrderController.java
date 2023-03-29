@@ -10,9 +10,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.model.FilterMeta;
-
 import ch.ivyteam.ivy.environment.Ivy;
+import dto.OrderDTO;
 import entity.OrderEntity;
 import services.OrderService;
 
@@ -22,22 +21,20 @@ public class OrderController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<OrderEntity> orders = new ArrayList<>();
-	private List<OrderEntity> filterOrders = new ArrayList<>();
-	private List<FilterMeta> filterBy;
+	private List<OrderDTO> orders = new ArrayList<>();
+	private List<OrderDTO> filterOrders = new ArrayList<>();
+	
+	public static OrderController instance = new OrderController();
 
 	@PostConstruct
 	public void init() {
-		orders = OrderService.getInstance().findAll();
+		update();
 		filterOrders = new ArrayList<>();
-		Ivy.getInstance().log.info("Order List" + orders);
-
-        filterBy = new ArrayList<>();
 	}
 
-	public void goOrders() {
+	public void redirect() {
 		Ivy.getInstance().log.info("Redirect to order page");
-		orders = OrderService.getInstance().findAll();
+		update();
 
 		try {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("OrderPage.xhtml");
@@ -45,31 +42,33 @@ public class OrderController implements Serializable {
 			e.printStackTrace();
 		}
 	}
+	
+	public void update() {
+		orders = OrderService.getInstance().findAll();
+		Ivy.getInstance().log.info("Order List: " + orders.size() + " " + orders);
+	}
 
-	public List<OrderEntity> getOrders() {
+	
+
+	public List<OrderDTO> getOrders() {
 		return orders;
 	}
 
-	public List<OrderEntity> getFilterOrders() {
-		return filterOrders;
-	}
-
-	public void setFilterOrders(List<OrderEntity> filterOrders) {
-		this.filterOrders = filterOrders;
-	}
-
-	public void setOrders(List<OrderEntity> orders) {
+	public void setOrders(List<OrderDTO> orders) {
 		this.orders = orders;
 	}
 
-	public List<FilterMeta> getFilterBy() {
-		return filterBy;
+	public List<OrderDTO> getFilterOrders() {
+		return filterOrders;
 	}
 
-	public void setFilterBy(List<FilterMeta> filterBy) {
-		this.filterBy = filterBy;
+	public void setFilterOrders(List<OrderDTO> filterOrders) {
+		this.filterOrders = filterOrders;
+	}
+
+	public static OrderController getInstance() {
+		return instance;
 	}
 	
 	
-
 }

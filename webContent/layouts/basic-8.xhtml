@@ -56,14 +56,14 @@ body .ui-menu.ui-menubar {
 				<div>
 					<h:form id="headerLogin">
 						<p:menubar>
-							<p:menuitem value="Home" action="#{homeController.goHome}"
+							<p:menuitem value="Home" action="#{homeController.redirect}"
 								icon="ui-icon-home" />
-							<p:menuitem value="Orders" action="#{orderController.goOrders}"
+							<p:menuitem value="Orders" action="#{orderController.redirect}"
 								icon="ui-icon-document" />
-							<p:menuitem value="Tasks" action="#{taskController.goTasks}"
+							<p:menuitem value="Tasks" action="#{taskController.redirect}"
 								icon="ui-icon-list" />
-							<!-- <p:menuitem value="Create Order" action="#{homeController.getUrl}" 
-								icon="ui-icon-document" /> -->
+							<p:menuitem value="Create Order" url="#{homeController.getUrl('Business Processes/StartProcess/start2.ivp')}" 
+								icon="ui-icon-document" />
 							<p:submenu id="profileMenu" icon="fa fa-user-circle-o"
 								label="#{ivy.session.sessionUser.displayName}"
 								rendered="#{loginController.loggedIn}" style="float:right; ">

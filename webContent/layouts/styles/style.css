@@ -35,3 +35,8 @@ p {
 body .ui-datatable thead th.ui-state-active .ui-inputfield {
     color: #000;
 }
+
+ .tableRow {
+        background-color: #f4f5f5 !important;
+        background-image: none !important;
+    }

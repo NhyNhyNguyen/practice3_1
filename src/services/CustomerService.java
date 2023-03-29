@@ -1,9 +1,6 @@
 package services;
 
-import javax.persistence.EntityManager;
-
 import ch.ivyteam.ivy.environment.Ivy;
-import dbconfig.EntityManagerService;
 import entity.CustomerEntity;
 import repositories.CustomerRepository;
 

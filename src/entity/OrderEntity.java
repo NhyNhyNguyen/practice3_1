@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import enums.Status;
+
 @Entity
 @Table(name = "ORDERS")
 public class OrderEntity {
@@ -44,6 +46,10 @@ public class OrderEntity {
 
 	@Column(name = "MANAGE_COMMENT")
 	private String managerComment;
+	
+	
+	@Column(name = "STATUS")
+	private Status status;
 
 	public OrderEntity() {
 	}
@@ -143,14 +149,26 @@ public class OrderEntity {
 	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
 	}
+	
+	
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
 	@Override
 	public String toString() {
 		return "OrderEntity [id=" + id + ", customerId=" + customerId + ", productType=" + productType
 				+ ", connectedPower=" + connectedPower + ", cableLength=" + cableLength + ", requireMeter="
 				+ requireMeter + ", battery=" + battery + ", total=" + total + ", cleckComment=" + cleckComment
-				+ ", managerComment=" + managerComment + "]";
+				+ ", managerComment=" + managerComment + ", status=" + status + "]";
 	}
+
+
 
 
 

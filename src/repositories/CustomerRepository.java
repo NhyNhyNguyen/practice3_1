@@ -1,7 +1,10 @@
 package repositories;
 
+import java.util.List;
+
 import dbconfig.AbstractRepository;
 import entity.CustomerEntity;
+import entity.OrderEntity;
 
 public class CustomerRepository extends AbstractRepository<CustomerEntity, Integer> {
 
@@ -12,5 +15,10 @@ public class CustomerRepository extends AbstractRepository<CustomerEntity, Integ
 			instance = new CustomerRepository();
 		}
 		return instance;
+	}
+	
+	public List<CustomerEntity> findAll() {
+		String query = "SELECT e FROM CustomerEntity e";
+		return super.findAll(query);
 	}
 }

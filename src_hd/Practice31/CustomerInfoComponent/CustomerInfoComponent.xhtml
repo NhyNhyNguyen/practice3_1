@@ -96,24 +96,24 @@
 
 			<p:outputLabel for="dataOrderCableLength" value="Cable Length" />
 			<p:inputText id="dataOrderCableLength"
-				value="#{cc.attrs.order.cableLength}" required="#{cc.attrs.editable}" readonly = "#{!cc.attrs.editable}"></p:inputText>
+				value="#{cc.attrs.order.cableLength}" readonly = "#{!cc.attrs.editable}"></p:inputText>
 
 
 			<p:outputLabel for="dataOrderRequireMeter" value="Require Meter" />
 			<p:selectBooleanCheckbox id="dataOrderRequireMeter"
-				value="#{cc.attrs.order.requireMeter}" required="#{cc.attrs.editable}" readonly = "#{!cc.attrs.editable}" />
+				value="#{cc.attrs.order.requireMeter}"  readonly = "#{!cc.attrs.editable}" />
 
 
 			<p:outputLabel for="dataOrderBattery" value="Battery" />
 			<p:inputText id="dataOrderBattery" value="#{cc.attrs.order.battery}"
-				required="#{cc.attrs.editable}" readonly = "#{!cc.attrs.editable}"></p:inputText>
+				readonly = "#{!cc.attrs.editable}"></p:inputText>
 
 			<p:outputLabel for="dataOrderTotal" value="Total" />
 			<p:inputText id="dataOrderTotal" value="#{cc.attrs.order.total}"
-				required="#{cc.attrs.editable}" readonly = "#{!cc.attrs.editable}"></p:inputText>
+				readonly = "#{!cc.attrs.editable}"></p:inputText>
 			<p:outputLabel for="dataOrderCleckComment" value="Cleck Comment" />
 			<p:inputTextarea id="dataOrderCleckComment" rows="2" cols="33"
-				value="#{cc.attrs.order.cleckComment}" required="#{cc.attrs.editable}" readonly = "#{!cc.attrs.editable}" />
+				value="#{cc.attrs.order.cleckComment}"  readonly = "#{!cc.attrs.editable}" />
 
 			<p:outputLabel rendered="#{cc.attrs.showManagerComment}" for="dataOrderManageComment" value="Manager Comment" />
 			<p:inputTextarea rendered="#{cc.attrs.showManagerComment}"  id="dataOrderManageComment" rows="2" cols="33"

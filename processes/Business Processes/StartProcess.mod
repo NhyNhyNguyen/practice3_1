@@ -10,7 +10,6 @@ Ss0 @TextInP .processKind .processKind #zField
 Ss0 @TextInP .xml .xml #zField
 Ss0 @TextInP .responsibility .responsibility #zField
 Ss0 @EndTask f1 '' #zField
-Ss0 @PushWFArc f3 '' #zField
 Ss0 @UserDialog f4 '' #zField
 Ss0 @UserDialog f2 '' #zField
 Ss0 @TaskSwitchSimple f7 '' #zField
@@ -24,13 +23,17 @@ Ss0 @EndTask f10 '' #zField
 Ss0 @UserDialog f12 '' #zField
 Ss0 @StartRequest f13 '' #zField
 Ss0 @UserDialog f15 '' #zField
-Ss0 @PushWFArc f21 '' #zField
 Ss0 @PushWFArc f14 '' #zField
 Ss0 @PushWFArc f16 '' #zField
+Ss0 @PushWFArc f3 '' #zField
+Ss0 @PushWFArc f18 '' #zField
+Ss0 @Page f17 '' #zField
+Ss0 @Page f19 '' #zField
+Ss0 @PushWFArc f20 '' #zField
+Ss0 @PushWFArc f21 '' #zField
 >Proto Ss0 Ss0 StartProcess #zField
-Ss0 f1 713 177 30 30 0 15 #rect
+Ss0 f1 881 177 30 30 0 15 #rect
 Ss0 f1 @|EndIcon #fIcon
-Ss0 f3 648 192 713 192 #arcP
 Ss0 f4 dialogId Practice31.ManagerApprove #txt
 Ss0 f4 startMethod start(Practice31.CustomerData) #txt
 Ss0 f4 requestActionDecl '<Practice31.CustomerData customerData> param;' #txt
@@ -97,10 +100,7 @@ out.order.productType="Solar";
 out.order.requireMeter=false;
 out.order.total=120;
 ' #txt
-Ss0 f5 actionCode 'import ch.ivyteam.ivy.environment.Ivy;
-import ch.ivy.addon.portalkit.publicapi.ProcessStartAPI;
-out.order.cleckComment = ProcessStartAPI.findLinkByFriendlyRequestPath(Ivy.wf().getApplication(), "Business Processes/StartProcess/start2.ivp");
-
+Ss0 f5 actionCode '
 ' #txt
 Ss0 f5 requestEnabled true #txt
 Ss0 f5 triggerEnabled false #txt
@@ -118,7 +118,7 @@ Ss0 f5 @C|.responsibility Everybody #txt
 Ss0 f5 41 177 30 30 -21 18 #rect
 Ss0 f5 @|StartRequestIcon #fIcon
 Ss0 f11 71 192 161 192 #arcP
-Ss0 f10 721 281 30 30 0 15 #rect
+Ss0 f10 889 281 30 30 0 15 #rect
 Ss0 f10 @|EndIcon #fIcon
 Ss0 f12 dialogId Practice31.ManagerApprove #txt
 Ss0 f12 startMethod start(Practice31.CustomerData) #txt
@@ -156,7 +156,7 @@ out.order.requireMeter=false;
 out.order.total=120;
 ' #txt
 Ss0 f13 requestEnabled true #txt
-Ss0 f13 triggerEnabled false #txt
+Ss0 f13 triggerEnabled true #txt
 Ss0 f13 callSignature start2() #txt
 Ss0 f13 caseData 'businessCase.attach=true
 case.name=Order process' #txt
@@ -187,15 +187,60 @@ Ss0 f15 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 ' #txt
 Ss0 f15 288 274 112 44 -57 -8 #rect
 Ss0 f15 @|UserDialogIcon #fIcon
-Ss0 f21 656 296 721 296 #arcP
 Ss0 f14 79 296 288 296 #arcP
 Ss0 f16 400 296 544 296 #arcP
+Ss0 f3 expr data #txt
+Ss0 f3 outCond ivp=="LinkA.ivp" #txt
+Ss0 f3 818 192 881 192 #arcP
+Ss0 f18 648 192 782 192 #arcP
+Ss0 f17 outTypes "Practice31.CustomerData" #txt
+Ss0 f17 outLinks "LinkA.ivp" #txt
+Ss0 f17 template "view\\HomePage.xhtml" #txt
+Ss0 f17 type Practice31.CustomerData #txt
+Ss0 f17 skipLink skip.ivp #txt
+Ss0 f17 sortLink sort.ivp #txt
+Ss0 f17 templateWizard '#
+#Wed Mar 29 10:24:00 ICT 2023
+' #txt
+Ss0 f17 pageArchivingActivated false #txt
+Ss0 f17 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>Order Page</name>
+    </language>
+</elementInfo>
+' #txt
+Ss0 f17 @C|.responsibility Everybody #txt
+Ss0 f17 782 180 36 24 -32 18 #rect
+Ss0 f17 @|PageIcon #fIcon
+Ss0 f19 outTypes "Practice31.CustomerData" #txt
+Ss0 f19 outLinks "LinkA.ivp" #txt
+Ss0 f19 template "view\\HomePage.xhtml" #txt
+Ss0 f19 type Practice31.CustomerData #txt
+Ss0 f19 skipLink skip.ivp #txt
+Ss0 f19 sortLink sort.ivp #txt
+Ss0 f19 templateWizard '#
+#Wed Mar 29 10:55:29 ICT 2023
+' #txt
+Ss0 f19 pageArchivingActivated false #txt
+Ss0 f19 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>Home Page</name>
+    </language>
+</elementInfo>
+' #txt
+Ss0 f19 @C|.responsibility Everybody #txt
+Ss0 f19 766 284 36 24 -32 26 #rect
+Ss0 f19 @|PageIcon #fIcon
+Ss0 f20 656 296 766 296 #arcP
+Ss0 f21 expr data #txt
+Ss0 f21 outCond ivp=="LinkA.ivp" #txt
+Ss0 f21 802 296 889 296 #arcP
 >Proto Ss0 .type Practice31.CustomerData #txt
 >Proto Ss0 .processKind NORMAL #txt
 >Proto Ss0 0 0 32 24 18 0 #rect
 >Proto Ss0 @|BIcon #fIcon
-Ss0 f4 mainOut f3 tail #connect
-Ss0 f3 head f1 mainIn #connect
 Ss0 f2 mainOut f8 tail #connect
 Ss0 f8 head f7 in #connect
 Ss0 f7 out f6 tail #connect
@@ -204,9 +249,15 @@ Ss0 f9 out f0 tail #connect
 Ss0 f0 head f2 mainIn #connect
 Ss0 f11 head f9 in #connect
 Ss0 f5 mainOut f11 tail #connect
-Ss0 f12 mainOut f21 tail #connect
-Ss0 f21 head f10 mainIn #connect
 Ss0 f13 mainOut f14 tail #connect
 Ss0 f14 head f15 mainIn #connect
 Ss0 f15 mainOut f16 tail #connect
 Ss0 f16 head f12 mainIn #connect
+Ss0 f4 mainOut f18 tail #connect
+Ss0 f18 head f17 mainIn #connect
+Ss0 f17 out f3 tail #connect
+Ss0 f3 head f1 mainIn #connect
+Ss0 f12 mainOut f20 tail #connect
+Ss0 f20 head f19 mainIn #connect
+Ss0 f19 out f21 tail #connect
+Ss0 f21 head f10 mainIn #connect
