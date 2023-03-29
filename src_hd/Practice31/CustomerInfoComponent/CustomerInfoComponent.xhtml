@@ -62,17 +62,17 @@
 			</p:inputText>
 
 			<p:outputLabel for="dataCustomerGender" value="Gender" />
-			<p:selectOneRadio id="dataCustomerGender"
+			<p:selectOneRadio id="dataCustomerGender" disabled = "#{!cc.attrs.editable}" 
 				value="#{cc.attrs.customer.gender}">
 				<f:selectItem itemLabel="Male" itemValue="true" />
 				<f:selectItem itemLabel="Female" itemValue="false" />
 			</p:selectOneRadio>
-			<p:outputLabel for="dataCustomerDocuments" value="Documents" />
+<!-- 			<p:outputLabel for="dataCustomerDocuments" value="Documents" />
 
 			<p:fileUpload id="dataCustomerDocuments" mode="simple"
 				multiple="false" skinSimple="true" sizeLimit="102400"
 				invalidSizeMessage="Maximum file size allowed is 100 KB" update=""
-				label="Choose File" value="#{cc.attrs.customer.documents}" />
+				label="Choose File" value="#{cc.attrs.customer.documents}" /> -->
 		</p:panelGrid>
 		<br />
 
@@ -101,7 +101,7 @@
 
 			<p:outputLabel for="dataOrderRequireMeter" value="Require Meter" />
 			<p:selectBooleanCheckbox id="dataOrderRequireMeter"
-				value="#{cc.attrs.order.requireMeter}"  readonly = "#{!cc.attrs.editable}" />
+				value="#{cc.attrs.order.requireMeter}"  disabled = "#{!cc.attrs.editable}" />
 
 
 			<p:outputLabel for="dataOrderBattery" value="Battery" />
