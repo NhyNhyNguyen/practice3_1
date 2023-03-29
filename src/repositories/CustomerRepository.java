@@ -4,7 +4,6 @@ import java.util.List;
 
 import dbconfig.AbstractRepository;
 import entity.CustomerEntity;
-import entity.OrderEntity;
 
 public class CustomerRepository extends AbstractRepository<CustomerEntity, Integer> {
 
