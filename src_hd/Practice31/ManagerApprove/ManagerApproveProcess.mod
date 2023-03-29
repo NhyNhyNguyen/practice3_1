@@ -56,7 +56,7 @@ Ms0 f4 @|UdExitEndIcon #fIcon
 Ms0 f6 actionTable 'out=in;
 ' #txt
 Ms0 f6 actionCode 'import controllers.OrderController;
-in.bean.approve(in.customerData.order);
+in.bean.approve(in.customerData);
 
 
 OrderController.getInstance().update();

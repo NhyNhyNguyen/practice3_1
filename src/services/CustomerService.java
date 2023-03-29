@@ -11,9 +11,9 @@ public class CustomerService {
 		return instance;
 	}
 
-	public Long save(CustomerEntity customer) {
+	public CustomerEntity save(CustomerEntity customer) {
 		Ivy.log().info("Save customer info data" + customer.toString());
 		CustomerRepository.getInstance().save(customer);
-		return customer.getId();
+		return customer;
 	}
 }

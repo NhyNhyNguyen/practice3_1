@@ -22,12 +22,13 @@
 					rowStyleClass="#{order.id % 2 == 0? 'tableRow' : null}"
 					emptyMessage="No orders found with given criteria">
 					<f:facet name="header">
-					</f:facet>
+<!-- 						<p:commandButton style="float:right; " value="New order"></p:commandButton>
+ -->					</f:facet>
 					<p:column headerText="ID" styleClass="filterColumn">
 						<h:outputText value="#{order.id}" />
 					</p:column>
 					<p:column headerText="Customer Name" styleClass="filterColumn">
-						<h:outputText value="#{order.customerName}" />
+						<h:outputText value="#{order.customer.name}" />
 					</p:column>
 					<p:column headerText="Product Type" filterBy="#{order.productType}"
 						style="" styleClass="filterColumn" filterMatchMode="contains"
@@ -70,11 +71,8 @@
 					</p:column>
 					<p:column headerText="Status" sortBy="#{order.status.getName()}"
 						filterBy="#{order.status.getName()}" filterMatchMode="">
-						<h:outputText value="#{order.status.getName()}"
-							style="padding: 7px;
-						background: #006f94 ;
-  						 color: #fff;
-						    border-radius: 9px;" />
+						<h:outputText value="#{order.status.getName()}" styleClass="status-#{order.status.getName()}" 
+							style="" />
 
 					</p:column>
 				</p:dataTable>

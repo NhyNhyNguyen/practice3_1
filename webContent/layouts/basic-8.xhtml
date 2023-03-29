@@ -62,8 +62,8 @@ body .ui-menu.ui-menubar {
 								icon="ui-icon-document" />
 							<p:menuitem value="Tasks" action="#{taskController.redirect}"
 								icon="ui-icon-list" />
-							<p:menuitem value="Create Order" url="#{homeController.getUrl('Business Processes/StartProcess/start2.ivp')}" 
-								icon="ui-icon-document" />
+							<p:menuitem value="Create Order" url="#{homeController.getUrl('Business Processes/StartProcess/start.ivp')}" 
+								 icon="fa fa-plus" />
 							<p:submenu id="profileMenu" icon="fa fa-user-circle-o"
 								label="#{ivy.session.sessionUser.displayName}"
 								rendered="#{loginController.loggedIn}" style="float:right; ">

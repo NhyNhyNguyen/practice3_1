@@ -11,7 +11,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import ch.ivyteam.ivy.environment.Ivy;
-import dto.OrderDTO;
 import entity.OrderEntity;
 import services.OrderService;
 
@@ -21,8 +20,8 @@ public class OrderController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<OrderDTO> orders = new ArrayList<>();
-	private List<OrderDTO> filterOrders = new ArrayList<>();
+	private List<OrderEntity> orders = new ArrayList<>();
+	private List<OrderEntity> filterOrders = new ArrayList<>();
 	
 	public static OrderController instance = new OrderController();
 
@@ -35,7 +34,6 @@ public class OrderController implements Serializable {
 	public void redirect() {
 		Ivy.getInstance().log.info("Redirect to order page");
 		update();
-
 		try {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("OrderPage.xhtml");
 		} catch (IOException e) {
@@ -50,19 +48,19 @@ public class OrderController implements Serializable {
 
 	
 
-	public List<OrderDTO> getOrders() {
+	public List<OrderEntity> getOrders() {
 		return orders;
 	}
 
-	public void setOrders(List<OrderDTO> orders) {
+	public void setOrders(List<OrderEntity> orders) {
 		this.orders = orders;
 	}
 
-	public List<OrderDTO> getFilterOrders() {
+	public List<OrderEntity> getFilterOrders() {
 		return filterOrders;
 	}
 
-	public void setFilterOrders(List<OrderDTO> filterOrders) {
+	public void setFilterOrders(List<OrderEntity> filterOrders) {
 		this.filterOrders = filterOrders;
 	}
 

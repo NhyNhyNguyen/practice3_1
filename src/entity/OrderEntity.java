@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,8 +22,9 @@ public class OrderEntity {
 	@SequenceGenerator(name = "ORDER_SEQ", sequenceName = "ORDER_SEQ", allocationSize = 1, initialValue = 1)
 	private Long id;
 
-	@Column(name = "CUSTOMER_ID")
-	private Long customerId;
+	@OneToOne()
+	@JoinColumn(name = "CUSTOMERID", referencedColumnName = "ID")
+	private CustomerEntity customer;
 
 	@Column(name = "PRODUCT_TYPE")
 	private String productType;
@@ -29,7 +32,7 @@ public class OrderEntity {
 	@Column(name = "CONNECTED_POWER")
 	private Integer connectedPower;
 
-	@Column(name = "CABLE_LENGTH")
+	@Column(name = "CABLE_LENGTH") 
 	private Integer cableLength;
 
 	@Column(name = "REQUIRE_METER")
@@ -142,12 +145,12 @@ public class OrderEntity {
 	
 	
 
-	public Long getCustomerId() {
-		return customerId;
+	public CustomerEntity getCustomer() {
+		return customer;
 	}
 
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
+	public void setCustomer(CustomerEntity entity) {
+		this.customer = entity;
 	}
 	
 	
@@ -162,11 +165,12 @@ public class OrderEntity {
 
 	@Override
 	public String toString() {
-		return "OrderEntity [id=" + id + ", customerId=" + customerId + ", productType=" + productType
-				+ ", connectedPower=" + connectedPower + ", cableLength=" + cableLength + ", requireMeter="
-				+ requireMeter + ", battery=" + battery + ", total=" + total + ", cleckComment=" + cleckComment
-				+ ", managerComment=" + managerComment + ", status=" + status + "]";
+		return "OrderEntity [id=" + id + ", customer=" + customer + ", productType=" + productType + ", connectedPower="
+				+ connectedPower + ", cableLength=" + cableLength + ", requireMeter=" + requireMeter + ", battery="
+				+ battery + ", total=" + total + ", cleckComment=" + cleckComment + ", managerComment=" + managerComment
+				+ ", status=" + status + "]";
 	}
+
 
 
 

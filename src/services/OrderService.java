@@ -1,16 +1,9 @@
 package services;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 import ch.ivyteam.ivy.environment.Ivy;
-import dto.OrderDTO;
-import entity.CustomerEntity;
 import entity.OrderEntity;
-import repositories.CustomerRepository;
 import repositories.OrderRepository;
 
 public class OrderService {
@@ -32,13 +25,8 @@ public class OrderService {
 		OrderRepository.getInstance().update(order);
 	}
 
-	public List<OrderDTO> findAll() {
+	public List<OrderEntity> findAll() {
 		Ivy.log().info("Find all orders info data");
-		List<OrderEntity> orderEntities = OrderRepository.getInstance().findAll();
-		List<OrderDTO> orderDTOs = orderEntities.stream().map(t -> OrderDTO.clone(t)).collect(Collectors.toList());
-		List<CustomerEntity> customerEntities = CustomerRepository.getInstance().findAll();
-		orderDTOs.stream().forEach(t -> t.setCustomerName(
-				(customerEntities.stream().filter(c -> c.getId() == t.getId()).findFirst().get().getName())));
-		return orderDTOs;
+		return OrderRepository.getInstance().findAll();
 	}
 }

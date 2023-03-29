@@ -14,7 +14,7 @@
 }
 
 #headerLogin .ui-state-hover {
-	background-color: #044e66!important;
+	background-color: #044e66 !important;
 }
 
 #profileBtn {
@@ -28,15 +28,29 @@ p {
 }
 
 #manager-approve-form .ui-state-disabled {
-  opacity: 1 !important;
-  cursor: not-allowed;
+	opacity: 1 !important;
+	cursor: not-allowed;
 }
 
 body .ui-datatable thead th.ui-state-active .ui-inputfield {
-    color: #000;
+	color: #000;
 }
 
- .tableRow {
-        background-color: #f4f5f5 !important;
-        background-image: none !important;
-    }
+.tableRow {
+	background-color: #f4f5f5 !important;
+	background-image: none !important;
+}
+
+.status-Aprrove {
+	padding: 7px;
+	background: #006f94;
+	color: #fff;
+	border-radius: 9px;
+}
+
+.status-Processing {
+	padding: 7px;
+	background: #4CAF50;
+	color: #fff;
+	border-radius: 9px;
+}
