@@ -14,10 +14,14 @@
 				<ic:Practice31.CustomerInfoComponent
 					order="#{data.customerData.order}"
 					customer="#{data.customerData.customer}" editable="false"
-					showManagerComment= "true" title="Manager Aprrove" />
-				<div class="command-btns">
-					<p:commandButton id="proceed" actionListener="#{logic.close}"
-						value="Save Data" update="manager-approve-form"
+					showManagerComment="true" title="Manager Aprrove"
+					formId="manager-approve-form" />
+				<div class=" ">
+					<p:commandButton id="proceed" action="#{bean.cancel(data.customerData)}"
+						value="Reject" update="manager-approve-form" icon="ui-icon-close"
+						type="button" styleClass="warning-button" />
+					<p:commandButton id="proceed2" actionListener="#{logic.close}"
+						value="Verify Order" update="manager-approve-form"
 						icon="ui-icon-check" />
 				</div>
 			</h:form>

@@ -9,7 +9,6 @@ import ch.ivy.addon.portalkit.publicapi.ProcessStartAPI;
 import ch.ivyteam.ivy.environment.Ivy;
 
 @ManagedBean
-@SessionScoped
 public class HomeController extends AbstractController implements Serializable {
 
 	private static final long serialVersionUID = 1L;

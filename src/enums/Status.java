@@ -3,6 +3,7 @@ package enums;
 public enum Status {
 	PENDING("Pending"),
 	CLECK_APPROVE("Processing"),
+	REJECT("Reject"),
 	MANAGER_APPROVE("Aprrove"),
 	DONE("Done");
 	

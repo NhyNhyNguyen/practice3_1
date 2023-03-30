@@ -4,6 +4,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import Practice31.CustomerData;
+import controllers.OrderController;
 import entity.CustomerEntity;
 import enums.Status;
 import services.CustomerService;
@@ -23,6 +24,16 @@ public class CustomerBean {
 
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Save customer sucessfull", "");
 		FacesContext.getCurrentInstance().addMessage("growl", message);
+	}
+	
+	public void cancel(CustomerData data) {
+		data.getOrder().setStatus(Status.REJECT);
+		data.getOrder().setCustomer(data.getCustomer());
+		OrderService.getInstance().update(data.getOrder());
+
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Reject customer sucessfull", "");
+		FacesContext.getCurrentInstance().addMessage("growl", message);
+		OrderController.getInstance().redirect();
 	}
 
 	public void approve(CustomerData data) {

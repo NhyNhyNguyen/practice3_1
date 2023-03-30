@@ -17,7 +17,7 @@ public class OrderRepository extends AbstractRepository<OrderEntity, Integer>{
 	}
 
 	public List<OrderEntity> findAll() {
-		String query = "SELECT e FROM OrderEntity e ORDER BY e.id";
+		String query = "SELECT e FROM OrderEntity e ORDER BY e.id DESC";
 		return super.findAll(query);
 	}
 	

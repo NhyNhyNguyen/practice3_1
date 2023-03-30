@@ -2,7 +2,6 @@ package controllers;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,7 +14,6 @@ import enums.ProductType;
 import services.OrderService;
 
 @ManagedBean 
-@ViewScoped
 public class OrderController extends AbstractController implements Serializable {
 
 	private static final long serialVersionUID = 1L;

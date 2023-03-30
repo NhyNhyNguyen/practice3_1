@@ -13,7 +13,6 @@ import ch.ivyteam.ivy.workflow.ITask;
 import ch.ivyteam.ivy.workflow.query.TaskQuery;
 
 @ManagedBean
-@ViewScoped
 public class TaskController extends AbstractController implements Serializable {
 
 	private static final long serialVersionUID = 1L;

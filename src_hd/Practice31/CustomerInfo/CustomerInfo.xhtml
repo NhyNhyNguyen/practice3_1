@@ -9,15 +9,16 @@
 	<ui:composition template="/layouts/basic-8.xhtml">
 		<ui:define name="title">CustomerInfo</ui:define>
 		<ui:define name="content">
-			<h:form id="form">
+			<h:form id="order-form">
 				<ic:Practice31.CustomerInfoComponent
 					order="#{data.dataEntity.order}"
 					customer="#{data.dataEntity.customer}" editable="true"
 					showManagerComment = "false"
-					title="Cleck Aprrove" />
+					title="Cleck Aprrove"
+					formId = "order-form" />
 				<div class="command-btns">
 					<p:commandButton id="proceed" actionListener="#{logic.close}"
-						value="Save Data" update="form" icon="ui-icon-check" />
+						value="Approve" update="order-form" icon="ui-icon-check" />
 				</div>
 			</h:form>
 		</ui:define>

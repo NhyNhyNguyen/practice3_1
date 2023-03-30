@@ -20,108 +20,148 @@
 		shortDescription="Can edit info" />
 	<cc:attribute name="showManagerComment" type="java.lang.Boolean"
 		shortDescription="Show manager comment field" />
+	<cc:attribute name="formId" type="java.lang.String"
+		shortDescription="Show form Id" />
 
 </cc:interface>
 
 <cc:implementation>
+
 	<div class="">
 		<p:messages />
 		<h2>#{cc.attrs.title}</h2>
-		<h3 class="">Customer Info</h3>
-		<p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank"
-			columnClasses="ui-g-12 ui-md-3 ui-lg-2, 
+		<p:fieldset legend="Customer Info">
+			<p:panelGrid columns="2" layout="grid"
+				styleClass="ui-panelgrid-blank"
+				columnClasses="ui-g-12 ui-md-3 ui-lg-2, 
 						ui-g-12 ui-md-9 ui-lg-4, 
 						ui-g-12 ui-md-3 ui-lg-2, 
 						ui-g-12 ui-md-9 ui-lg-4">
 
-			<p:outputLabel for="dataCustomerName" value="Name" />
-			<p:inputText id="dataCustomerName" value="#{cc.attrs.customer.name}"
-				required="#{cc.attrs.editable}" readonly = "#{!cc.attrs.editable}"></p:inputText>
+				<p:outputLabel for="dataCustomerName" value="Name" />
+				<p:inputText id="dataCustomerName" value="#{cc.attrs.customer.name}"
+					required="#{cc.attrs.editable}" readonly="#{!cc.attrs.editable}"></p:inputText>
 
-			<p:outputLabel for="dataCustomerPhone" value="Phone" />
-			<p:inputText id="dataCustomerPhone"
-				value="#{cc.attrs.customer.phone}" required="#{cc.attrs.editable}" readonly = "#{!cc.attrs.editable}"
-				validatorMessage="Invalid phone format">
-				<f:validateRegex pattern="^[0-9]+$" />
-			</p:inputText>
+				<p:outputLabel for="dataCustomerPhone" value="Phone" />
+				<p:inputText id="dataCustomerPhone"
+					value="#{cc.attrs.customer.phone}" required="#{cc.attrs.editable}"
+					readonly="#{!cc.attrs.editable}"
+					validatorMessage="Invalid phone format - Phone is number">
+					<f:validateRegex pattern="^[0-9]+$" />
+				</p:inputText>
 
-			<p:outputLabel for="dataCustomerBirthday" value="Birthday" />
-			<p:datePicker id="dataCustomerBirthday"
-				value="#{cc.attrs.customer.birthday}" timeOnly="false"
-				pattern="dd/MM/yyyy" style="width: 100%" required="#{cc.attrs.editable}" readonly = "#{!cc.attrs.editable}" />
+				<p:outputLabel for="dataCustomerBirthday" value="Birthday" />
+				<p:datePicker id="dataCustomerBirthday"
+					value="#{cc.attrs.customer.birthday}" timeOnly="false"
+					pattern="dd/MM/yyyy" style="width: 100%"
+					required="#{cc.attrs.editable}" readonly="#{!cc.attrs.editable}" />
 
-			<p:outputLabel for="dataCustomerAddress" value="Address" />
-			<p:inputText id="dataCustomerAddress"
-				value="#{cc.attrs.customer.address}" required="#{cc.attrs.editable}" readonly = "#{!cc.attrs.editable}"></p:inputText>
+				<p:outputLabel for="dataCustomerAddress" value="Address" />
+				<p:inputText id="dataCustomerAddress"
+					value="#{cc.attrs.customer.address}"
+					required="#{cc.attrs.editable}" readonly="#{!cc.attrs.editable}"></p:inputText>
 
-			<p:outputLabel for="dataCustomerEmail" value="Email" />
-			<p:inputText id="dataCustomerEmail"
-				value="#{cc.attrs.customer.email}" required="#{cc.attrs.editable}" readonly = "#{!cc.attrs.editable}"
-				validatorMessage="Invalid email format">
-				<f:validateRegex pattern="^(.+)@(.+).(.+)$" />
-			</p:inputText>
+				<p:outputLabel for="dataCustomerEmail" value="Email" />
+				<p:inputText id="dataCustomerEmail"
+					value="#{cc.attrs.customer.email}" required="#{cc.attrs.editable}"
+					readonly="#{!cc.attrs.editable}"
+					validatorMessage="Invalid email format - Email@gmail.com">
+					<f:validateRegex pattern="^(.+)@(.+).(.+)$" />
+				</p:inputText>
 
-			<p:outputLabel for="dataCustomerGender" value="Gender" />
-			<p:selectOneRadio id="dataCustomerGender" disabled = "#{!cc.attrs.editable}" 
-				value="#{cc.attrs.customer.gender}">
-				<f:selectItem itemLabel="Male" itemValue="true" />
-				<f:selectItem itemLabel="Female" itemValue="false" />
-			</p:selectOneRadio>
-<!-- 			<p:outputLabel for="dataCustomerDocuments" value="Documents" />
+				<p:outputLabel for="dataCustomerGender" value="Gender" />
+				<p:selectOneRadio id="dataCustomerGender"
+					disabled="#{!cc.attrs.editable}"
+					value="#{cc.attrs.customer.gender}">
+					<f:selectItem itemLabel="Male" itemValue="true" />
+					<f:selectItem itemLabel="Female" itemValue="false" />
+				</p:selectOneRadio>
+				<p:outputLabel for="dataCustomerDocuments" value="Documents" />
 
-			<p:fileUpload id="dataCustomerDocuments" mode="simple"
-				multiple="false" skinSimple="true" sizeLimit="102400"
-				invalidSizeMessage="Maximum file size allowed is 100 KB" update=""
-				label="Choose File" value="#{cc.attrs.customer.documents}" /> -->
-		</p:panelGrid>
+				<p:fileUpload id="dataCustomerDocuments" mode="simple"
+					multiple="false" skinSimple="true" sizeLimit="102400"
+					invalidSizeMessage="Maximum file size allowed is 100 KB" update=""
+					label="Choose File" value="#{cc.attrs.customer.documents}"
+					rendered="#{cc.attrs.editable}" />
+
+			</p:panelGrid>
+		</p:fieldset>
 		<br />
 
-		<h3 style="">New Order</h3>
-		<p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank"
-			columnClasses="ui-g-12 ui-md-3 ui-lg-2, 
+		<p:fieldset legend="Order Info">
+			<p:panelGrid columns="2" layout="grid"
+				styleClass="ui-panelgrid-blank"
+				columnClasses="ui-g-12 ui-md-3 ui-lg-2, 
 						ui-g-12 ui-md-9 ui-lg-4, 
 						ui-g-12 ui-md-3 ui-lg-2, 
 						ui-g-12 ui-md-9 ui-lg-4">
 
-			<p:outputLabel for="dataOrderProductType" value="Product Type" />
-			<p:selectOneMenu id="dataOrderProductType"
-				value="#{cc.attrs.order.productType}" required="#{cc.attrs.editable}" readonly = "#{!cc.attrs.editable}">
-				<f:selectItem itemLabel="Solar" itemValue="Solar" />
-				<f:selectItem itemLabel="Power" itemValue="Power" />
-			</p:selectOneMenu>
+				<p:outputLabel for="dataOrderProductType" value="Product Type" rendered ="#{cc.attrs.editable}"
+					styleClass="ui-label" />
+				<p:selectOneMenu id="dataOrderProductType"
+					value="#{cc.attrs.order.productType}" style="width:150px"
+					rendered ="#{cc.attrs.editable}">
+					<f:selectItem itemLabel="Select product type" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="Solar" itemValue="Solar" />
+					<f:selectItem itemLabel="Power" itemValue="Power" />
+					<p:ajax update="#{cc.attrs.formId}" />
+				</p:selectOneMenu>
 
-			<p:outputLabel for="dataOrderConnectedPower" value="Connected Power" />
-			<p:inputText id="dataOrderConnectedPower"
-				value="#{cc.attrs.order.connectedPower}" required="#{cc.attrs.editable}" readonly = "#{!cc.attrs.editable}"></p:inputText>
-
-			<p:outputLabel for="dataOrderCableLength" value="Cable Length" />
-			<p:inputText id="dataOrderCableLength"
-				value="#{cc.attrs.order.cableLength}" readonly = "#{!cc.attrs.editable}"></p:inputText>
-
-
-			<p:outputLabel for="dataOrderRequireMeter" value="Require Meter" />
-			<p:selectBooleanCheckbox id="dataOrderRequireMeter"
-				value="#{cc.attrs.order.requireMeter}"  disabled = "#{!cc.attrs.editable}" />
+				<p:outputLabel for="dataOrderProductType2" value="Product Type" rendered ="#{!cc.attrs.editable}"
+					styleClass="ui-label" />
+				<p:inputText id="dataOrderProductType2" value="#{cc.attrs.order.productType}" rendered ="#{!cc.attrs.editable}"
+					styleClass="ui-label" />
 
 
-			<p:outputLabel for="dataOrderBattery" value="Battery" />
-			<p:inputText id="dataOrderBattery" value="#{cc.attrs.order.battery}"
-				readonly = "#{!cc.attrs.editable}"></p:inputText>
+				<p:outputLabel for="dataOrderConnectedPower" value="Connected Power" />
+				<p:inputText id="dataOrderConnectedPower"
+					value="#{cc.attrs.order.connectedPower}"
+					required="#{cc.attrs.editable}" readonly="#{!cc.attrs.editable}"></p:inputText>
 
-			<p:outputLabel for="dataOrderTotal" value="Total" />
-			<p:inputText id="dataOrderTotal" value="#{cc.attrs.order.total}"
-				readonly = "#{!cc.attrs.editable}"></p:inputText>
-			<p:outputLabel for="dataOrderCleckComment" value="Cleck Comment" />
-			<p:inputTextarea id="dataOrderCleckComment" rows="2" cols="33"
-				value="#{cc.attrs.order.cleckComment}"  readonly = "#{!cc.attrs.editable}" />
+				<p:outputLabel for="dataOrderCableLength" value="Cable Length" />
+				<p:inputText id="dataOrderCableLength"
+					value="#{cc.attrs.order.cableLength}"
+					readonly="#{!cc.attrs.editable}"></p:inputText>
 
-			<p:outputLabel rendered="#{cc.attrs.showManagerComment}" for="dataOrderManageComment" value="Manager Comment" />
-			<p:inputTextarea rendered="#{cc.attrs.showManagerComment}"  id="dataOrderManageComment" rows="2" cols="33"
-				 value="#{cc.attrs.order.managerComment}" />
-		</p:panelGrid>
+
+				<p:outputLabel for="dataOrderRequireMeter" value="Require Meter" />
+				<p:selectBooleanCheckbox id="dataOrderRequireMeter"
+					value="#{cc.attrs.order.requireMeter}"
+					disabled="#{!cc.attrs.editable}" />
+
+				<p:outputLabel for="dataOrderBattery" value="Battery"
+					rendered="#{cc.attrs.order.productType == 'Solar' and !cc.attrs.editable}}" />
+				<p:inputText id="dataOrderBattery" value="#{cc.attrs.order.battery}"
+					readonly="#{!cc.attrs.editable}"
+					rendered="#{cc.attrs.order.productType == 'Solar' and !cc.attrs.editable} "></p:inputText>
+
+				<p:outputLabel for="dataOrderBattery2" value="Battery"
+					rendered="#{cc.attrs.order.productType.equals('Solar') and cc.attrs.editable}" />
+				<p:selectOneRadio id="dataOrderBattery2"
+					rendered="#{cc.attrs.order.productType.equals('Solar') and cc.attrs.editable}"
+					value="#{cc.attrs.order.battery}">
+					<f:selectItem itemLabel="Small" itemValue="Small" />
+					<f:selectItem itemLabel="Medium" itemValue="Medium" />
+					<f:selectItem itemLabel="Big" itemValue="Big" />
+				</p:selectOneRadio>
+				<p:outputLabel for="dataOrderTotal" value="Total" />
+				<p:inputText id="dataOrderTotal" value="#{cc.attrs.order.total}"
+					readonly="#{!cc.attrs.editable}"></p:inputText>
+				<p:outputLabel for="dataOrderCleckComment" value="Cleck Comment" />
+				<p:inputTextarea id="dataOrderCleckComment" rows="2" cols="33"
+					value="#{cc.attrs.order.cleckComment}"
+					readonly="#{!cc.attrs.editable}" />
+
+				<p:outputLabel rendered="#{cc.attrs.showManagerComment}"
+					for="dataOrderManageComment" value="Manager Comment" />
+				<p:inputTextarea rendered="#{cc.attrs.showManagerComment}"
+					id="dataOrderManageComment" rows="2" cols="33"
+					value="#{cc.attrs.order.managerComment}" />
+			</p:panelGrid>
+		</p:fieldset>
 		<br />
 	</div>
-
 	<style>
 </style>
 	<script>

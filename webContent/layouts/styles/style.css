@@ -97,3 +97,32 @@ body .ui-datatable tbody tr.ui-datatable-even {
 	width: 100%;
 	box-sizing: border-box;
 }
+
+#form  .ui-outputlabel-rfi, #manager-approve-form .ui-outputlabel-rfi {
+	color: red;
+}
+
+#form .ui-outputlabel {
+	font-weight: bold
+}
+
+#form .ui-fieldset.ui-widget.ui-widget-content, #manager-approve-form .ui-fieldset.ui-widget.ui-widget-content
+	{
+	border-radius: 10px !important;
+	box-shadow: rgba(0, 0, 0, 0.15) 0.95px 0.95px 1.6px;
+}
+
+.danger-button {
+	background-color: #d32f2f !important;
+	margin: 8px 16px !important;
+}
+
+.normal-button {
+	background-color: #006f94 !important;
+	margin: 8px 16px !important;
+}
+
+.warning-button {
+	background-color: #607d8b !important;
+	margin: 8px 8px !important;
+}
