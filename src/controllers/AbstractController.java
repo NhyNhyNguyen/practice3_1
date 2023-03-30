@@ -22,7 +22,7 @@ public abstract class AbstractController {
 			} else {
 				Ivy.getInstance().log.info("Redirect to " + path);
 				update();
-				FacesContext.getCurrentInstance().getExternalContext().redirect("http://localhost:8081/ivy/faces/view/designer/Practice31$1/view/" + path);
+				FacesContext.getCurrentInstance().getExternalContext().redirect("http://localhost:8081/ivy/faces/view/designer/Practice31$1/" + path);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
