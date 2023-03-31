@@ -17,10 +17,10 @@
 					showManagerComment="true" title="Manager Aprrove"
 					formId="manager-approve-form" />
 				<div class=" ">
-					<p:commandButton id="proceed" action="#{bean.cancel(data.customerData)}"
-						value="Reject" update="manager-approve-form" icon="ui-icon-close"
-						type="button" styleClass="warning-button" />
-					<p:commandButton id="proceed2" actionListener="#{logic.close}"
+						<p:commandButton id="proceed" actionListener="#{logic.close}"
+						value="Reject Order" update="manager-approve-form"
+						icon="ui-icon-close" styleClass="warning-button"/>
+					<p:commandButton id="proceed2" actionListener="#{logic.verify}"
 						value="Verify Order" update="manager-approve-form"
 						icon="ui-icon-check" />
 				</div>

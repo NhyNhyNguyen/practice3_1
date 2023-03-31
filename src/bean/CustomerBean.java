@@ -26,14 +26,13 @@ public class CustomerBean {
 		FacesContext.getCurrentInstance().addMessage("growl", message);
 	}
 	
-	public void cancel(CustomerData data) {
+	public void reject(CustomerData data) {
 		data.getOrder().setStatus(Status.REJECT);
 		data.getOrder().setCustomer(data.getCustomer());
 		OrderService.getInstance().update(data.getOrder());
 
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Reject customer sucessfull", "");
 		FacesContext.getCurrentInstance().addMessage("growl", message);
-		OrderController.getInstance().redirect();
 	}
 
 	public void approve(CustomerData data) {

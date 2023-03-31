@@ -21,7 +21,6 @@ Ss0 @UserDialog f25 '' #zField
 Ss0 @StartRequest f26 '' #zField
 Ss0 @PushWFArc f10 '' #zField
 Ss0 @PushWFArc f12 '' #zField
-Ss0 @TkArc f8 '' #zField
 Ss0 @PushWFArc f6 '' #zField
 Ss0 @TaskSwitchSimple f7 '' #zField
 Ss0 @PushWFArc f0 '' #zField
@@ -29,8 +28,13 @@ Ss0 @TkArc f11 '' #zField
 Ss0 @TaskSwitchSimple f9 '' #zField
 Ss0 @EndRequest f14 '' #zField
 Ss0 @PushWFArc f13 '' #zField
+Ss0 @IntermediateEvent f15 '' #zField
+Ss0 @TkArc f8 '' #zField
+Ss0 @EMail f19 '' #zField
+Ss0 @PushWFArc f20 '' #zField
+Ss0 @PushWFArc f16 '' #zField
 >Proto Ss0 Ss0 StartProcess #zField
-Ss0 f1 881 177 30 30 0 15 #rect
+Ss0 f1 977 177 30 30 0 15 #rect
 Ss0 f1 @|EndIcon #fIcon
 Ss0 f4 dialogId Practice31.ManagerApprove #txt
 Ss0 f4 startMethod start(Practice31.CustomerData) #txt
@@ -49,7 +53,7 @@ Ss0 f4 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Ss0 f4 536 170 112 44 -46 -8 #rect
+Ss0 f4 632 170 112 44 -46 -8 #rect
 Ss0 f4 @|UserDialogIcon #fIcon
 Ss0 f5 outLink start.ivp #txt
 Ss0 f5 inParamDecl '<> param;' #txt
@@ -100,10 +104,10 @@ Ss0 f2 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 ' #txt
 Ss0 f2 280 170 112 44 -57 -8 #rect
 Ss0 f2 @|UserDialogIcon #fIcon
-Ss0 f18 648 192 782 192 #arcP
+Ss0 f18 744 192 878 192 #arcP
 Ss0 f3 expr data #txt
 Ss0 f3 outCond ivp=="LinkA.ivp" #txt
-Ss0 f3 818 192 881 192 #arcP
+Ss0 f3 914 192 977 192 #arcP
 Ss0 f17 outTypes "Practice31.CustomerData" #txt
 Ss0 f17 outLinks "LinkA.ivp" #txt
 Ss0 f17 template "view\\HomePage.xhtml" #txt
@@ -122,7 +126,7 @@ Ss0 f17 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 </elementInfo>
 ' #txt
 Ss0 f17 @C|.responsibility Everybody #txt
-Ss0 f17 782 180 36 24 -32 18 #rect
+Ss0 f17 878 180 36 24 -32 18 #rect
 Ss0 f17 @|PageIcon #fIcon
 Ss0 f22 dialogId Practice31.ManagerApprove #txt
 Ss0 f22 startMethod start(Practice31.CustomerData) #txt
@@ -168,7 +172,6 @@ out.customer.email="nhi@gmail.com";
 out.customer.gender=true;
 out.customer.name="nhi";
 out.customer.phone="0232222";
-out.order.battery="Solar";
 out.order.cableLength=1;
 out.order.connectedPower=1;
 out.order.productType="Solar";
@@ -194,13 +197,12 @@ Ss0 f26 33 393 30 30 -24 17 #rect
 Ss0 f26 @|StartRequestIcon #fIcon
 Ss0 f10 63 408 272 408 #arcP
 Ss0 f12 384 408 528 408 #arcP
-Ss0 f8 392 192 449 192 #arcP
-Ss0 f6 479 192 536 192 #arcP
+Ss0 f6 575 192 632 192 #arcP
 Ss0 f7 actionTable 'out=in1;
 ' #txt
 Ss0 f7 taskData 'TaskA.CATEGORY=TaskManagerApproveInput
 TaskA.NAM=Task Manager Approve Input' #txt
-Ss0 f7 449 177 30 30 0 16 #rect
+Ss0 f7 545 177 30 30 0 16 #rect
 Ss0 f7 @|TaskSwitchSimpleIcon #fIcon
 Ss0 f0 191 192 280 192 #arcP
 Ss0 f11 71 192 161 192 #arcP
@@ -215,12 +217,23 @@ Ss0 f14 template "view\\OrderPage.xhtml" #txt
 Ss0 f14 819 395 26 26 14 0 #rect
 Ss0 f14 @|EndRequestIcon #fIcon
 Ss0 f13 640 408 819 408 #arcP
+Ss0 f15 actionTable 'out=in;
+' #txt
+Ss0 f15 483 179 26 26 13 0 #rect
+Ss0 f15 @|IntermediateEventIcon #fIcon
+Ss0 f8 509 192 545 192 #arcP
+Ss0 f19 beanConfig "" #txt
+Ss0 f19 type Practice31.CustomerData #txt
+Ss0 f19 timeout 0 #txt
+Ss0 f19 414 180 36 24 20 -2 #rect
+Ss0 f19 @|EMailIcon #fIcon
+Ss0 f20 392 192 414 192 #arcP
+Ss0 f16 expr out #txt
+Ss0 f16 450 192 483 192 #arcP
 >Proto Ss0 .type Practice31.CustomerData #txt
 >Proto Ss0 .processKind NORMAL #txt
 >Proto Ss0 0 0 32 24 18 0 #rect
 >Proto Ss0 @|BIcon #fIcon
-Ss0 f2 mainOut f8 tail #connect
-Ss0 f8 head f7 in #connect
 Ss0 f7 out f6 tail #connect
 Ss0 f6 head f4 mainIn #connect
 Ss0 f9 out f0 tail #connect
@@ -237,3 +250,9 @@ Ss0 f25 mainOut f12 tail #connect
 Ss0 f12 head f22 mainIn #connect
 Ss0 f22 mainOut f13 tail #connect
 Ss0 f13 head f14 mainIn #connect
+Ss0 f15 mainOut f8 tail #connect
+Ss0 f8 head f7 in #connect
+Ss0 f2 mainOut f20 tail #connect
+Ss0 f20 head f19 mainIn #connect
+Ss0 f19 mainOut f16 tail #connect
+Ss0 f16 head f15 mainIn #connect
