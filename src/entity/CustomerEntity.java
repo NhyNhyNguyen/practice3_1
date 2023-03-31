@@ -1,5 +1,6 @@
 package entity;
 
+import java.io.File;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -23,33 +26,42 @@ public class CustomerEntity {
 	private Long id;
 
 	@Column(name = "NAME")
+	@NotNull
+	@Size(min=1, max=40)
 	private String name;
 
 	@Column(name = "PHONE")
+	@NotNull
+	@Size(min=1, max=15)
 	private String phone;
 
 	@Column(name = "BIRTHDAY")
+	@NotNull
 	private Date birthday;
 	
 	@Column(name = "ADDRESS")
+	@NotNull
+	@Size(min=1, max=40)
 	private String address;
 	
 	@Column(name = "EMAIL")
 	@Email
+	@NotNull
+	@Size(min=1, max=40)
 	private String email;
 	
 	@Column(name = "GENDER")
 	private boolean gender;
 
 	@Column(name = "DOCUMENTS")
-	private String documents;
+	private File documents;
 
 
 	public CustomerEntity() {
 	}
 	
 	public CustomerEntity(Long id, String name, String phone, Date birthday, String address, String email,
-			boolean gender, String documents) {
+			boolean gender, File documents) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -132,19 +144,20 @@ public class CustomerEntity {
 	
 	
 
-	public String getDocuments() {
+	public File getDocuments() {
 		return documents;
 	}
 
-	public void setDocuments(String documents) {
+	public void setDocuments(File documents) {
 		this.documents = documents;
 	}
 
 	@Override
 	public String toString() {
 		return "CustomerEntity [id=" + id + ", name=" + name + ", phone=" + phone + ", birthday=" + birthday
-				+ ", address=" + address + ", email=" + email + ", gender=" + gender + "]";
+				+ ", address=" + address + ", email=" + email + ", gender=" + gender + ", documents=" + documents + "]";
 	}
-	
+
+
 	
 }

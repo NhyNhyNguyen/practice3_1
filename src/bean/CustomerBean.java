@@ -4,7 +4,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import Practice31.CustomerData;
-import controllers.OrderController;
 import entity.CustomerEntity;
 import enums.Status;
 import services.CustomerService;

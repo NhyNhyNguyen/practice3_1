@@ -50,7 +50,9 @@ Cs0 f7 109 64 168 64 #arcP
 Cs0 f2 280 64 339 64 #arcP
 Cs0 f8 actionTable 'out=in;
 ' #txt
-Cs0 f8 actionCode in.bean.save(in.dataEntity); #txt
+Cs0 f8 actionCode 'import ch.ivyteam.ivy.environment.Ivy;
+Ivy.log().error(in.file.getAbsolutePath());
+in.bean.save(in.dataEntity);' #txt
 Cs0 f8 168 138 112 44 0 -8 #rect
 Cs0 f8 @|StepIcon #fIcon
 Cs0 f5 280 160 347 160 #arcP

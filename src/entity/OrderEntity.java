@@ -9,6 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import enums.Status;
 
@@ -20,19 +23,26 @@ public class OrderEntity {
 	@Column(name = "ID", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ORDER_SEQ")
 	@SequenceGenerator(name = "ORDER_SEQ", sequenceName = "ORDER_SEQ", allocationSize = 1, initialValue = 1)
+	@NotNull
 	private Long id;
 
 	@OneToOne()
 	@JoinColumn(name = "CUSTOMERID", referencedColumnName = "ID")
+	@NotNull
 	private CustomerEntity customer;
 
 	@Column(name = "PRODUCT_TYPE")
+	@NotNull
+	@Size(min = 1, max = 40)
 	private String productType;
 
 	@Column(name = "CONNECTED_POWER")
+	@NotNull
+	@Digits(integer = 999, fraction = 0)
 	private Integer connectedPower;
 
 	@Column(name = "CABLE_LENGTH") 
+	@Digits(integer = 999, fraction = 0)
 	private Integer cableLength;
 
 	@Column(name = "REQUIRE_METER")
@@ -42,6 +52,7 @@ public class OrderEntity {
 	private String battery;
 
 	@Column(name = "TOTAL")
+	@Digits(integer = Integer.MAX_VALUE, fraction = 3)
 	private Double total;
 
 	@Column(name = "CLECK_COMMENT")

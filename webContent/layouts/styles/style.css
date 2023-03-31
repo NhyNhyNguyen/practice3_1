@@ -55,6 +55,13 @@ body .ui-datatable thead th.ui-state-active .ui-inputfield {
 	border-radius: 9px;
 }
 
+.status-Reject {
+	padding: 7px;
+	background: #d32f2f;
+	color: #fff;
+	border-radius: 9px;
+}
+
 body .ui-dataview .ui-dataview-header .ui-dataview-layout-options .ui-button-icon-only
 	{
 	display: none;
@@ -98,15 +105,15 @@ body .ui-datatable tbody tr.ui-datatable-even {
 	box-sizing: border-box;
 }
 
-#form  .ui-outputlabel-rfi, #manager-approve-form .ui-outputlabel-rfi {
+#order-form .ui-outputlabel-rfi , #manager-approve-form .ui-outputlabel-rfi {
 	color: red;
 }
 
-#form .ui-outputlabel {
+#order-form .ui-outputlabel , #manager-approve-form .ui-outputlabel {
 	font-weight: bold
 }
 
-#form .ui-fieldset.ui-widget.ui-widget-content, #manager-approve-form .ui-fieldset.ui-widget.ui-widget-content
+#order-form .ui-fieldset.ui-widget.ui-widget-content, #manager-approve-form .ui-fieldset.ui-widget.ui-widget-content
 	{
 	border-radius: 10px !important;
 	box-shadow: rgba(0, 0, 0, 0.15) 0.95px 0.95px 1.6px;

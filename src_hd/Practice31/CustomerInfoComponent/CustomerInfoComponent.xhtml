@@ -53,7 +53,7 @@
 				<p:outputLabel for="dataCustomerBirthday" value="Birthday" />
 				<p:datePicker id="dataCustomerBirthday"
 					value="#{cc.attrs.customer.birthday}" timeOnly="false"
-					pattern="dd/MM/yyyy" style="width: 100%"
+					pattern="dd.MM.yyyy" style="width: 100%"
 					required="#{cc.attrs.editable}" readonly="#{!cc.attrs.editable}" />
 
 				<p:outputLabel for="dataCustomerAddress" value="Address" />
@@ -76,13 +76,17 @@
 					<f:selectItem itemLabel="Male" itemValue="true" />
 					<f:selectItem itemLabel="Female" itemValue="false" />
 				</p:selectOneRadio>
-				<p:outputLabel for="dataCustomerDocuments" value="Documents" />
 
-				<p:fileUpload id="dataCustomerDocuments" mode="simple"
-					multiple="false" skinSimple="true" sizeLimit="102400"
-					invalidSizeMessage="Maximum file size allowed is 100 KB" update=""
+				<p:outputLabel for="dataCustomerDocuments" value="Documents" />
+				<!-- 	<p:fileUpload id="dataCustomerDocuments" mode="simple"
+					multiple="false" skinSimple="true" sizeLimit="3072000"
+					invalidSizeMessage="Maximum file size allowed is 3MB" update=""
 					label="Choose File" value="#{cc.attrs.customer.documents}"
-					rendered="#{cc.attrs.editable}" />
+					rendered="#{cc.attrs.editable}" /> -->
+
+				<p:fileUpload value="#{cc.attrs.customer.documents}" mode="simple"
+					style="width:500px" id="dataCustomerDocuments" />
+
 
 			</p:panelGrid>
 		</p:fieldset>
@@ -96,11 +100,11 @@
 						ui-g-12 ui-md-3 ui-lg-2, 
 						ui-g-12 ui-md-9 ui-lg-4">
 
-				<p:outputLabel for="dataOrderProductType" value="Product Type" rendered ="#{cc.attrs.editable}"
-					styleClass="ui-label" />
+				<p:outputLabel for="dataOrderProductType" value="Product Type"
+					rendered="#{cc.attrs.editable}" styleClass="ui-label" />
 				<p:selectOneMenu id="dataOrderProductType"
 					value="#{cc.attrs.order.productType}" style="width:150px"
-					rendered ="#{cc.attrs.editable}">
+					required="#{cc.attrs.editable}" rendered="#{cc.attrs.editable}">
 					<f:selectItem itemLabel="Select product type" itemValue=""
 						noSelectionOption="true" />
 					<f:selectItem itemLabel="Solar" itemValue="Solar" />
@@ -108,10 +112,11 @@
 					<p:ajax update="#{cc.attrs.formId}" />
 				</p:selectOneMenu>
 
-				<p:outputLabel for="dataOrderProductType2" value="Product Type" rendered ="#{!cc.attrs.editable}"
-					styleClass="ui-label" />
-				<p:inputText id="dataOrderProductType2" value="#{cc.attrs.order.productType}" rendered ="#{!cc.attrs.editable}"
-					styleClass="ui-label" />
+				<p:outputLabel for="dataOrderProductType2" value="Product Type"
+					rendered="#{!cc.attrs.editable}" styleClass="ui-label" />
+				<p:inputText id="dataOrderProductType2"
+					value="#{cc.attrs.order.productType}"
+					rendered="#{!cc.attrs.editable}" styleClass="ui-label" />
 
 
 				<p:outputLabel for="dataOrderConnectedPower" value="Connected Power" />
@@ -131,10 +136,10 @@
 					disabled="#{!cc.attrs.editable}" />
 
 				<p:outputLabel for="dataOrderBattery" value="Battery"
-					rendered="#{cc.attrs.order.productType == 'Solar' and !cc.attrs.editable}}" />
+					rendered="#{cc.attrs.order.productType.equals('Solar') and !cc.attrs.editable}" />
 				<p:inputText id="dataOrderBattery" value="#{cc.attrs.order.battery}"
 					readonly="#{!cc.attrs.editable}"
-					rendered="#{cc.attrs.order.productType == 'Solar' and !cc.attrs.editable} "></p:inputText>
+					rendered="#{cc.attrs.order.productType.equals('Solar') and !cc.attrs.editable}"></p:inputText>
 
 				<p:outputLabel for="dataOrderBattery2" value="Battery"
 					rendered="#{cc.attrs.order.productType.equals('Solar') and cc.attrs.editable}" />
