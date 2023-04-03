@@ -32,16 +32,16 @@ Ss0 @EMail f19 '' #zField
 Ss0 @PushWFArc f20 '' #zField
 Ss0 @PushWFArc f16 '' #zField
 Ss0 @IntermediateEvent f24 '' #zField
-Ss0 @TaskSwitchSimple f12 '' #zField
 Ss0 @EMail f29 '' #zField
 Ss0 @PushWFArc f27 '' #zField
 Ss0 @IntermediateEvent f31 '' #zField
 Ss0 @PushWFArc f28 '' #zField
-Ss0 @TkArc f30 '' #zField
-Ss0 @PushWFArc f32 '' #zField
 Ss0 @TaskSwitch f10 '' #zField
 Ss0 @TkArc f21 '' #zField
 Ss0 @PushWFArc f23 '' #zField
+Ss0 @PushWFArc f32 '' #zField
+Ss0 @TkArc f30 '' #zField
+Ss0 @TaskSwitchSimple f12 '' #zField
 >Proto Ss0 Ss0 StartProcess #zField
 Ss0 f1 977 177 30 30 0 15 #rect
 Ss0 f1 @|EndIcon #fIcon
@@ -246,23 +246,6 @@ Ss0 f24 actionTable 'out=in;
 ' #txt
 Ss0 f24 179 195 26 26 13 0 #rect
 Ss0 f24 @|IntermediateEventIcon #fIcon
-Ss0 f12 actionTable 'out=in1;
-' #txt
-Ss0 f12 taskData 'TaskA.CATEGORY=ManagerApprove
-TaskA.DESC=Manager Approve
-TaskA.NAM=Manager Approve
-TaskA.ROL=Manager
-TaskA.TYPE=0' #txt
-Ss0 f12 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<elementInfo>
-    <language>
-        <name>Manager Approve</name>
-        <desc>Check Customer, Order Input</desc>
-    </language>
-</elementInfo>
-' #txt
-Ss0 f12 689 393 30 30 -49 26 #rect
-Ss0 f12 @|TaskSwitchSimpleIcon #fIcon
 Ss0 f29 beanConfig '"{/emailSubject ""Send Customer""/emailFrom ""dddnhi@gmail.com""/emailReplyTo """"/emailTo ""zennynguyen021298@gmail.com""/emailCC """"/emailBCC """"/exceptionMissingEmailAttachments ""false""/emailMessage ""Hi""/emailAttachments * }"' #txt
 Ss0 f29 type Practice31.CustomerData #txt
 Ss0 f29 timeout 0 #txt
@@ -281,7 +264,8 @@ Ss0 f31 actionTable 'out=in;
 Ss0 f31 eventIdConfig "String.valueOf(in.order.id)" #txt
 Ss0 f31 timeoutConfig 'ACTION_AFTER_TIMEOUT=CONTINUE_WITHOUT_EVENT
 EXCEPTION_PROCESS_START=
-TIMEOUT_SCRIPT=new Duration(5)' #txt
+TIMEOUT_SCRIPT=new Duration(1)' #txt
+Ss0 f31 taskData 'ivp.NAM=Wait customer confirm' #txt
 Ss0 f31 eventBeanClass "bean.IntermediateEventBean" #txt
 Ss0 f31 eventBeanConfig '"/src
 "' #txt
@@ -289,8 +273,6 @@ Ss0 f31 588 396 24 24 13 0 #rect
 Ss0 f31 @|IntermediateEventIcon #fIcon
 Ss0 f28 expr out #txt
 Ss0 f28 530 408 588 408 #arcP
-Ss0 f30 612 408 689 408 #arcP
-Ss0 f32 719 408 816 408 #arcP
 Ss0 f10 actionTable 'out=in1;
 ' #txt
 Ss0 f10 outLinks "TaskA.ivp" #txt
@@ -299,6 +281,7 @@ TaskA.DESC=Cleck Approve
 TaskA.NAM=Cleck Approve
 TaskA.ROL=Cleck
 TaskA.TYPE=0' #txt
+Ss0 f10 template "view\\TaskPage.xhtml" #txt
 Ss0 f10 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
@@ -313,6 +296,26 @@ Ss0 f21 63 408 146 408 #arcP
 Ss0 f23 expr data #txt
 Ss0 f23 outCond ivp=="TaskA.ivp" #txt
 Ss0 f23 174 408 272 408 #arcP
+Ss0 f32 719 408 816 408 #arcP
+Ss0 f30 612 408 689 408 #arcP
+Ss0 f12 actionTable 'out=in1;
+' #txt
+Ss0 f12 taskData 'TaskA.CATEGORY=ManagerApprove
+TaskA.DESC=Manager Approve
+TaskA.NAM=Manager Approve
+TaskA.ROL=Manager
+TaskA.TYPE=0' #txt
+Ss0 f12 template "view\\TaskPage.xhtml" #txt
+Ss0 f12 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>Manager Approve</name>
+        <desc>Check Customer, Order Input</desc>
+    </language>
+</elementInfo>
+' #txt
+Ss0 f12 689 393 30 30 -49 26 #rect
+Ss0 f12 @|TaskSwitchSimpleIcon #fIcon
 >Proto Ss0 .type Practice31.CustomerData #txt
 >Proto Ss0 .processKind NORMAL #txt
 >Proto Ss0 0 0 32 24 18 0 #rect
