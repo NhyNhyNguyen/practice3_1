@@ -85,12 +85,12 @@
 					rendered="#{cc.attrs.editable}" />
 				<p:panelGrid columns="2" rendered="#{!cc.attrs.editable}">
 					<p:commandButton value="Download" ajax="false"
-						rendered="#{cc.attrs.customer.file != null}"
+						rendered="#{cc.attrs.customer.file != null and cc.attrs.customer.fileName != 'null'}"
 						actionListener="#{logic.fileDownload}"
 						icon="ui-icon-cloud-download" id="downloadFileButton">
 						<p:fileDownload value="#{data.fileDownload}" />
 					</p:commandButton>
-					<p:outputLabel value ="#{cc.attrs.customer.fileName != null ? cc.attrs.customer.fileName : 'No File'}" >
+					<p:outputLabel style ="font-weight:normal" value ="#{cc.attrs.customer.fileName != null and cc.attrs.customer.fileName != 'null'? cc.attrs.customer.fileName : 'No File'}" >
 					</p:outputLabel>
 				</p:panelGrid>
 

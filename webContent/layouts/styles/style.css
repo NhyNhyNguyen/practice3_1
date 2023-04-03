@@ -41,27 +41,6 @@ body .ui-datatable thead th.ui-state-active .ui-inputfield {
 	background-image: none !important;
 }
 
-.status-Aprrove {
-	padding: 7px;
-	background: #006f94;
-	color: #fff;
-	border-radius: 9px;
-}
-
-.status-Processing {
-	padding: 7px;
-	background: #4CAF50;
-	color: #fff;
-	border-radius: 9px;
-}
-
-.status-Reject {
-	padding: 7px;
-	background: #d32f2f;
-	color: #fff;
-	border-radius: 9px;
-}
-
 body .ui-dataview .ui-dataview-header .ui-dataview-layout-options .ui-button-icon-only
 	{
 	display: none;
@@ -135,7 +114,7 @@ body .ui-datatable tbody tr.ui-datatable-even {
 	margin: 8px 8px !important;
 }
 
-.state-SUSPENDED {
+.state-SUSPENDED, .status-Reject {
 	padding: 0.3rem 0.6rem;
 	background-color: transparent;
 	color: #d32f2f;
@@ -144,7 +123,7 @@ body .ui-datatable tbody tr.ui-datatable-even {
 	border-radius: 4px;
 }
 
-.state-RESUMED{
+.state-RESUMED, .status-Processing {
 	padding: 0.3rem 0.6rem;
 	background-color: transparent;
 	color: #2196f3;
@@ -153,8 +132,7 @@ body .ui-datatable tbody tr.ui-datatable-even {
 	border-radius: 4px;
 }
 
-
-.state-DONE{
+.state-DONE, .status-Aprrove {
 	padding: 0.4rem 0.7rem;
 	background-color: transparent;
 	color: #689f38;
