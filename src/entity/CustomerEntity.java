@@ -1,6 +1,5 @@
 package entity;
 
-import java.io.File;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,10 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
+
+import ch.ivyteam.ivy.scripting.objects.File;
 
 @Entity
 @Table(name = "CUSTOMERS")
@@ -54,14 +56,19 @@ public class CustomerEntity {
 	private boolean gender;
 
 	@Column(name = "DOCUMENTS")
-	private File documents;
+	private String documents;
 
+	@Column(name = "FILE_NAME")
+	private String fileName;
+	
+	@Transient
+	private File file;
 
 	public CustomerEntity() {
 	}
 	
 	public CustomerEntity(Long id, String name, String phone, Date birthday, String address, String email,
-			boolean gender, File documents) {
+			boolean gender, String documents, String fileName) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -71,6 +78,7 @@ public class CustomerEntity {
 		this.email = email;
 		this.gender = gender;
 		this.documents = documents;
+		this.fileName = fileName;
 	}
 
 	public Long getId() {
@@ -144,12 +152,28 @@ public class CustomerEntity {
 	
 	
 
-	public File getDocuments() {
+	public String getDocuments() {
 		return documents;
 	}
 
-	public void setDocuments(File documents) {
+	public void setDocuments(String documents) {
 		this.documents = documents;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public File getFile() {
+		return file;
+	}
+
+	public void setFile(File file) {
+		this.file = file;
 	}
 
 	@Override

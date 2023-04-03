@@ -4,6 +4,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import Practice31.CustomerData;
+import ch.ivyteam.ivy.environment.Ivy;
 import entity.CustomerEntity;
 import enums.Status;
 import services.CustomerService;
@@ -15,6 +16,7 @@ public class CustomerBean {
 	}
 
 	public void save(CustomerData data) {
+		Ivy.log().error(data);
 		data.getOrder().setStatus(Status.CLECK_APPROVE);
 		CustomerEntity customer = CustomerService.getInstance().save(data.getCustomer());
 

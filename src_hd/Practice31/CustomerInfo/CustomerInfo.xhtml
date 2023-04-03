@@ -10,9 +10,6 @@
 		<ui:define name="title">CustomerInfo</ui:define>
 		<ui:define name="content">
 			<h:form id="order-form" enctype="multipart/form-data">
-				<p:fileUpload value="#{data.file}" mode="simple"
-					style="width:500px" id="sdfsd" />
-
 				<ic:Practice31.CustomerInfoComponent
 					order="#{data.dataEntity.order}"
 					customer="#{data.dataEntity.customer}" editable="true"
@@ -20,7 +17,7 @@
 					formId="order-form" />
 				<div class="command-btns">
 					<p:commandButton id="proceed" actionListener="#{logic.close}"
-						value="Approve" update="order-form" icon="ui-icon-check" />
+						value="Approve" update="order-form" icon="ui-icon-check" ajax="false"/>
 				</div>
 			</h:form>
 		</ui:define>

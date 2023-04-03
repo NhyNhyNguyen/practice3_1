@@ -15,11 +15,16 @@ Cs0 @PushWFArc f2 '' #zField
 Cs0 @UdEvent f3 '' #zField
 Cs0 @UdExitEnd f4 '' #zField
 Cs0 @PushWFArc f5 '' #zField
+Cs0 @UdEvent f6 '' #zField
+Cs0 @UdProcessEnd f7 '' #zField
+Cs0 @GridStep f8 '' #zField
+Cs0 @PushWFArc f9 '' #zField
+Cs0 @PushWFArc f10 '' #zField
 >Proto Cs0 Cs0 CustomerInfoComponentProcess #zField
 Cs0 f0 guid 18726EE5399D57FD #txt
-Cs0 f0 method start(Practice31.CustomerData) #txt
-Cs0 f0 inParameterDecl '<Practice31.CustomerData customerData> param;' #txt
-Cs0 f0 inParameterMapAction 'out.customerData=param.customerData;
+Cs0 f0 method start(entity.CustomerEntity) #txt
+Cs0 f0 inParameterDecl '<entity.CustomerEntity customer> param;' #txt
+Cs0 f0 inParameterMapAction 'out.customerData.customer=param.customer;
 ' #txt
 Cs0 f0 outParameterDecl '<Practice31.CustomerData customerData> result;' #txt
 Cs0 f0 outParameterMapAction 'result.customerData=in.customerData;
@@ -27,7 +32,7 @@ Cs0 f0 outParameterMapAction 'result.customerData=in.customerData;
 Cs0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
-        <name>start(CustomerData)</name>
+        <name>start(CustomerEntity)</name>
     </language>
 </elementInfo>
 ' #txt
@@ -51,6 +56,46 @@ Cs0 f3 @|UdEventIcon #fIcon
 Cs0 f4 213 149 22 22 14 0 #rect
 Cs0 f4 @|UdExitEndIcon #fIcon
 Cs0 f5 107 160 213 160 #arcP
+Cs0 f6 guid 187459F89C5C18E5 #txt
+Cs0 f6 actionTable 'out=in;
+' #txt
+Cs0 f6 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>fileDownload</name>
+    </language>
+</elementInfo>
+' #txt
+Cs0 f6 85 213 22 22 14 0 #rect
+Cs0 f6 @|UdEventIcon #fIcon
+Cs0 f7 365 213 22 22 14 0 #rect
+Cs0 f7 @|UdProcessEndIcon #fIcon
+Cs0 f8 actionTable 'out=in;
+' #txt
+Cs0 f8 actionCode 'import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import javax.faces.bean.ManagedBean;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
+
+InputStream stream;
+stream = new FileInputStream(in.customerData.customer.documents);
+in.fileDownload = new DefaultStreamedContent(stream, "text/txt", in.customerData.customer.fileName);
+
+
+' #txt
+Cs0 f8 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>DowloadContent</name>
+    </language>
+</elementInfo>
+' #txt
+Cs0 f8 214 212 36 24 20 -2 #rect
+Cs0 f8 @|StepIcon #fIcon
+Cs0 f9 107 224 214 224 #arcP
+Cs0 f10 250 224 365 224 #arcP
 >Proto Cs0 .type Practice31.CustomerInfoComponent.CustomerInfoComponentData #txt
 >Proto Cs0 .processKind HTML_DIALOG #txt
 >Proto Cs0 -8 -8 16 16 16 26 #rect
@@ -59,3 +104,7 @@ Cs0 f0 mainOut f2 tail #connect
 Cs0 f2 head f1 mainIn #connect
 Cs0 f3 mainOut f5 tail #connect
 Cs0 f5 head f4 mainIn #connect
+Cs0 f6 mainOut f9 tail #connect
+Cs0 f9 head f8 mainIn #connect
+Cs0 f8 mainOut f10 tail #connect
+Cs0 f10 head f7 mainIn #connect

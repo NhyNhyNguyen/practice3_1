@@ -2,3 +2,5 @@ CustomerInfoComponentData #class
 Practice31.CustomerInfoComponent #namespace
 customerData Practice31.CustomerData #field
 customerData PERSISTENT #fieldModifier
+fileDownload org.primefaces.model.StreamedContent #field
+fileDownload PERSISTENT #fieldModifier

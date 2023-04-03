@@ -78,15 +78,21 @@
 				</p:selectOneRadio>
 
 				<p:outputLabel for="dataCustomerDocuments" value="Documents" />
-				<!-- 	<p:fileUpload id="dataCustomerDocuments" mode="simple"
+				<p:fileUpload id="dataCustomerDocuments" mode="simple"
 					multiple="false" skinSimple="true" sizeLimit="3072000"
 					invalidSizeMessage="Maximum file size allowed is 3MB" update=""
-					label="Choose File" value="#{cc.attrs.customer.documents}"
-					rendered="#{cc.attrs.editable}" /> -->
-
-				<p:fileUpload value="#{cc.attrs.customer.documents}" mode="simple"
-					style="width:500px" id="dataCustomerDocuments" />
-
+					label="Choose File" value="#{cc.attrs.customer.file}"
+					rendered="#{cc.attrs.editable}" />
+				<p:panelGrid columns="2" rendered="#{!cc.attrs.editable}">
+					<p:commandButton value="Download" ajax="false"
+						rendered="#{cc.attrs.customer.file != null}"
+						actionListener="#{logic.fileDownload}"
+						icon="ui-icon-cloud-download" id="downloadFileButton">
+						<p:fileDownload value="#{data.fileDownload}" />
+					</p:commandButton>
+					<p:outputLabel value ="#{cc.attrs.customer.fileName != null ? cc.attrs.customer.fileName : 'No File'}" >
+					</p:outputLabel>
+				</p:panelGrid>
 
 			</p:panelGrid>
 		</p:fieldset>
