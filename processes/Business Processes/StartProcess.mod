@@ -31,15 +31,17 @@ Ss0 @TkArc f8 '' #zField
 Ss0 @EMail f19 '' #zField
 Ss0 @PushWFArc f20 '' #zField
 Ss0 @PushWFArc f16 '' #zField
-Ss0 @TaskSwitchSimple f21 '' #zField
-Ss0 @TkArc f10 '' #zField
-Ss0 @PushWFArc f23 '' #zField
 Ss0 @IntermediateEvent f24 '' #zField
 Ss0 @TaskSwitchSimple f12 '' #zField
-Ss0 @TkArc f27 '' #zField
 Ss0 @EMail f29 '' #zField
-Ss0 @PushWFArc f30 '' #zField
+Ss0 @PushWFArc f27 '' #zField
+Ss0 @IntermediateEvent f31 '' #zField
 Ss0 @PushWFArc f28 '' #zField
+Ss0 @TkArc f30 '' #zField
+Ss0 @PushWFArc f32 '' #zField
+Ss0 @TaskSwitch f10 '' #zField
+Ss0 @TkArc f21 '' #zField
+Ss0 @PushWFArc f23 '' #zField
 >Proto Ss0 Ss0 StartProcess #zField
 Ss0 f1 977 177 30 30 0 15 #rect
 Ss0 f1 @|EndIcon #fIcon
@@ -152,7 +154,7 @@ Ss0 f22 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Ss0 f22 648 386 112 44 -46 -8 #rect
+Ss0 f22 816 386 112 44 -46 -8 #rect
 Ss0 f22 @|UserDialogIcon #fIcon
 Ss0 f25 dialogId Practice31.CustomerInfo #txt
 Ss0 f25 startMethod start(Practice31.CustomerData) #txt
@@ -219,11 +221,16 @@ TaskA.NAM=Task Check Customer Input' #txt
 Ss0 f9 161 177 30 30 0 16 #rect
 Ss0 f9 @|TaskSwitchSimpleIcon #fIcon
 Ss0 f14 template "view\\OrderPage.xhtml" #txt
-Ss0 f14 819 395 26 26 14 0 #rect
+Ss0 f14 987 395 26 26 14 0 #rect
 Ss0 f14 @|EndRequestIcon #fIcon
-Ss0 f13 760 408 819 408 #arcP
+Ss0 f13 928 408 987 408 #arcP
 Ss0 f15 actionTable 'out=in;
 ' #txt
+Ss0 f15 eventIdConfig "String.valueOf(in.order.id)" #txt
+Ss0 f15 timeoutConfig 'ACTION_AFTER_TIMEOUT=NOTHING
+EXCEPTION_PROCESS_START=
+TIMEOUT_SCRIPT=new Duration("1S")' #txt
+Ss0 f15 eventBeanClass "ch.ivyteam.ivy.process.intermediateevent.beans.FileIntermediateEventBean" #txt
 Ss0 f15 483 179 26 26 13 0 #rect
 Ss0 f15 @|IntermediateEventIcon #fIcon
 Ss0 f8 509 192 545 192 #arcP
@@ -235,25 +242,6 @@ Ss0 f19 @|EMailIcon #fIcon
 Ss0 f20 392 192 414 192 #arcP
 Ss0 f16 expr out #txt
 Ss0 f16 450 192 483 192 #arcP
-Ss0 f21 actionTable 'out=in1;
-' #txt
-Ss0 f21 taskData 'TaskA.CATEGORY=TaskCheckCustomerInput
-TaskA.DESC=Check Customer, Order Input
-TaskA.NAM=Task Check Customer Input
-TaskA.ROL=Cleck
-TaskA.TYPE=0' #txt
-Ss0 f21 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<elementInfo>
-    <language>
-        <name>Cleck Approve</name>
-        <desc>Cleck Approve</desc>
-    </language>
-</elementInfo>
-' #txt
-Ss0 f21 153 393 30 30 -61 34 #rect
-Ss0 f21 @|TaskSwitchSimpleIcon #fIcon
-Ss0 f10 63 408 153 408 #arcP
-Ss0 f23 183 408 272 408 #arcP
 Ss0 f24 actionTable 'out=in;
 ' #txt
 Ss0 f24 179 195 26 26 13 0 #rect
@@ -273,17 +261,58 @@ Ss0 f12 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Ss0 f12 441 393 30 30 -52 29 #rect
+Ss0 f12 689 393 30 30 -49 26 #rect
 Ss0 f12 @|TaskSwitchSimpleIcon #fIcon
-Ss0 f27 384 408 441 408 #arcP
-Ss0 f29 beanConfig "" #txt
+Ss0 f29 beanConfig '"{/emailSubject ""Send Customer""/emailFrom ""dddnhi@gmail.com""/emailReplyTo """"/emailTo ""zennynguyen021298@gmail.com""/emailCC """"/emailBCC """"/exceptionMissingEmailAttachments ""false""/emailMessage ""Hi""/emailAttachments * }"' #txt
 Ss0 f29 type Practice31.CustomerData #txt
 Ss0 f29 timeout 0 #txt
-Ss0 f29 502 396 36 24 20 -2 #rect
+Ss0 f29 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>Send Customer Email</name>
+    </language>
+</elementInfo>
+' #txt
+Ss0 f29 494 396 36 24 -55 26 #rect
 Ss0 f29 @|EMailIcon #fIcon
-Ss0 f30 471 408 502 408 #arcP
+Ss0 f27 384 408 494 408 #arcP
+Ss0 f31 actionTable 'out=in;
+' #txt
+Ss0 f31 eventIdConfig "String.valueOf(in.order.id)" #txt
+Ss0 f31 timeoutConfig 'ACTION_AFTER_TIMEOUT=CONTINUE_WITHOUT_EVENT
+EXCEPTION_PROCESS_START=
+TIMEOUT_SCRIPT=new Duration(5)' #txt
+Ss0 f31 eventBeanClass "bean.IntermediateEventBean" #txt
+Ss0 f31 eventBeanConfig '"/src
+"' #txt
+Ss0 f31 588 396 24 24 13 0 #rect
+Ss0 f31 @|IntermediateEventIcon #fIcon
 Ss0 f28 expr out #txt
-Ss0 f28 538 408 648 408 #arcP
+Ss0 f28 530 408 588 408 #arcP
+Ss0 f30 612 408 689 408 #arcP
+Ss0 f32 719 408 816 408 #arcP
+Ss0 f10 actionTable 'out=in1;
+' #txt
+Ss0 f10 outLinks "TaskA.ivp" #txt
+Ss0 f10 taskData 'TaskA.CATEGORY=CleckApprove
+TaskA.DESC=Cleck Approve
+TaskA.NAM=Cleck Approve
+TaskA.ROL=Cleck
+TaskA.TYPE=0' #txt
+Ss0 f10 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>Cleck Approve</name>
+    </language>
+</elementInfo>
+' #txt
+Ss0 f10 146 394 28 28 14 0 #rect
+Ss0 f10 @|TaskSwitchIcon #fIcon
+Ss0 f21 var in1 #txt
+Ss0 f21 63 408 146 408 #arcP
+Ss0 f23 expr data #txt
+Ss0 f23 outCond ivp=="TaskA.ivp" #txt
+Ss0 f23 174 408 272 408 #arcP
 >Proto Ss0 .type Practice31.CustomerData #txt
 >Proto Ss0 .processKind NORMAL #txt
 >Proto Ss0 0 0 32 24 18 0 #rect
@@ -306,13 +335,15 @@ Ss0 f2 mainOut f20 tail #connect
 Ss0 f20 head f19 mainIn #connect
 Ss0 f19 mainOut f16 tail #connect
 Ss0 f16 head f15 mainIn #connect
-Ss0 f26 mainOut f10 tail #connect
-Ss0 f10 head f21 in #connect
-Ss0 f21 out f23 tail #connect
-Ss0 f23 head f25 mainIn #connect
 Ss0 f25 mainOut f27 tail #connect
-Ss0 f27 head f12 in #connect
-Ss0 f12 out f30 tail #connect
-Ss0 f30 head f29 mainIn #connect
+Ss0 f27 head f29 mainIn #connect
 Ss0 f29 mainOut f28 tail #connect
-Ss0 f28 head f22 mainIn #connect
+Ss0 f28 head f31 mainIn #connect
+Ss0 f31 mainOut f30 tail #connect
+Ss0 f30 head f12 in #connect
+Ss0 f12 out f32 tail #connect
+Ss0 f32 head f22 mainIn #connect
+Ss0 f26 mainOut f21 tail #connect
+Ss0 f21 head f10 in #connect
+Ss0 f10 out f23 tail #connect
+Ss0 f23 head f25 mainIn #connect

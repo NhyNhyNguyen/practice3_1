@@ -10,7 +10,7 @@
 	<ui:composition template="/layouts/basic-8.xhtml">
 		<ui:define name="title">Home Page</ui:define>
 		<ui:define name="content">
-			<h2>List Task</h2>
+			<h2>List Task( #{taskController.tasks.size()})</h2>
 
 			<h:form id="task-list-form">
 				<p:dataView var="task" value="#{taskController.tasks}" rows="5"
@@ -41,11 +41,17 @@
 										style="font-size: 13px;" />
 									<h:outputText value="#{task.getActivatorName()}"
 										style="font-size: 13px;" />
+									<h:outputText value="State:" styleClass="text-secondary"
+										style="font-size: 13px;" />
+									<h:outputText value="#{task.state}"
+										styleClass="state-#{task.state}" style="font-size: 13px;" />
 								</h:panelGrid>
-								<a style="float: right"
+								<p:link style="float: right" rendered="#{task.state == 'SUSPENDED'}"
 									href="#{taskController.getRequestPath(task)}"
-									id="taskLinkRow_#{task}"><span
-									class="fa fa-play-circle fa-2x" /></a>
+									id="taskLinkRow_#{task}">
+									<span class="fa fa-play-circle fa-2x" />
+								</p:link>
+
 							</h:panelGrid>
 						</div>
 					</p:dataViewListItem>

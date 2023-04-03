@@ -105,16 +105,17 @@ body .ui-datatable tbody tr.ui-datatable-even {
 	box-sizing: border-box;
 }
 
-#order-form .ui-outputlabel-rfi , #manager-approve-form .ui-outputlabel-rfi {
+#order-form .ui-outputlabel-rfi, #manager-approve-form .ui-outputlabel-rfi
+	{
 	color: red;
 }
 
-#order-form .ui-outputlabel , #manager-approve-form .ui-outputlabel {
+#order-form .ui-outputlabel, #manager-approve-form .ui-outputlabel {
 	font-weight: bold
 }
 
-#order-form .ui-fieldset.ui-widget.ui-widget-content, #manager-approve-form .ui-fieldset.ui-widget.ui-widget-content
-	{
+#order-form .ui-fieldset.ui-widget.ui-widget-content,
+	#manager-approve-form .ui-fieldset.ui-widget.ui-widget-content {
 	border-radius: 10px !important;
 	box-shadow: rgba(0, 0, 0, 0.15) 0.95px 0.95px 1.6px;
 }
@@ -132,4 +133,32 @@ body .ui-datatable tbody tr.ui-datatable-even {
 .warning-button {
 	background-color: #607d8b !important;
 	margin: 8px 8px !important;
+}
+
+.state-SUSPENDED {
+	padding: 0.3rem 0.6rem;
+	background-color: transparent;
+	color: #d32f2f;
+	border: 2px solid;
+	font-size: 12px !important;
+	border-radius: 4px;
+}
+
+.state-RESUMED{
+	padding: 0.3rem 0.6rem;
+	background-color: transparent;
+	color: #2196f3;
+	border: 2px solid;
+	font-size: 12px !important;
+	border-radius: 4px;
+}
+
+
+.state-DONE{
+	padding: 0.4rem 0.7rem;
+	background-color: transparent;
+	color: #689f38;
+	border: 2px solid;
+	font-size: 12px !important;
+	border-radius: 4px;
 }
