@@ -23,10 +23,11 @@
 					currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
 					rowsPerPageTemplate="5,10,{ShowAll|'All'}"
 					rowStyleClass="#{order.id % 2 == 0 ? 'tableRow' : ''}"
-					emptyMessage="No orders found with given criteria">
+					emptyMessage="No orders found with given criteria"
+					rowIndexVar="row" >
 					<p:column headerText="ID" styleClass="filterColumn"
 						style="width:20px">
-						<h:outputText value="#{order.id}" />
+						<h:outputText value="#{row}" />
 					</p:column>
 					<p:column headerText="Customer Name"
 						filterBy="#{order.customer.name}" filterMatchMode="contains"

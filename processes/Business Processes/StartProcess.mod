@@ -19,8 +19,6 @@ Ss0 @Page f17 '' #zField
 Ss0 @UserDialog f22 '' #zField
 Ss0 @UserDialog f25 '' #zField
 Ss0 @StartRequest f26 '' #zField
-Ss0 @PushWFArc f10 '' #zField
-Ss0 @PushWFArc f12 '' #zField
 Ss0 @PushWFArc f6 '' #zField
 Ss0 @TaskSwitchSimple f7 '' #zField
 Ss0 @PushWFArc f0 '' #zField
@@ -33,6 +31,15 @@ Ss0 @TkArc f8 '' #zField
 Ss0 @EMail f19 '' #zField
 Ss0 @PushWFArc f20 '' #zField
 Ss0 @PushWFArc f16 '' #zField
+Ss0 @TaskSwitchSimple f21 '' #zField
+Ss0 @TkArc f10 '' #zField
+Ss0 @PushWFArc f23 '' #zField
+Ss0 @IntermediateEvent f24 '' #zField
+Ss0 @TaskSwitchSimple f12 '' #zField
+Ss0 @TkArc f27 '' #zField
+Ss0 @EMail f29 '' #zField
+Ss0 @PushWFArc f30 '' #zField
+Ss0 @PushWFArc f28 '' #zField
 >Proto Ss0 Ss0 StartProcess #zField
 Ss0 f1 977 177 30 30 0 15 #rect
 Ss0 f1 @|EndIcon #fIcon
@@ -145,7 +152,7 @@ Ss0 f22 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Ss0 f22 528 386 112 44 -46 -8 #rect
+Ss0 f22 648 386 112 44 -46 -8 #rect
 Ss0 f22 @|UserDialogIcon #fIcon
 Ss0 f25 dialogId Practice31.CustomerInfo #txt
 Ss0 f25 startMethod start(Practice31.CustomerData) #txt
@@ -195,8 +202,6 @@ Ss0 f26 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 Ss0 f26 @C|.responsibility Everybody #txt
 Ss0 f26 33 393 30 30 -24 17 #rect
 Ss0 f26 @|StartRequestIcon #fIcon
-Ss0 f10 63 408 272 408 #arcP
-Ss0 f12 384 408 528 408 #arcP
 Ss0 f6 575 192 632 192 #arcP
 Ss0 f7 actionTable 'out=in1;
 ' #txt
@@ -216,7 +221,7 @@ Ss0 f9 @|TaskSwitchSimpleIcon #fIcon
 Ss0 f14 template "view\\OrderPage.xhtml" #txt
 Ss0 f14 819 395 26 26 14 0 #rect
 Ss0 f14 @|EndRequestIcon #fIcon
-Ss0 f13 640 408 819 408 #arcP
+Ss0 f13 760 408 819 408 #arcP
 Ss0 f15 actionTable 'out=in;
 ' #txt
 Ss0 f15 483 179 26 26 13 0 #rect
@@ -230,6 +235,55 @@ Ss0 f19 @|EMailIcon #fIcon
 Ss0 f20 392 192 414 192 #arcP
 Ss0 f16 expr out #txt
 Ss0 f16 450 192 483 192 #arcP
+Ss0 f21 actionTable 'out=in1;
+' #txt
+Ss0 f21 taskData 'TaskA.CATEGORY=TaskCheckCustomerInput
+TaskA.DESC=Check Customer, Order Input
+TaskA.NAM=Task Check Customer Input
+TaskA.ROL=Cleck
+TaskA.TYPE=0' #txt
+Ss0 f21 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>Cleck Approve</name>
+        <desc>Cleck Approve</desc>
+    </language>
+</elementInfo>
+' #txt
+Ss0 f21 153 393 30 30 -61 34 #rect
+Ss0 f21 @|TaskSwitchSimpleIcon #fIcon
+Ss0 f10 63 408 153 408 #arcP
+Ss0 f23 183 408 272 408 #arcP
+Ss0 f24 actionTable 'out=in;
+' #txt
+Ss0 f24 179 195 26 26 13 0 #rect
+Ss0 f24 @|IntermediateEventIcon #fIcon
+Ss0 f12 actionTable 'out=in1;
+' #txt
+Ss0 f12 taskData 'TaskA.CATEGORY=ManagerApprove
+TaskA.DESC=Manager Approve
+TaskA.NAM=Manager Approve
+TaskA.ROL=Manager
+TaskA.TYPE=0' #txt
+Ss0 f12 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>Manager Approve</name>
+        <desc>Check Customer, Order Input</desc>
+    </language>
+</elementInfo>
+' #txt
+Ss0 f12 441 393 30 30 -52 29 #rect
+Ss0 f12 @|TaskSwitchSimpleIcon #fIcon
+Ss0 f27 384 408 441 408 #arcP
+Ss0 f29 beanConfig "" #txt
+Ss0 f29 type Practice31.CustomerData #txt
+Ss0 f29 timeout 0 #txt
+Ss0 f29 502 396 36 24 20 -2 #rect
+Ss0 f29 @|EMailIcon #fIcon
+Ss0 f30 471 408 502 408 #arcP
+Ss0 f28 expr out #txt
+Ss0 f28 538 408 648 408 #arcP
 >Proto Ss0 .type Practice31.CustomerData #txt
 >Proto Ss0 .processKind NORMAL #txt
 >Proto Ss0 0 0 32 24 18 0 #rect
@@ -244,10 +298,6 @@ Ss0 f4 mainOut f18 tail #connect
 Ss0 f18 head f17 mainIn #connect
 Ss0 f17 out f3 tail #connect
 Ss0 f3 head f1 mainIn #connect
-Ss0 f26 mainOut f10 tail #connect
-Ss0 f10 head f25 mainIn #connect
-Ss0 f25 mainOut f12 tail #connect
-Ss0 f12 head f22 mainIn #connect
 Ss0 f22 mainOut f13 tail #connect
 Ss0 f13 head f14 mainIn #connect
 Ss0 f15 mainOut f8 tail #connect
@@ -256,3 +306,13 @@ Ss0 f2 mainOut f20 tail #connect
 Ss0 f20 head f19 mainIn #connect
 Ss0 f19 mainOut f16 tail #connect
 Ss0 f16 head f15 mainIn #connect
+Ss0 f26 mainOut f10 tail #connect
+Ss0 f10 head f21 in #connect
+Ss0 f21 out f23 tail #connect
+Ss0 f23 head f25 mainIn #connect
+Ss0 f25 mainOut f27 tail #connect
+Ss0 f27 head f12 in #connect
+Ss0 f12 out f30 tail #connect
+Ss0 f30 head f29 mainIn #connect
+Ss0 f29 mainOut f28 tail #connect
+Ss0 f28 head f22 mainIn #connect

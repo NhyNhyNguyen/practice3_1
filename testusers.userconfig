@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <userConfig>
     <user>
-        <username>ntynhi</username>
-        <password>admin</password>
-        <fullName>ntynhi</fullName>
+        <username>manager</username>
+        <password>123</password>
+        <fullName>manager</fullName>
+        <role>Manager</role>
+    </user>
+    <user>
+        <username>cleck</username>
+        <password>123</password>
+        <fullName>cleck </fullName>
+        <role>Cleck</role>
     </user>
 </userConfig>

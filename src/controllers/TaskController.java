@@ -1,12 +1,12 @@
 package controllers;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.view.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.workflow.ITask;
@@ -24,9 +24,22 @@ public class TaskController extends AbstractController implements Serializable {
 		update();
 		Ivy.log().error("Init task: " + tasks);
 	}
+	
+	public String getRequestPath(ITask iTask) {
+		return String.format("/ivy/pro/%s?taskId=%s", iTask.getFullRequestPath(), String.valueOf(iTask.getId()));
+	}
 
 	public void redirect() {
 		super.redirect("TaskPage.xhtml");
+	}
+	
+	public void redirectProcess(ITask iTask) {
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect(getRequestPath(iTask));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void update() {

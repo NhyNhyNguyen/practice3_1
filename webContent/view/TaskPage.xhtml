@@ -20,21 +20,32 @@
 					listIcon="pi pi-bars">
 					<p:dataViewListItem>
 						<div class="card flex justify-content-center">
-							<h:panelGrid columns="2">
+							<h:panelGrid columns="3" width="100%">
 								<span class="fa fa-circle task-priority-normal "></span>
 								<h:panelGrid columns="2">
 									<h:outputText value="Name:" styleClass="text-secondary" />
-									<h:outputText
-										style=" font-weight: bold"
+									<h:outputText style=" font-weight: bold"
 										value="#{'(#'.concat(task.id).concat(') ').concat(task.name)}" />
 
-									<h:outputText value="Description:" styleClass="text-secondary"  style="font-size: 13px;"/>
-									<h:outputText value= "#{task.description == '' ? 'No descrption' : task.description} " style="font-size: 13px;"/>
-
-									<h:outputText value="Time Create:" styleClass="text-secondary" style="font-size: 13px;"/>
+									<h:outputText value="Description:" styleClass="text-secondary"
+										style="font-size: 13px;" />
 									<h:outputText
-										value="#{task.getStartTimestamp()}" style="font-size: 13px;"/>
+										value="#{task.description == '' ? 'No descrption' : task.description} "
+										style="font-size: 13px;" />
+
+									<h:outputText value="Time Create:" styleClass="text-secondary"
+										style="font-size: 13px;" />
+									<h:outputText value="#{task.getStartTimestamp()}"
+										style="font-size: 13px;" />
+									<h:outputText value="Activator:" styleClass="text-secondary"
+										style="font-size: 13px;" />
+									<h:outputText value="#{task.getActivatorName()}"
+										style="font-size: 13px;" />
 								</h:panelGrid>
+								<a style="float: right"
+									href="#{taskController.getRequestPath(task)}"
+									id="taskLinkRow_#{task}"><span
+									class="fa fa-play-circle fa-2x" /></a>
 							</h:panelGrid>
 						</div>
 					</p:dataViewListItem>
