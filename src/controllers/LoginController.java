@@ -24,6 +24,7 @@ public class LoginController extends AbstractController implements Serializable 
 		this.username = "";
 		this.password = "";
 		this.loggedIn = false;
+		
 		UserService.getInstance().logout();
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Logout Sucessfull", "");
 		super.redirect("HomePage.xhtml", message);

@@ -22,34 +22,47 @@ public class CustomerBean {
 	public List<String> batteryTypes = BatteryType.getNames();
 	public List<String> productTypes = ProductType.getNames();
 
+	/**
+	 * Clerk check input, save data order
+	 * @param data
+	 */
 	public void save(CustomerData data) {
-		Ivy.log().error(data);
-		data.getOrder().setStatus(Status.CLECK_APPROVE);
-		CustomerEntity customer = CustomerService.getInstance().save(data.getCustomer());
-
-		data.getOrder().setCustomer(customer);
-		OrderService.getInstance().save(data.getOrder());
-
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Save customer sucessfull", "");
-		FacesContext.getCurrentInstance().addMessage("growl", message);
+		if (data.getOrder().getStatus() == Status.REJECT) {
+			data.getOrder().setStatus(Status.CLECK_APPROVE);
+			update(data);
+		} else {
+			data.getOrder().setStatus(Status.CLECK_APPROVE);
+			saveData(data);
+		}
 	}
 
+	/**
+	 * Manager reject order
+	 * @param data
+	 */
 	public void reject(CustomerData data) {
 		data.getOrder().setStatus(Status.REJECT);
-		data.getOrder().setCustomer(data.getCustomer());
-		OrderService.getInstance().update(data.getOrder());
-
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Reject customer sucessfull", "");
-		FacesContext.getCurrentInstance().addMessage("growl", message);
+		update(data);
 	}
 
+	/**
+	 * Manager approve order
+	 * @param data
+	 */
 	public void approve(CustomerData data) {
 		data.getOrder().setStatus(Status.MANAGER_APPROVE);
+		update(data);
+	}
+
+	public void update(CustomerData data) {
 		data.getOrder().setCustomer(data.getCustomer());
 		OrderService.getInstance().update(data.getOrder());
+	}
 
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Manager Approve sucessfull", "");
-		FacesContext.getCurrentInstance().addMessage("growl", message);
+	public void saveData(CustomerData data) {
+		CustomerEntity customer = CustomerService.getInstance().save(data.getCustomer());
+		data.getOrder().setCustomer(customer);
+		OrderService.getInstance().save(data.getOrder());
 	}
 
 	public List<String> getBatteryTypes() {

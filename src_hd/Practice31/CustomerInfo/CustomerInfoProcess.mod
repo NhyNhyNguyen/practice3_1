@@ -54,6 +54,7 @@ Cs0 f8 actionCode 'import ch.ivyteam.ivy.environment.Ivy;
 Ivy.log().error(in.dataEntity.customer.file.getAbsolutePath());
 in.dataEntity.customer.documents = in.dataEntity.customer.file.getAbsolutePath();
 in.dataEntity.customer.fileName = in.dataEntity.customer.file.getName();
+in.dataEntity.order.id = ivy.case.getIdentifier();
 in.bean.save(in.dataEntity);' #txt
 Cs0 f8 168 138 112 44 0 -8 #rect
 Cs0 f8 @|StepIcon #fIcon

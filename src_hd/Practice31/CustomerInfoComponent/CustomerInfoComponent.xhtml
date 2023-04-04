@@ -82,15 +82,15 @@
 					multiple="false" skinSimple="true" sizeLimit="3072000"
 					invalidSizeMessage="Maximum file size allowed is 3MB" update=""
 					label="Choose File" value="#{cc.attrs.customer.file}"
-					rendered="#{cc.attrs.editable}" />
-				<p:panelGrid columns="2" rendered="#{!cc.attrs.editable}">
+					rendered="#{cc.attrs.editable and cc.attrs.customer.file == null }" />
+				<p:panelGrid columns="2">
 					<p:commandButton value="Download" ajax="false"
 						rendered="#{cc.attrs.customer.file != null and cc.attrs.customer.fileName != 'null'}"
 						actionListener="#{logic.fileDownload}"
 						icon="ui-icon-cloud-download" id="downloadFileButton">
 						<p:fileDownload value="#{data.fileDownload}" />
 					</p:commandButton>
-					<p:outputLabel style="font-weight:normal"
+					<p:outputLabel style="font-weight:normal" rendered="#{(cc.attrs.customer.file != null and cc.attrs.customer.fileName != 'null' ) or !cc.attrs.editable}"
 						value="#{cc.attrs.customer.fileName != null and cc.attrs.customer.fileName != 'null'? cc.attrs.customer.fileName : 'No File'}">
 					</p:outputLabel>
 				</p:panelGrid>
@@ -161,16 +161,17 @@
 				<p:outputLabel for="dataOrderTotal" value="Total" />
 				<p:inputText id="dataOrderTotal" value="#{cc.attrs.order.total}"
 					readonly="#{!cc.attrs.editable}"></p:inputText>
+
 				<p:outputLabel for="dataOrderCleckComment" value="Cleck Comment" />
 				<p:inputTextarea id="dataOrderCleckComment" rows="2" cols="33"
 					value="#{cc.attrs.order.cleckComment}"
 					readonly="#{!cc.attrs.editable}" />
 
-				<p:outputLabel rendered="#{cc.attrs.showManagerComment}"
+				<p:outputLabel rendered="#{cc.attrs.order.managerComment != null or cc.attrs.showManagerComment }"
 					for="dataOrderManageComment" value="Manager Comment" />
-				<p:inputTextarea rendered="#{cc.attrs.showManagerComment}"
-					id="dataOrderManageComment" rows="2" cols="33"
-					value="#{cc.attrs.order.managerComment}" />
+				<p:inputTextarea rendered="#{cc.attrs.order.managerComment != null  or cc.attrs.showManagerComment}"
+					readonly="#{cc.attrs.editable}" id="dataOrderManageComment"
+					rows="2" cols="33" value="#{cc.attrs.order.managerComment}" />
 			</p:panelGrid>
 		</p:fieldset>
 		<br />
