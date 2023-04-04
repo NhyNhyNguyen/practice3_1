@@ -17,11 +17,12 @@ import enums.Status;
 import services.OrderService;
 
 @ManagedBean
+@SessionScoped
 public class OrderController extends AbstractController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<OrderEntity> orders = new ArrayList<>();
+	private static List<OrderEntity> orders = new ArrayList<>();
 	private List<OrderEntity> filterOrders = new ArrayList<>();
 	private List<String> types = ProductType.getNames();
 	private List<String> requireMeters = Arrays.asList("YES", "NO");
@@ -47,10 +48,6 @@ public class OrderController extends AbstractController implements Serializable 
 
 	public List<OrderEntity> getOrders() {
 		return orders;
-	}
-
-	public void setOrders(List<OrderEntity> orders) {
-		this.orders = orders;
 	}
 
 	public List<OrderEntity> getFilterOrders() {

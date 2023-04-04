@@ -138,7 +138,7 @@ Ss0 f10 outLinks "TaskA.ivp" #txt
 Ss0 f10 taskData 'TaskA.CATEGORY=CheckCustomerInput
 TaskA.DESC=Check customer input
 TaskA.NAM=Check customer input
-TaskA.ROL=Cleck
+TaskA.ROL=CLERK
 TaskA.TYPE=0' #txt
 Ss0 f10 template "view\\TaskPage.xhtml" #txt
 Ss0 f10 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -162,7 +162,7 @@ Ss0 f12 actionTable 'out=in1;
 Ss0 f12 taskData 'TaskA.CATEGORY=ManagerApprove
 TaskA.DESC=Manager Approve
 TaskA.NAM=Manager Approve
-TaskA.ROL=Manager
+TaskA.ROL=MANAGER
 TaskA.TYPE=0' #txt
 Ss0 f12 template "view\\TaskPage.xhtml" #txt
 Ss0 f12 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>

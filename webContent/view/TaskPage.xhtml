@@ -13,7 +13,7 @@
 			<h2>List Task( #{taskController.tasks.size()})</h2>
 
 			<h:form id="task-list-form">
-				<p:dataView var="task" value="#{taskController.tasks}" rows="5"
+				<p:dataView var="task" value="#{taskController.tasks}" rows="5" rendered="#{taskController.tasks.size() > 0}"
 					paginator="true"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					paginatorPosition="bottom" gridIcon="pi pi-th-large"
