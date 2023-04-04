@@ -13,15 +13,16 @@
 			<h2 class="mt-0">Available
 				Orders(#{orderController.orders.size()})</h2>
 			<h:form id="order-list">
-				<p:dataTable id="orderTable" var="order" widgetVar="orderTable"
-					value="#{orderController.orders}" sortMode="single"
+				<p:dataTable id="orderTable" widgetVar="orderTable"
+					value="#{orderController.orders}" var="order" sortMode="single"
 					paginator="true" paginatorPosition="bottom" rows="10"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
 					rowsPerPageTemplate="5,10,{ShowAll|'All'}"
 					rowStyleClass="#{row % 2 == 0 ? 'tableRow' : ''}"
 					emptyMessage="No orders found with given criteria"
-					rowIndexVar="row">
+					rowIndexVar="row"
+					filteredValue="#{orderController.filterOrders}">
 					<f:facet name="header">
 						<div id="new-order">
 							<p:outputPanel
@@ -34,7 +35,7 @@
 						</div>
 					</f:facet>
 
-					<p:column headerText="ID" sortBy="#{row}" style="width:20px">
+					<p:column headerText="ID" style="width:20px">
 						<h:outputText value="#{row + 1}" />
 					</p:column>
 					<p:column headerText="Customer Name"
@@ -94,7 +95,9 @@
 								<f:selectItems value="#{orderController.batteryTypes}" />
 							</p:selectOneMenu>
 						</f:facet>
-						<h:outputText value="#{order.battery}" />
+						<h:outputText
+							value="#{order.battery == null ? '' : order.battery}"
+							styleClass="battery battery-#{order.battery}" />
 					</p:column>
 
 					<p:column headerText="Total" sortBy="#{order.total}"
