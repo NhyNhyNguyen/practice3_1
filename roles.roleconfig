@@ -2,9 +2,9 @@
 <role>
     <identifier>Everybody</identifier>
     <role>
-        <identifier>Cleck</identifier>
+        <identifier>MANAGER</identifier>
     </role>
     <role>
-        <identifier>Manager</identifier>
+        <identifier>CLERK</identifier>
     </role>
 </role>

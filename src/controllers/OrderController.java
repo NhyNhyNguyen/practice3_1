@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,10 +10,12 @@ import javax.faces.bean.ManagedBean;
 
 import ch.ivyteam.ivy.environment.Ivy;
 import entity.OrderEntity;
+import enums.BatteryType;
 import enums.ProductType;
+import enums.Status;
 import services.OrderService;
 
-@ManagedBean 
+@ManagedBean
 public class OrderController extends AbstractController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -20,6 +23,9 @@ public class OrderController extends AbstractController implements Serializable 
 	private List<OrderEntity> orders = new ArrayList<>();
 	private List<OrderEntity> filterOrders = new ArrayList<>();
 	private List<String> types = ProductType.getNames();
+	private List<String> requireMeters = Arrays.asList("YES", "NO");
+	private List<String> batteryTypes = BatteryType.getNames();
+	private List<String> statusTypes = Status.getNames();
 
 	public static OrderController instance;
 
@@ -67,6 +73,18 @@ public class OrderController extends AbstractController implements Serializable 
 
 	public void setTypes(List<String> type) {
 		this.types = type;
+	}
+
+	public List<String> getRequireMeters() {
+		return requireMeters;
+	}
+
+	public List<String> getBatteryTypes() {
+		return batteryTypes;
+	}
+
+	public List<String> getStatusTypes() {
+		return statusTypes;
 	}
 
 }

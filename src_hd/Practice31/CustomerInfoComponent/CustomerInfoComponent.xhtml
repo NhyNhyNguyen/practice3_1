@@ -127,12 +127,12 @@
 					rendered="#{!cc.attrs.editable}" styleClass="ui-label" />
 
 
-				<p:outputLabel for="dataOrderConnectedPower" value="Connected Power" />
+				<p:outputLabel for="dataOrderConnectedPower" value="Connected Power (Kw)" />
 				<p:inputText id="dataOrderConnectedPower"
 					value="#{cc.attrs.order.connectedPower}"
 					required="#{cc.attrs.editable}" readonly="#{!cc.attrs.editable}"></p:inputText>
 
-				<p:outputLabel for="dataOrderCableLength" value="Cable Length" />
+				<p:outputLabel for="dataOrderCableLength" value="Cable Length (m)" />
 				<p:inputText id="dataOrderCableLength"
 					value="#{cc.attrs.order.cableLength}"
 					readonly="#{!cc.attrs.editable}"></p:inputText>

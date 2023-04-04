@@ -4,13 +4,13 @@
         <username>manager</username>
         <password>123</password>
         <fullName>manager</fullName>
-        <role>Manager</role>
-        <role>Cleck</role>
+        <role>MANAGER</role>
+        <role>CLERK</role>
     </user>
     <user>
-        <username>cleck</username>
+        <username>clerk</username>
         <password>123</password>
-        <fullName>cleck </fullName>
-        <role>Cleck</role>
+        <fullName>clerk </fullName>
+        <role>CLERK</role>
     </user>
 </userConfig>

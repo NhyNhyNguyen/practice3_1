@@ -10,23 +10,31 @@
 	<ui:composition template="/layouts/basic-8.xhtml">
 		<ui:define name="title">Order Page</ui:define>
 		<ui:define name="content">
-			<h2 class="mt-0">Available Orders</h2>
-			<h:form>
-				<p:remoteCommand autoRun="true"
-					actionListener="#{orderController.update}"></p:remoteCommand>
-			</h:form>
-			<h:form>
+			<h2 class="mt-0">Available
+				Orders(#{orderController.orders.size()})</h2>
+			<h:form id="order-list">
 				<p:dataTable id="orderTable" var="order" widgetVar="orderTable"
 					value="#{orderController.orders}" sortMode="single"
 					paginator="true" paginatorPosition="bottom" rows="10"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
 					rowsPerPageTemplate="5,10,{ShowAll|'All'}"
-					rowStyleClass="#{order.id % 2 == 0 ? 'tableRow' : ''}"
+					rowStyleClass="#{row % 2 == 0 ? 'tableRow' : ''}"
 					emptyMessage="No orders found with given criteria"
-					rowIndexVar="row" >
-					<p:column headerText="ID" styleClass="filterColumn"
-						style="width:20px">
+					rowIndexVar="row">
+					<f:facet name="header">
+						<div id="new-order">
+							<p:outputPanel
+								style="height:30px; padding-bottom:20 px; text-align:right">
+								<p:commandButton value="New Order" icon="ui-icon-plus"
+									style="color:#fff;"
+									actionListener="#{homeController.getUrl('Business Processes/StartProcess/start3.ivp' )}">
+								</p:commandButton>
+							</p:outputPanel>
+						</div>
+					</f:facet>
+
+					<p:column headerText="ID" sortBy="#{row}" style="width:20px">
 						<h:outputText value="#{row + 1}" />
 					</p:column>
 					<p:column headerText="Customer Name"
@@ -34,15 +42,17 @@
 						style="" styleClass="filterColumn" sortBy="#{order.customer.name}">
 						<h:outputText value="#{order.customer.name}" />
 					</p:column>
+
 					<p:column headerText="Product Type" filterBy="#{order.productType}"
-						filterMatchMode="in" style="" styleClass="filterColumn"
-						sortBy="#{order.productType}">
+						filterMatchMode="exact" style="width:100px"
+						styleClass="filterColumn">
 						<f:facet name="filter">
-							<p:selectCheckboxMenu label=""
-								onchange="PF('orderTable').filter()" scrollHeight="80"
-								styleClass="custom-filter" >
+							<p:selectOneMenu onchange="PF('orderTable').filter()"
+								id="nameFilter" style="width:100%">
+								<f:selectItem itemLabel="All" itemValue="#{null}"
+									noSelectionOption="true" />
 								<f:selectItems value="#{orderController.types}" />
-							</p:selectCheckboxMenu>
+							</p:selectOneMenu>
 						</f:facet>
 						<h:outputText value="#{order.productType}" />
 					</p:column>
@@ -60,15 +70,30 @@
 					</p:column>
 
 					<p:column headerText="Required meter"
-						sortBy="#{order.requireMeter}" filterBy="#{order.requireMeter}"
-						filterMatchMode="contains">
+						filterBy="#{order.requireMeter}" filterMatchMode="exact">
+						<f:facet name="filter">
+							<p:selectOneMenu onchange="PF('orderTable').filter()"
+								id="filterRequireMeter" style="width:100%">
+								<f:selectItem itemLabel="All" itemValue="#{null}"
+									noSelectionOption="true" />
+								<f:selectItem itemLabel="YES" itemValue="true" />
+								<f:selectItem itemLabel="NO" itemValue="false" />
+							</p:selectOneMenu>
+						</f:facet>
 						<p:selectBooleanCheckbox value="#{order.requireMeter}"
 							disabled="true" />
 					</p:column>
 
-					<p:column headerText="Battery" sortBy="#{order.battery}"
-						style="width:80px" filterBy="#{order.total}"
-						filterMatchMode="contains">
+					<p:column headerText="Battery" style="width:80px"
+						filterBy="#{order.battery}" filterMatchMode="exact">
+						<f:facet name="filter">
+							<p:selectOneMenu onchange="PF('orderTable').filter()"
+								id="filterBattery" style="width:100%">
+								<f:selectItem itemLabel="All" itemValue="#{null}"
+									noSelectionOption="true" />
+								<f:selectItems value="#{orderController.batteryTypes}" />
+							</p:selectOneMenu>
+						</f:facet>
 						<h:outputText value="#{order.battery}" />
 					</p:column>
 
@@ -77,9 +102,16 @@
 						filterMatchMode="contains">
 						<h:outputText value="#{order.total}" />
 					</p:column>
-					<p:column headerText="Status" sortBy="#{order.status}"
-						style="width:90px" filterBy="#{order.status.getName()}"
-						filterMatchMode="contains">
+					<p:column headerText="Status" style="width:90px"
+						filterBy="#{order.status.getName()}" filterMatchMode="contains">
+						<f:facet name="filter">
+							<p:selectOneMenu onchange="PF('orderTable').filter()"
+								id="filterStatus" style="width:100%">
+								<f:selectItem itemLabel="All" itemValue="#{null}"
+									noSelectionOption="true" />
+								<f:selectItems value="#{orderController.statusTypes}" />
+							</p:selectOneMenu>
+						</f:facet>
 						<h:outputText value="#{order.status.getName()}"
 							styleClass="status-#{order.status.getName()}" style="" />
 
