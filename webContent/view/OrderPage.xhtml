@@ -27,7 +27,7 @@
 					rowIndexVar="row" >
 					<p:column headerText="ID" styleClass="filterColumn"
 						style="width:20px">
-						<h:outputText value="#{row}" />
+						<h:outputText value="#{row + 1}" />
 					</p:column>
 					<p:column headerText="Customer Name"
 						filterBy="#{order.customer.name}" filterMatchMode="contains"
