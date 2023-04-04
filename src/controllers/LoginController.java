@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
 import services.UserService;
 
@@ -15,8 +13,8 @@ public class LoginController extends AbstractController implements Serializable 
 	private static final long serialVersionUID = 1L;
 
 	private boolean loggedIn;
-	private String username = "ntynhi";
-	private String password = "admin";
+	private String username = "manager";
+	private String password = "123";
 	
 	public void login() {
 		loggedIn = UserService.getInstance().login(username, password);

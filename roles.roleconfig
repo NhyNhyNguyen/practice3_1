@@ -3,8 +3,8 @@
     <identifier>Everybody</identifier>
     <role>
         <identifier>Cleck</identifier>
-        <role>
-            <identifier>Manager</identifier>
-        </role>
+    </role>
+    <role>
+        <identifier>Manager</identifier>
     </role>
 </role>

@@ -264,7 +264,7 @@ Ss0 f31 actionTable 'out=in;
 Ss0 f31 eventIdConfig "String.valueOf(in.order.id)" #txt
 Ss0 f31 timeoutConfig 'ACTION_AFTER_TIMEOUT=CONTINUE_WITHOUT_EVENT
 EXCEPTION_PROCESS_START=
-TIMEOUT_SCRIPT=new Duration(1)' #txt
+TIMEOUT_SCRIPT=new Duration("1S")' #txt
 Ss0 f31 taskData 'ivp.NAM=Wait customer confirm' #txt
 Ss0 f31 eventBeanClass "bean.IntermediateEventBean" #txt
 Ss0 f31 eventBeanConfig '"/src

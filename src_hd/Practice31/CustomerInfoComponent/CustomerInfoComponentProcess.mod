@@ -22,9 +22,10 @@ Cs0 @PushWFArc f9 '' #zField
 Cs0 @PushWFArc f10 '' #zField
 >Proto Cs0 Cs0 CustomerInfoComponentProcess #zField
 Cs0 f0 guid 18726EE5399D57FD #txt
-Cs0 f0 method start(entity.CustomerEntity) #txt
-Cs0 f0 inParameterDecl '<entity.CustomerEntity customer> param;' #txt
-Cs0 f0 inParameterMapAction 'out.customerData.customer=param.customer;
+Cs0 f0 method start(entity.CustomerEntity,bean.CustomerBean) #txt
+Cs0 f0 inParameterDecl '<entity.CustomerEntity customer,bean.CustomerBean bean> param;' #txt
+Cs0 f0 inParameterMapAction 'out.bean=param.bean;
+out.customerData.customer=param.customer;
 ' #txt
 Cs0 f0 outParameterDecl '<Practice31.CustomerData customerData> result;' #txt
 Cs0 f0 outParameterMapAction 'result.customerData=in.customerData;

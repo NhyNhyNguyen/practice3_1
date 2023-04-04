@@ -12,6 +12,7 @@ import ch.ivyteam.ivy.environment.Ivy;
 public abstract class AbstractController {
 	public void redirect(String path,FacesMessage message) {
 		redirect(path);
+		
 		//todo check to show message
 		FacesContext.getCurrentInstance().addMessage("growl", message);
 	}

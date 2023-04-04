@@ -5,6 +5,7 @@
         <password>123</password>
         <fullName>manager</fullName>
         <role>Manager</role>
+        <role>Cleck</role>
     </user>
     <user>
         <username>cleck</username>

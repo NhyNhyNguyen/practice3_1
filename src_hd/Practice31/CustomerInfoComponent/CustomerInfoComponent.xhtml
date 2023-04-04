@@ -90,7 +90,8 @@
 						icon="ui-icon-cloud-download" id="downloadFileButton">
 						<p:fileDownload value="#{data.fileDownload}" />
 					</p:commandButton>
-					<p:outputLabel style ="font-weight:normal" value ="#{cc.attrs.customer.fileName != null and cc.attrs.customer.fileName != 'null'? cc.attrs.customer.fileName : 'No File'}" >
+					<p:outputLabel style="font-weight:normal"
+						value="#{cc.attrs.customer.fileName != null and cc.attrs.customer.fileName != 'null'? cc.attrs.customer.fileName : 'No File'}">
 					</p:outputLabel>
 				</p:panelGrid>
 
@@ -113,8 +114,9 @@
 					required="#{cc.attrs.editable}" rendered="#{cc.attrs.editable}">
 					<f:selectItem itemLabel="Select product type" itemValue=""
 						noSelectionOption="true" />
-					<f:selectItem itemLabel="Solar" itemValue="Solar" />
-					<f:selectItem itemLabel="Power" itemValue="Power" />
+					<f:selectItems value="#{data.bean.productTypes}" var="productType"
+						itemLabel="#{productType}" itemValue="#{productType}" />
+
 					<p:ajax update="#{cc.attrs.formId}" />
 				</p:selectOneMenu>
 
@@ -152,10 +154,10 @@
 				<p:selectOneRadio id="dataOrderBattery2"
 					rendered="#{cc.attrs.order.productType.equals('Solar') and cc.attrs.editable}"
 					value="#{cc.attrs.order.battery}">
-					<f:selectItem itemLabel="Small" itemValue="Small" />
-					<f:selectItem itemLabel="Medium" itemValue="Medium" />
-					<f:selectItem itemLabel="Big" itemValue="Big" />
+					<f:selectItems value="#{data.bean.batteryTypes}" var="battery"
+						itemLabel="#{battery}" itemValue="#{battery}" />
 				</p:selectOneRadio>
+
 				<p:outputLabel for="dataOrderTotal" value="Total" />
 				<p:inputText id="dataOrderTotal" value="#{cc.attrs.order.total}"
 					readonly="#{!cc.attrs.editable}"></p:inputText>

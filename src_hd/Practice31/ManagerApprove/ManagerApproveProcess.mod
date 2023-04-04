@@ -19,7 +19,6 @@ Ms0 @GridStep f4 '' #zField
 Ms0 @PushWFArc f6 '' #zField
 Ms0 @PushWFArc f7 '' #zField
 Ms0 @UdEvent f5 '' #zField
-Ms0 @UdMethod f15 '' #zField
 Ms0 @GridStep f10 '' #zField
 Ms0 @UdExitEnd f11 '' #zField
 Ms0 @UdEvent f12 '' #zField
@@ -91,19 +90,6 @@ Ms0 f5 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 ' #txt
 Ms0 f5 83 163 26 26 -15 15 #rect
 Ms0 f5 @|UdEventIcon #fIcon
-Ms0 f15 guid 18735C3E120C743B #txt
-Ms0 f15 method method() #txt
-Ms0 f15 inParameterDecl '<> param;' #txt
-Ms0 f15 outParameterDecl '<> result;' #txt
-Ms0 f15 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<elementInfo>
-    <language>
-        <name>method()</name>
-    </language>
-</elementInfo>
-' #txt
-Ms0 f15 197 437 22 22 14 0 #rect
-Ms0 f15 @|UdMethodIcon #fIcon
 Ms0 f10 actionTable 'out=in;
 ' #txt
 Ms0 f10 actionCode 'import controllers.OrderController;
