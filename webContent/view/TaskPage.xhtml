@@ -13,8 +13,77 @@
 			<h2>List Task( #{taskController.tasks.size()})</h2>
 
 			<h:form id="task-list-form">
-				<p:dataView var="task" value="#{taskController.tasks}" rows="5" rendered="#{taskController.tasks.size() > 0}"
-					paginator="true"
+				<p:dataTable id="taskTable" widgetVar="taskTable"
+					value="#{taskController.tasks}" var="task" sortMode="single"
+					paginator="true" paginatorPosition="bottom" rows="10"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+					rowsPerPageTemplate="5,10,{ShowAll|'All'}"
+					rowStyleClass="#{row % 2 == 0 ? '' : ''}"
+					emptyMessage="No tasks found with given criteria" rowIndexVar="row"
+					filteredValue="#{taskController.fitlerTasks}">
+					<p:column headerText="Task Id" style="width:70px"
+						sortBy="#{task.id}">
+						<span class="fa fa-circle task-priority-normal "
+							style="margin: 0rem 0.8rem 0rem 0rem"></span>
+						<h:outputText value="#{task.id}" />
+					</p:column>
+					<p:column headerText="Task Name" filterBy="#{task.name}"
+						filterMatchMode="contains" style="" styleClass="filterColumn"
+						sortBy="#{task.name}">
+						<h:outputText value="#{task.name}" styleClass=""
+							style="margin:auto" />
+					</p:column>
+					<p:column headerText="Description" filterBy="#{task.description}"
+						filterMatchMode="contains" style="" styleClass="filterColumn"
+						sortBy="#{task.name}">
+						<h:outputText
+							value="#{task.description == '' ? 'No descrption' : task.description} " />
+					</p:column>
+
+					<p:column headerText="Created" filterBy="#{task.startTimestamp}"
+						filterMatchMode="contains" style="" styleClass="filterColumn"
+						sortBy="#{task.startTimestamp}">
+						<h:outputText value="#{task.startTimestamp}">
+							<f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Responsible"
+						filterBy="#{task.getActivatorName()}" filterMatchMode="contains"
+						style="" styleClass="filterColumn"
+						sortBy="#{task.getActivatorName()}">
+						<h:outputText value="#{task.getActivatorName()} "
+							styleClass=" name-#{task.getActivatorName()}"
+							style="padding: 0.3rem 0.6rem; border-radius:0.2rem" />
+					</p:column>
+					<p:column headerText="State" filterBy="#{task.state}"
+						filterMatchMode="exact" style="width:150px"
+						styleClass="filterColumn">
+						<f:facet name="filter">
+							<p:selectOneMenu onchange="PF('taskTable').filter()"
+								id="stateFilter" style="width:100%">
+								<f:selectItem itemLabel="All" itemValue="#{null}"
+									noSelectionOption="true" />
+								<f:selectItems value="#{taskController.states}" />
+							</p:selectOneMenu>
+						</f:facet>
+						<h:outputText value="#{task.state}"
+							styleClass="state-#{task.state}"
+							style="font-size: 13px; margin: 20px" />
+
+					</p:column>
+					<p:column headerText="Action" styleClass="filterColumn"
+						style="width:100px; ">
+						<p:link style="" rendered="#{task.state == 'SUSPENDED'}"
+							href="#{taskController.getRequestPath(task)}"
+							id="taskLinkRow_#{task}">
+							Start	
+							<span class="fa fa-play-circle " />
+						</p:link>
+					</p:column>
+				</p:dataTable>
+				<!-- 				<p:dataView var="task" value="#{taskController.tasks}" rows="5"
+					rendered="#{taskController.tasks.size() > 0}" paginator="true"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					paginatorPosition="bottom" gridIcon="pi pi-th-large"
 					listIcon="pi pi-bars">
@@ -46,7 +115,8 @@
 									<h:outputText value="#{task.state}"
 										styleClass="state-#{task.state}" style="font-size: 13px;" />
 								</h:panelGrid>
-								<p:link style="float: right" rendered="#{task.state == 'SUSPENDED'}"
+								<p:link style="float: right"
+									rendered="#{task.state == 'SUSPENDED'}"
 									href="#{taskController.getRequestPath(task)}"
 									id="taskLinkRow_#{task}">
 									<span class="fa fa-play-circle fa-2x" />
@@ -56,6 +126,7 @@
 						</div>
 					</p:dataViewListItem>
 				</p:dataView>
+ -->
 			</h:form>
 		</ui:define>
 	</ui:composition>

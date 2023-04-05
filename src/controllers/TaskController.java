@@ -1,21 +1,29 @@
 package controllers;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.workflow.ITask;
+import ch.ivyteam.ivy.workflow.TaskState;
 import ch.ivyteam.ivy.workflow.query.TaskQuery;
 
 @ManagedBean
+@SessionScoped
 public class TaskController extends AbstractController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	List<ITask> tasks;
+	List<ITask> fitlerTasks = new ArrayList<>();
+
+	TaskState[] states = TaskState.values();
 
 	@PostConstruct
 	public void init() {
@@ -47,4 +55,24 @@ public class TaskController extends AbstractController implements Serializable {
 		this.tasks = tasks;
 	}
 
+	public TaskState[] getStates() {
+		return states;
+	}
+
+	public List<ITask> getFitlerTasks() {
+		return fitlerTasks;
+	}
+
+	public void setFitlerTasks(List<ITask> fitlerTasks) {
+		this.fitlerTasks = fitlerTasks;
+	}
+
+	public void setStates(TaskState[] states) {
+		this.states = states;
+	}
+	
+	
+	
+
+	
 }

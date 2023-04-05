@@ -154,13 +154,21 @@ body .ui-datatable tbody tr.ui-datatable-even {
 	letter-spacing: .3px;
 }
 
-.battery-AC {
+.battery-AC  , .name-CLERK{
 	background-color: #c8e6c9;
 	color: #256029;
 }
 
-.battery-DC {
+.battery-DC , .name-MANAGER {
 	background-color: #ffcdd2;
 	color: #c63737;
 }
 
+#task-list-form tr{
+	height: 65px;
+}
+
+#task-list-form td{
+/* 	text-align: center
+ */padding: 0px 10px !important;
+ }
